@@ -363,6 +363,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
+              <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Database</h4>
                 <p>Show version</p>
@@ -413,6 +414,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
+              <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Tables</h4>
                 <p>List tables, in current db</p>
@@ -450,6 +452,91 @@
                 <hr>
                 <p class="mb-0">DROP TABLE IF EXISTS table_name CASCADE;</p>
               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Permissions</h4>
+                <p>Become the postgres user, if you have permission errors</p>
+                <hr>
+                <p class="mb-0">sudo su - postgres</p>
+                <p class="mb-0">psql</p>
+                <br>
+                <p>Grant all permissions on database</p>
+                <hr>
+                <p class="mb-0">GRANT ALL PRIVILEGES ON DATABASE db_name TO user_name;</p>
+                <br>
+                <p>Grant connection permissions on database</p>
+                <hr>
+                <p class="mb-0">GRANT CONNECT ON DATABASE db_name TO user_name;</p>
+                <br>
+                <p>Grant permissions on schema</p>
+                <hr>
+                <p class="mb-0">GRANT USAGE ON SCHEMA public TO user_name;</p>
+                <br>
+                <p>Grant permissions to functions</p>
+                <hr>
+                <p class="mb-0">GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO user_name;</p>
+                <br>
+                <p>Grant permissions to select, update, insert, delete, on a all tables</p>
+                <hr>
+                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</p>
+              
+                <br>
+                <p>Grant permissions, on a table</p>
+                <hr>
+                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON table_name TO user_name;</p>
+              
+                <br>
+                <p>Grant permissions, to select, on a table</p>
+                <hr>
+                <p class="mb-0">GRANT SELECT ON ALL TABLES IN SCHEMA public TO user_name;</p>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Columns</h4>
+                <p>Add column</p>
+                <hr>
+                <p class="mb-0">ALTER TABLE table_name IF EXISTS
+                  ADD column_name data_type [constraints];</p>
+                <br>
+                <p>Update column</p>
+                <hr>
+                <p class="mb-0">ALTER TABLE table_name IF EXISTS
+                  ALTER column_name TYPE data_type [constraints];</p>
+                <br>
+                <p>Delete column</p>
+                <hr>
+                <p class="mb-0">ALTER TABLE table_name IF EXISTS
+                  DROP column_name;</p>
+                <br>
+                <p>Update column to be an auto-incrementing primary key</p>
+                <hr>
+                <p class="mb-0">ALTER TABLE table_name
+                  ADD COLUMN column_name SERIAL PRIMARY KEY;</p>
+                <br>
+                <p>Insert into a table, with an auto-incrementing primary key</p>
+                <hr>
+                <p class="mb-0">INSERT INTO table_name
+                  VALUES (DEFAULT, value1);
+                  </p>
+                <p class="mb-0">INSERT INTO table_name (column1_name,column2_name)
+                  VALUES ( value1,value2 );
+                    </p>
               </div>
             </div>
           </div>
