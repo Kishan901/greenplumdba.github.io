@@ -248,11 +248,11 @@
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
-      <div class="card-body">
+      <div class="row">
         <div class="flex flex-col w-full mx-auto text-center my-8">
           <div class="max-container w-full">
             <h1 class="text-5xl mb-4"> <span class="text-slate-700 dark:text-slate-300 font-light">Greenplum</span>
-              <span class="text-slate-400 dark:text-slate-500 font-extralight hidden md:inline">cheatsheet</span>
+              <span class="text-slate-400 dark:text-slate-500 font-extralight hidden md:inline">Cheatsheet</span>
             </h1>
             <div class="lg:w-3/5 mx-auto intro leading-relaxed text-slate-600">
               <p>The <a target="_blank" rel="noopener external nofollow noreferrer"
@@ -261,8 +261,9 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
+        <div class="col-lg-6">
           <div class="card">
+            <div class="card-body">
             <h5 id="getting-started"><a class="h-anchor" href="#getting-started"></a>Getting Started</h5>
             <div class="h3-wrap-list">
               <div class="h3-wrap">
@@ -270,17 +271,16 @@
                   <div class="section">
                     <p>Switch and connect</p>
                     <pre style="position: relative;"><button class="bg-emerald-500 p-2 text-white fadeIn shadow-xl rounded flex items-center absolute top-2 right-2" style="opacity: 0;"><svg height="1em" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path> </svg></button><code class="hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo -u postgres psql</span>
-</code></pre>
+                     </code></pre>
                     <p>List all databases</p>
                     <pre style="position: relative;"><button class="bg-emerald-500 p-2 text-white fadeIn shadow-xl rounded flex items-center absolute top-2 right-2" style="opacity: 0;"><svg height="1em" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path> </svg></button><code class="hljs language-shell">postgres=# \l
-</code></pre>
+                    </code></pre>
                     <p>Connect to the database named postgres</p>
                     <pre style="position: relative;"><button class="bg-emerald-500 p-2 text-white fadeIn shadow-xl rounded flex items-center absolute top-2 right-2" style="opacity: 0;"><svg height="1em" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path> </svg></button><code class="hljs language-shell">postgres=# \c postgres
-</code></pre>
+                     </code></pre>
                     <p>Disconnect</p>
-                    <pre style="position: relative;"><button class="bg-emerald-500 p-2 text-white fadeIn shadow-xl rounded flex items-center absolute top-2 right-2" style="opacity: 0;"><svg height="1em" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path> </svg></button><code class="hljs language-shell">postgres=# \q
-postgres=# \!
-</code></pre>
+                    <pre style="position: relative;"><button class="bg-emerald-500 p-2 text-white fadeIn shadow-xl rounded flex items-center absolute top-2 right-2" style="opacity: 0;"><svg height="1em" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path> </svg></button><code class="hljs language-shell">postgres=# \q postgres=# \!
+                    </code></pre>
                   </div>
               </div>
               <div class="h3-wrap col-span-2">
@@ -377,6 +377,7 @@ postgres=# \!
                   <p>Run in PostgreSQL console</p>
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div class="h2-wrap">
