@@ -363,10 +363,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Greenplum CheatSheet</h5>
-
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">PostgreSQL Working</h4>
+                <h4 class="alert-heading">Database</h4>
                 <p>Show version</p>
                 <hr>
                 <p class="mb-0">SHOW SERVER_VERSION;</p>
@@ -411,7 +409,51 @@
           </div>
         </div>
 
-
+        
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Tables</h4>
+                <p>List tables, in current db</p>
+                <hr>
+                <p class="mb-0">\dt</p>
+                <p class="mb-0">SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;</p>
+                <br>
+                <p>List tables, globally</p>
+                <hr>
+                <p class="mb-0">\dt *.*.</p>
+                <p class="mb-0">SELECT * FROM pg_catalog.pg_tables</p>
+                <br>
+                <p>List table schema</p>
+                <hr>
+                <p class="mb-0">\d table_name</p>
+                <p class="mb-0">\d+ table_name</p>
+                <p class="mb-0">SELECT column_name, data_type, character_maximum_length
+                  FROM INFORMATION_SCHEMA.COLUMNS
+                  WHERE table_name = 'table_name';</p>
+                <br>
+                <p>Create table</p>
+                <hr>
+                <p class="mb-0">CREATE TABLE table_name(
+                  column_name column_type,
+                  column_name column_type
+                );</p>
+                <br>
+                <p>Create table, with an auto-incrementing primary key</p>
+                <hr>
+                <p class="mb-0">CREATE TABLE table_name (
+                  column_name SERIAL PRIMARY KEY
+                );</p>
+                <br>
+                <p>Delete table</p>
+                <hr>
+                <p class="mb-0">DROP TABLE IF EXISTS table_name CASCADE;</p>
+              
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
