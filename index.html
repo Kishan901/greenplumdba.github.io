@@ -257,15 +257,15 @@
                 <p>Switch and connect</p>
                 <hr>
                 <p class="mb-0">sudo -u postgres psql</p>
-
+                <br>
                 <p>List all databases</p>
                 <hr>
                 <p class="mb-0">postgres=# \l</p>
-
+                <br>
                 <p>Connect to the database named postgres</p>
                 <hr>
                 <p class="mb-0">postgres=# \c postgres</p>
-
+                <br>
                 <p>Disconnect</p>
                 <hr>
                 <p class="mb-0">postgres=# \q</p>
@@ -286,6 +286,82 @@
             </div>
           </div>
         </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">PSQL commands</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Example</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>[-d] &lt;database&gt;</code></td>
+                        <td>psql -d mydb</td>
+                        <td>Connecting to database</td>
+                    </tr>
+                    <tr>
+                      <td><code>-U</code></td>
+                      <td>psql -U john mydb</td>
+                      <td>Connecting as a specific user</td>
+                    </tr>
+                    <tr>
+                      <td><code>-h</code> <code>-p</code></td>
+                      <td>psql -h localhost -p 5432 mydb</td>
+                      <td>Connecting to a host/port</td>
+                    </tr>
+                    <tr>
+                      <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
+                      <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
+                      <td>Connect remote PostgreSQL</td>
+                    </tr>
+                    <tr>
+                      <td><code>-W</code></td>
+                      <td>psql -W mydb</td>
+                      <td>Force password</td>
+                    </tr>
+                    <tr>
+                      <td><code>-c</code></td>
+                      <td>psql -c '\c postgres' -c '\dt'</td>
+                      <td>Execute a SQL query or command</td>
+                    </tr>
+                    <tr>
+                      <td><code>-H</code></td>
+                      <td>psql -c "\l+" -H postgres &gt; database.html</td>
+                      <td>Generate HTML report</td>
+                    </tr>
+                    <tr>
+                      <td><code>-l</code></td>
+                      <td>psql -l</td>
+                      <td>List all databases</td>
+                    </tr>
+                    <tr>
+                      <td><code>-f</code></td>
+                      <td>psql mydb -f file.sql</td>
+                      <td>Execute commands from a file</td>
+                    </tr>
+                    <tr>
+                      <td><code>-V</code></td>
+                      <td>psql -V</td>
+                      <td>Print the psql version</td>
+                    </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </section>
 
