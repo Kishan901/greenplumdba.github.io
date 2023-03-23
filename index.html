@@ -254,21 +254,26 @@
 
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Getting Started</h4>
+                <br><hr>
                 <p>Switch and connect</p>
                 <hr>
                 <p class="mb-0">sudo -u postgres psql</p>
                 <br>
+                <hr>
                 <p>List all databases</p>
                 <hr>
                 <p class="mb-0">postgres=# \l</p>
                 <br>
+                <hr>
                 <p>Connect to the database named postgres</p>
                 <hr>
                 <p class="mb-0">postgres=# \c postgres</p>
                 <br>
+                <hr>
                 <p>Disconnect</p>
                 <hr>
                 <p class="mb-0">postgres=# \q</p>
+                <br>
                 <p class="mb-0">postgres=# \!</p>
 
               </div>
@@ -366,41 +371,48 @@
               <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Database</h4>
+                <br>
+                <hr>
                 <p>Show version</p>
                 <hr>
                 <p class="mb-0">SHOW SERVER_VERSION;</p>
                 <br>
+                <hr>
                 <p>Show system status</p>
                 <hr>
                 <p class="mb-0">\conninfo</p>
                 <br>
+                <hr>
                 <p>Show environmental variables</p>
                 <hr>
                 <p class="mb-0">SHOW ALL;</p>
                 <br>
+                <hr>
                 <p>List users</p>
                 <hr>
                 <p class="mb-0">SELECT rolname FROM pg_roles;</p>
                 <br>
+                <hr>
                 <p>Show current user</p>
                 <hr>
                 <p class="mb-0">SELECT current_user;</p>
                 <br>
+                <hr>
                 <p>Show current user's permissions</p>
                 <hr>
-                <p class="mb-0">\du</p>
-                
+                <p class="mb-0">\du</p>                
                 <br>
+                <hr>
                 <p>Show current database</p>
                 <hr>
                 <p class="mb-0">SELECT current_database();</p>
-
                 <br>
+                <hr>
                 <p>Show all tables in database</p>
                 <hr>
                 <p class="mb-0">\dt</p>
-
                 <br>
+                <hr>
                 <p>List functions</p>
                 <hr>
                 <p class="mb-0">\df schema</p>
@@ -417,24 +429,33 @@
               <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Tables</h4>
+                <br>
+                <hr>
                 <p>List tables, in current db</p>
                 <hr>
                 <p class="mb-0">\dt</p>
+                <br>
                 <p class="mb-0">SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;</p>
                 <br>
+                <hr>
                 <p>List tables, globally</p>
                 <hr>
                 <p class="mb-0">\dt *.*.</p>
+                <br>
                 <p class="mb-0">SELECT * FROM pg_catalog.pg_tables</p>
                 <br>
+                <hr>
                 <p>List table schema</p>
                 <hr>
                 <p class="mb-0">\d table_name</p>
+                <br>
                 <p class="mb-0">\d+ table_name</p>
+                <br>
                 <p class="mb-0">SELECT column_name, data_type, character_maximum_length
                   FROM INFORMATION_SCHEMA.COLUMNS
                   WHERE table_name = 'table_name';</p>
                 <br>
+                <hr>
                 <p>Create table</p>
                 <hr>
                 <p class="mb-0">CREATE TABLE table_name(
@@ -442,12 +463,14 @@
                   column_name column_type
                 );</p>
                 <br>
+                <hr>
                 <p>Create table, with an auto-incrementing primary key</p>
                 <hr>
                 <p class="mb-0">CREATE TABLE table_name (
                   column_name SERIAL PRIMARY KEY
                 );</p>
                 <br>
+                <hr>
                 <p>Delete table</p>
                 <hr>
                 <p class="mb-0">DROP TABLE IF EXISTS table_name CASCADE;</p>
@@ -463,37 +486,45 @@
               <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Permissions</h4>
+                <br>
+                <hr>
                 <p>Become the postgres user, if you have permission errors</p>
                 <hr>
                 <p class="mb-0">sudo su - postgres</p>
+                <br>
                 <p class="mb-0">psql</p>
                 <br>
+                <hr>
                 <p>Grant all permissions on database</p>
                 <hr>
                 <p class="mb-0">GRANT ALL PRIVILEGES ON DATABASE db_name TO user_name;</p>
                 <br>
+                <hr>
                 <p>Grant connection permissions on database</p>
                 <hr>
                 <p class="mb-0">GRANT CONNECT ON DATABASE db_name TO user_name;</p>
                 <br>
+                <hr>
                 <p>Grant permissions on schema</p>
                 <hr>
                 <p class="mb-0">GRANT USAGE ON SCHEMA public TO user_name;</p>
                 <br>
+                <hr>
                 <p>Grant permissions to functions</p>
                 <hr>
                 <p class="mb-0">GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO user_name;</p>
                 <br>
+                <hr>
                 <p>Grant permissions to select, update, insert, delete, on a all tables</p>
                 <hr>
-                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</p>
-              
+                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</p>              
                 <br>
+                <hr>
                 <p>Grant permissions, on a table</p>
                 <hr>
                 <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON table_name TO user_name;</p>
-              
                 <br>
+                <hr>
                 <p>Grant permissions, to select, on a table</p>
                 <hr>
                 <p class="mb-0">GRANT SELECT ON ALL TABLES IN SCHEMA public TO user_name;</p>
@@ -509,31 +540,38 @@
               <br>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Columns</h4>
+                <br>
+                <hr>
                 <p>Add column</p>
                 <hr>
                 <p class="mb-0">ALTER TABLE table_name IF EXISTS
                   ADD column_name data_type [constraints];</p>
                 <br>
+                <hr>
                 <p>Update column</p>
                 <hr>
                 <p class="mb-0">ALTER TABLE table_name IF EXISTS
                   ALTER column_name TYPE data_type [constraints];</p>
                 <br>
+                <hr>
                 <p>Delete column</p>
                 <hr>
                 <p class="mb-0">ALTER TABLE table_name IF EXISTS
                   DROP column_name;</p>
                 <br>
+                <hr>
                 <p>Update column to be an auto-incrementing primary key</p>
                 <hr>
                 <p class="mb-0">ALTER TABLE table_name
                   ADD COLUMN column_name SERIAL PRIMARY KEY;</p>
-                <br>
+                  <br>
+                  <hr>
                 <p>Insert into a table, with an auto-incrementing primary key</p>
                 <hr>
                 <p class="mb-0">INSERT INTO table_name
                   VALUES (DEFAULT, value1);
                   </p>
+                  <br>
                 <p class="mb-0">INSERT INTO table_name (column1_name,column2_name)
                   VALUES ( value1,value2 );
                     </p>
