@@ -46,7 +46,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-right justify-content-between">
-      <i class="bi bi-list toggle-sidebar-btn"></i>&nbsp;
+      <i class="bi bi-list toggle-sidebar-btn"></i>&nbsp;&nbsp;
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">&nbsp;Greenplum DBA</span>
@@ -356,6 +356,57 @@
               </table>
               <!-- End Table with stripped rows -->
 
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Greenplum CheatSheet</h5>
+
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">PostgreSQL Working</h4>
+                <p>Show version</p>
+                <hr>
+                <p class="mb-0">SHOW SERVER_VERSION;</p>
+                <br>
+                <p>Show system status</p>
+                <hr>
+                <p class="mb-0">\conninfo</p>
+                <br>
+                <p>Show environmental variables</p>
+                <hr>
+                <p class="mb-0">SHOW ALL;</p>
+                <br>
+                <p>List users</p>
+                <hr>
+                <p class="mb-0">SELECT rolname FROM pg_roles;</p>
+                <br>
+                <p>Show current user</p>
+                <hr>
+                <p class="mb-0">SELECT current_user;</p>
+                <br>
+                <p>Show current user's permissions</p>
+                <hr>
+                <p class="mb-0">\du</p>
+                
+                <br>
+                <p>Show current database</p>
+                <hr>
+                <p class="mb-0">SELECT current_database();</p>
+
+                <br>
+                <p>Show all tables in database</p>
+                <hr>
+                <p class="mb-0">\dt</p>
+
+                <br>
+                <p>List functions</p>
+                <hr>
+                <p class="mb-0">\df schema</p>
+
+              </div>
             </div>
           </div>
         </div>
