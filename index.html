@@ -171,35 +171,35 @@
                 <br><hr>
                 <p>Switch and connect</p>
                 <hr>
-                <p class="mb-0">sudo -u postgres psql</p>
+                <code>sudo -u postgres psql</code>
                 <br>
                 <hr>
                 <p>List all databases</p>
                 <hr>
-                <p class="mb-0">postgres=# \l</p>
+                <code>postgres=# \l</code>
                 <br>
                 <hr>
                 <p>Connect to the database named postgres</p>
                 <hr>
-                <p class="mb-0">postgres=# \c postgres</p>
+                <code>postgres=# \c postgres</code>
                 <br>
                 <hr>
-                <p class="badge border-primary border-1 text-primary">Disconnect</p>
+                <p>Disconnect</p>
                 <hr>
-                <p class="mb-0">postgres=# \q</p>
+                <code>postgres=# \q</code>
                 <br>
-                <p class="mb-0">postgres=# \!</p>
+                <code>postgres=# \!</code>
 
               </div>
 
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Getting help</h4>
                 <hr>
-                <p class="mb-0">\h	Help on syntax of SQL commands</p>
+                <code>\h	Help on syntax of SQL commands</code>
                 <hr>
-                <p class="mb-0">\h DELETE	DELETE SQL statement syntax</p>
+                <code>\h DELETE	DELETE SQL statement syntax</code>
                 <hr>
-                <p class="mb-0">\?	List of PostgreSQL command</p>
+                <code>\?	List of PostgreSQL command</code>
               </div>
 
             </div>
@@ -289,47 +289,47 @@
                 <hr>
                 <p>Show version</p>
                 <hr>
-                <p class="mb-0">SHOW SERVER_VERSION;</p>
+                <code>SHOW SERVER_VERSION;</code>
                 <br>
                 <hr>
                 <p>Show system status</p>
                 <hr>
-                <p class="mb-0">\conninfo</p>
+                <code>\conninfo</code>
                 <br>
                 <hr>
                 <p>Show environmental variables</p>
                 <hr>
-                <p class="mb-0">SHOW ALL;</p>
+                <code>SHOW ALL;</code>
                 <br>
                 <hr>
                 <p>List users</p>
                 <hr>
-                <p class="mb-0">SELECT rolname FROM pg_roles;</p>
+                <code>SELECT rolname FROM pg_roles;</code>
                 <br>
                 <hr>
                 <p>Show current user</p>
                 <hr>
-                <p class="mb-0">SELECT current_user;</p>
+                <code>SELECT current_user;</code>
                 <br>
                 <hr>
                 <p>Show current user's permissions</p>
                 <hr>
-                <p class="mb-0">\du</p>                
+                <code>\du</code>                
                 <br>
                 <hr>
                 <p>Show current database</p>
                 <hr>
-                <p class="mb-0">SELECT current_database();</p>
+                <code>SELECT current_database();</code>
                 <br>
                 <hr>
                 <p>Show all tables in database</p>
                 <hr>
-                <p class="mb-0">\dt</p>
+                <code>\dt</code>
                 <br>
                 <hr>
                 <p>List functions</p>
                 <hr>
-                <p class="mb-0">\df schema</p>
+                <code>\df schema</code>
 
               </div>
             </div>
@@ -347,47 +347,47 @@
                 <hr>
                 <p>List tables, in current db</p>
                 <hr>
-                <p class="mb-0">\dt</p>
+                <code>\dt</code>
                 <br>
-                <p class="mb-0">SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;</p>
+                <code>SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;</code>
                 <br>
                 <hr>
                 <p>List tables, globally</p>
                 <hr>
-                <p class="mb-0">\dt *.*.</p>
+                <code>\dt *.*.</code>
                 <br>
-                <p class="mb-0">SELECT * FROM pg_catalog.pg_tables</p>
+                <code>SELECT * FROM pg_catalog.pg_tables</code>
                 <br>
                 <hr>
                 <p>List table schema</p>
                 <hr>
-                <p class="mb-0">\d table_name</p>
+                <code>\d table_name</code>
                 <br>
-                <p class="mb-0">\d+ table_name</p>
+                <code>\d+ table_name</code>
                 <br>
-                <p class="mb-0">SELECT column_name, data_type, character_maximum_length
+                <code>SELECT column_name, data_type, character_maximum_length
                   FROM INFORMATION_SCHEMA.COLUMNS
-                  WHERE table_name = 'table_name';</p>
+                  WHERE table_name = 'table_name';</code>
                 <br>
                 <hr>
                 <p>Create table</p>
                 <hr>
-                <p class="mb-0">CREATE TABLE table_name(
+                <code>CREATE TABLE table_name(
                   column_name column_type,
                   column_name column_type
-                );</p>
+                );</code>
                 <br>
                 <hr>
                 <p>Create table, with an auto-incrementing primary key</p>
                 <hr>
-                <p class="mb-0">CREATE TABLE table_name (
+                <code>CREATE TABLE table_name (
                   column_name SERIAL PRIMARY KEY
-                );</p>
+                );</code>
                 <br>
                 <hr>
                 <p>Delete table</p>
                 <hr>
-                <p class="mb-0">DROP TABLE IF EXISTS table_name CASCADE;</p>
+                <code>DROP TABLE IF EXISTS table_name CASCADE;</code>
               
               </div>
             </div>
@@ -404,44 +404,44 @@
                 <hr>
                 <p>Become the postgres user, if you have permission errors</p>
                 <hr>
-                <p class="mb-0">sudo su - postgres</p>
+                <code>sudo su - postgres</code>
                 <br>
-                <p class="mb-0">psql</p>
+                <code>psql</code>
                 <br>
                 <hr>
                 <p>Grant all permissions on database</p>
                 <hr>
-                <p class="mb-0">GRANT ALL PRIVILEGES ON DATABASE db_name TO user_name;</p>
+                <code>GRANT ALL PRIVILEGES ON DATABASE db_name TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant connection permissions on database</p>
                 <hr>
-                <p class="mb-0">GRANT CONNECT ON DATABASE db_name TO user_name;</p>
+                <code>GRANT CONNECT ON DATABASE db_name TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant permissions on schema</p>
                 <hr>
-                <p class="mb-0">GRANT USAGE ON SCHEMA public TO user_name;</p>
+                <code>GRANT USAGE ON SCHEMA public TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant permissions to functions</p>
                 <hr>
-                <p class="mb-0">GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO user_name;</p>
+                <code>GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant permissions to select, update, insert, delete, on a all tables</p>
                 <hr>
-                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</p>              
+                <code>GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</code>              
                 <br>
                 <hr>
                 <p>Grant permissions, on a table</p>
                 <hr>
-                <p class="mb-0">GRANT SELECT, UPDATE, INSERT ON table_name TO user_name;</p>
+                <code>GRANT SELECT, UPDATE, INSERT ON table_name TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant permissions, to select, on a table</p>
                 <hr>
-                <p class="mb-0">GRANT SELECT ON ALL TABLES IN SCHEMA public TO user_name;</p>
+                <code>GRANT SELECT ON ALL TABLES IN SCHEMA public TO user_name;</code>
               
               </div>
             </div>
@@ -458,37 +458,37 @@
                 <hr>
                 <p>Add column</p>
                 <hr>
-                <p class="mb-0">ALTER TABLE table_name IF EXISTS
-                  ADD column_name data_type [constraints];</p>
+                <code>ALTER TABLE table_name IF EXISTS
+                  ADD column_name data_type [constraints];</code>
                 <br>
                 <hr>
                 <p>Update column</p>
                 <hr>
-                <p class="mb-0">ALTER TABLE table_name IF EXISTS
-                  ALTER column_name TYPE data_type [constraints];</p>
+                <code>ALTER TABLE table_name IF EXISTS
+                  ALTER column_name TYPE data_type [constraints];</code>
                 <br>
                 <hr>
                 <p>Delete column</p>
                 <hr>
-                <p class="mb-0">ALTER TABLE table_name IF EXISTS
-                  DROP column_name;</p>
+                <code>ALTER TABLE table_name IF EXISTS
+                  DROP column_name;</code>
                 <br>
                 <hr>
                 <p>Update column to be an auto-incrementing primary key</p>
                 <hr>
-                <p class="mb-0">ALTER TABLE table_name
-                  ADD COLUMN column_name SERIAL PRIMARY KEY;</p>
+                <code>ALTER TABLE table_name
+                  ADD COLUMN column_name SERIAL PRIMARY KEY;</code>
                   <br>
                   <hr>
                 <p>Insert into a table, with an auto-incrementing primary key</p>
                 <hr>
-                <p class="mb-0">INSERT INTO table_name
+                <code>INSERT INTO table_name
                   VALUES (DEFAULT, value1);
-                  </p>
+                </code>
                   <br>
-                <p class="mb-0">INSERT INTO table_name (column1_name,column2_name)
+                <code>INSERT INTO table_name (column1_name,column2_name)
                   VALUES ( value1,value2 );
-                    </p>
+                </code>
               </div>
             </div>
           </div>
@@ -505,40 +505,40 @@
                 <hr>
                 <p>Select all data</p>
                 <hr>
-                <p class="mb-0">SELECT * FROM table_name;</p>
+                <code>SELECT * FROM table_name;</code>
                 <br>
                 <hr>
                 <p>Read one row of data</p>
                 <hr>
-                <p class="mb-0">SELECT * FROM table_name LIMIT 1;</p>
+                <code>SELECT * FROM table_name LIMIT 1;</code>
                 <br>
                 <hr>
                 <p>Search for data</p>
                 <hr>
-                <p class="mb-0">SELECT * FROM table_name WHERE column_name = value;</p>
+                <code>SELECT * FROM table_name WHERE column_name = value;</code>
                 <br>
                 <hr>
                 <p>Insert data</p>
                 <hr>
-                <p class="mb-0">INSERT INTO table_name VALUES( value_1, value_2 );</p>
+                <code>INSERT INTO table_name VALUES( value_1, value_2 );</code>
                   <br>
                   <hr>
                 <p>Update data</p>
                 <hr>
-                <p class="mb-0">UPDATE table_name
+                <code>UPDATE table_name
                   SET column_1 = value_1, column_2 = value_2
                   WHERE column_1 = value;
-                </p>
+                </code>
                 <br>
                 <hr>
                 <p>Delete all data</p>  
                 <hr>
-                <p class="mb-0">DELETE FROM table_name;</p>
+                <code>DELETE FROM table_name;</code>
                 <br>
                 <hr>
                 <p>Delete specific data</p>  
-                <p class="mb-0">DELETE FROM table_name
-                  WHERE column_name = value;</p>
+                <code>DELETE FROM table_name
+                  WHERE column_name = value;</code>
                 <br>
               </div>
             </div>
