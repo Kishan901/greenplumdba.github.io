@@ -151,88 +151,1185 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Admin Documents</h1>
+      <h1>Daily Usable</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Admin Documents</li>
+          <li class="breadcrumb-item active">Daily Usable</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <hr>
     <section class="section">
-      <h1 style="color: #012970; font-family: 'Poppins', sans-serif;">Admin Documents</h1>
       <br>
       <div class="row">
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Product Documentation</h5>
+        <div class="col-lg-6" style="width: auto;">
+          <div class="card" style="width: auto;">
+            <div class="card-body" style="width: auto; text-align: left;">
+                <h5 class="card-title">Daily Usable</h5>
+            <pre>gpconfig --show max_connections
 
-              <!-- Table with stripped rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Option</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>[-d] &lt;database&gt;</code></td>
-                        <td>psql -d mydb</td>
-                        <td>Connecting to database</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code></td>
-                      <td>psql -U john mydb</td>
-                      <td>Connecting as a specific user</td>
-                    </tr>
-                    <tr>
-                      <td><code>-h</code> <code>-p</code></td>
-                      <td>psql -h localhost -p 5432 mydb</td>
-                      <td>Connecting to a host/port</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
-                      <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
-                      <td>Connect remote PostgreSQL</td>
-                    </tr>
-                    <tr>
-                      <td><code>-W</code></td>
-                      <td>psql -W mydb</td>
-                      <td>Force password</td>
-                    </tr>
-                    <tr>
-                      <td><code>-c</code></td>
-                      <td>psql -c '\c postgres' -c '\dt'</td>
-                      <td>Execute a SQL query or command</td>
-                    </tr>
-                    <tr>
-                      <td><code>-H</code></td>
-                      <td>psql -c "\l+" -H postgres &gt; database.html</td>
-                      <td>Generate HTML report</td>
-                    </tr>
-                    <tr>
-                      <td><code>-l</code></td>
-                      <td>psql -l</td>
-                      <td>List all databases</td>
-                    </tr>
-                    <tr>
-                      <td><code>-f</code></td>
-                      <td>psql mydb -f file.sql</td>
-                      <td>Execute commands from a file</td>
-                    </tr>
-                    <tr>
-                      <td><code>-V</code></td>
-                      <td>psql -V</td>
-                      <td>Print the psql version</td>
-                    </tr>
-                </tbody>
-              </table>
+                XAB23cGdZSF4j50:EsfxqeYmUgB4MDb
+                
+                
+                show all; // list Configs
+                
+                gpadmin@master:~$ gpssh -f /home/gpadmin/hostfile_exkeys 'uptime'
+                [secondary-1]  23:08:26 up  1:02,  2 users,  load average: 0.00, 0.00, 0.00
+                [secondary-2]  23:08:26 up  1:02,  2 users,  load average: 0.09, 0.05, 0.01
+                
+                SELECT * FROM gp_segment_configuration WHERE status='d';
+                 
+                
+                template1=# select * from gp_segment_configuration;
+                 dbid | content | role | preferred_role | mode | status | port |  hostname   |   address   |              datadir              
+                ------+---------+------+----------------+------+--------+------+-------------+-------------+-----------------------------------
+                    1 |      -1 | p    | p              | n    | u      | 5432 | master      | master      | /home/gpadmin/data/master/gpseg-1
+                    3 |       1 | p    | p              | s    | u      | 6000 | secondary-2 | secondary-2 | /home/gpadmin/data/primary/gpseg1
+                    5 |       1 | m    | m              | s    | u      | 7000 | secondary-1 | secondary-1 | /home/gpadmin/data/mirror/gpseg1
+                    2 |       0 | p    | p              | s    | u      | 6000 | secondary-1 | secondary-1 | /home/gpadmin/data/primary/gpseg0
+                    4 |       0 | m    | m              | s    | u      | 7000 | secondary-2 | secondary-2 | /home/gpadmin/data/mirror/gpseg0
+                    6 |      -1 | m    | m              | s    | u      | 5432 | secondary-1 | secondary-1 | /home/gpadmin/data/master/gpseg-1
+                (6 rows)
+                
+                gpadmin@master:~$ psql -d template1 -c &quot;select * from gp_configuration_history order by time desc limit 100;&quot;
+                             time              | dbid |                                     desc                                      
+                -------------------------------+------+-------------------------------------------------------------------------------
+                 2022-02-13 23:05:10.526804-08 |    4 | FTS: update role, status, and mode for dbid 4 with contentid 0 to m, u, and s
+                 2022-02-13 23:05:10.526765-08 |    2 | FTS: update role, status, and mode for dbid 2 with contentid 0 to p, u, and s
+                 2022-02-13 23:03:08.037272-08 |    4 | FTS: update role, status, and mode for dbid 4 with contentid 0 to m, d, and n
+                 2022-02-13 23:03:08.037221-08 |    2 | FTS: update role, status, and mode for dbid 2 with contentid 0 to p, u, and n
+                 2022-02-13 22:50:46.328733-08 |    4 | FTS: update role, status, and mode for dbid 4 with contentid 0 to m, u, and s
+                 2022-02-13 22:50:46.328678-08 |    2 | FTS: update role, status, and mode for dbid 2 with contentid 0 to p, u, and s
+                 2022-02-13 22:50:46.328236-08 |    5 | FTS: update role, status, and mode for dbid 5 with contentid 1 to m, u, and s
+                 2022-02-13 22:50:46.328033-08 |    3 | FTS: update role, status, and mode for dbid 3 with contentid 1 to p, u, and s
+                (8 rows)
+                
+                
+                
+                gpinitstandby -M fast -r
+                
+                gpinitstandby -M fast -s secondary-1
+                
+                gp_stat_operation
+                
+                
+                gplogfilter ---------------------------------------------------
+                
+                Display the last three error messages in the master log file: 
+                
+                 gplogfilter -t -n 3 
+                
+                
+                Display all log messages in the master log file timestamped in the last 
+                10 minutes: 
+                
+                 gplogfilter -d :10 
+                
+                
+                Display log messages in the master log file containing the string 
+                '|con6 cmd11|': 
+                
+                 gplogfilter -f '|con6 cmd11|' 
+                
+                
+                Using gpssh, run gplogfilter on the segment hosts and search for log 
+                messages in the segment log files containing the string 'con6' and save 
+                output to a file. 
+                
+                 gpssh -f seg_hosts_file -e 'source 
+                 /usr/local/greenplum-db/greenplum_path.sh ; gplogfilter -f con6 
+                 /gpdata/*/pg_log/gpdb*.csv' &gt; seglog.out 
+                
+                ------------------------------------------------------------
+                
+                
+                gpstate ------------------------------------------------------------
+                
+                Show detailed status information of a Greenplum Database system:
+                gpstate -s
+                
+                Do a quick check for down segments in the master host system catalog:
+                gpstate -Q
+                
+                Show information about mirror segment instances:
+                gpstate -m
+                
+                Show information about the standby master configuration:
+                gpstate -f
+                
+                Show details of any current gpexpand:
+                gpstate -x
+                
+                Display the Greenplum software version information:
+                gpstate -i
+                
+                ------------------------------------------------------------------------
+                
+                gpstart ----------------------------------------------------------------
+                
+                Start a Greenplum Database system:
+                gpstart
+                
+                Start a Greenplum Database system in restricted mode 
+                (only allow superuser connections):
+                gpstart -R
+                
+                Start the Greenplum master instance only and connect in utility mode:
+                gpstart -m
+                
+                PGOPTIONS='-c gp_session_role=utility' psql
+                
+                Display the online help for the gpstart utility:
+                gpstart -?
+                
+                ------------------------------------------------------------------------
+                
+                gpstop -----------------------------------------------------------------
+                
+                Stop a Greenplum Database system in smart mode:
+                gpstop
+                
+                Stop a Greenplum Database system in fast mode:
+                gpstop -M fast
+                
+                Stop all segment instances and then restart the system:
+                gpstop -r
+                
+                Stop a master instance that was started in maintenance mode:
+                gpstop -m
+                
+                Stop all segments on a particular host, while keeping
+                other hosts up:
+                gpstop --host sdw1
+                
+                Reload the postgresql.conf and pg_hba.conf files after 
+                making runtime configuration parameter changes but do not 
+                shutdown the Greenplum Database array:
+                gpstop -u
+                
+                ------------------------------------------------------------------------
+                
+                Standby ----------------------------------------------------------------
+                
+                Add a standby master host to your Greenplum Database system and start 
+                the synchronization process: 
+                
+                gpinitstandby -s host09 
+                
+                Start an existing standby master host and synchronize the data with the 
+                current primary master host: 
+                
+                gpinitstandby -n 
+                
+                NOTE: Do not specify the -n and -s options in the same command. 
+                
+                
+                Add a standby master host to your Greenplum Database system specifying a 
+                different port: 
+                
+                gpinitstandby -s myhost -P 2222 
+                
+                If you specify the same host name as the active Greenplum Database 
+                master, the installed Greenplum Database software that is used as a 
+                standby master must be in a separate location from the active Greenplum 
+                Database master.
+                
+                Remove the existing standby master from your Greenplum system 
+                configuration: 
+                
+                ------------------------------------------------------------------------
+                
+                
+                Add mirroring ----------------------------------------------------------
+                
+                
+                gpexpand --------------------------------------------------------------
+                
+                to add segments
+                
+                Add mirroring to an existing Greenplum Database system using 
+                the same set of hosts as your primary data. Calculate the mirror 
+                database ports by adding 100 to the current primary segment port
+                numbers:
+                
+                gpaddmirrors -p 100
+                
+                Add mirroring to an existing Greenplum Database system using a 
+                different set of hosts from your primary data:
+                
+                gpaddmirrors -i mirror_config_file
+                
+                Where the mirror_config_file looks something like this:
+                
+                0|sdw1-1|52001|53001|54001|/gpdata/mir1/gp0
+                1|sdw1-2|52002|53002|54002|/gpdata/mir2/gp1
+                2|sdw2-1|52001|53001|54001|/gpdata/mir1/gp2
+                3|sdw2-2|52002|53002|54002|/gpdata/mir2/gp3
+                
+                
+                Output a sample mirror configuration file to use with gpaddmirrors -i:
+                
+                  $ gpaddmirrors -o /home/gpadmin/sample_mirror_config
+                
+                
+                ------------------------------------------------------------------------
+                
+                
+                Recover / Rebalance ----------------------------------------------------
+                
+                Recover any failed segment instances in place:
+                
+                 $ gprecoverseg
+                
+                
+                Rebalance your Greenplum Database system after a recovery by
+                resetting all segments to their preferred role. First check
+                that all segments are up and synchronized.
+                
+                  $ gpstate -m
+                
+                  $ gprecoverseg -r
+                
+                
+                Recover any failed segment instances to a newly configured 
+                spare segment host:
+                
+                  $ gprecoverseg -i recover_config_file
+                
+                
+                Output the default recovery configuration file:
+                
+                  $ gprecoverseg -o /home/gpadmin/recover_config_file
+                
+                ------------------------------------------------------------------------
+                
+                pg_dump ----------------------------------------------------------------
+                
+                
+                Usage:
+                  pg_dump [OPTION]... [DBNAME]
+                
+                General options:
+                  -f, --file=FILENAME          output file or directory name
+                  -F, --format=c|d|t|p         output file format (custom, directory, tar,
+                                               plain text (default))
+                  -j, --jobs=NUM               use this many parallel jobs to dump
+                  -v, --verbose                verbose mode
+                  -V, --version                output version information, then exit
+                  -Z, --compress=0-9           compression level for compressed formats
+                  --lock-wait-timeout=TIMEOUT  fail after waiting TIMEOUT for a table lock
+                  -?, --help                   show this help, then exit
+                
+                Options controlling the output content:
+                  -a, --data-only              dump only the data, not the schema
+                  -b, --blobs                  include large objects in dump
+                  -c, --clean                  clean (drop) database objects before recreating
+                  -C, --create                 include commands to create database in dump
+                  -E, --encoding=ENCODING      dump the data in encoding ENCODING
+                  -n, --schema=SCHEMA          dump the named schema(s) only
+                  -N, --exclude-schema=SCHEMA  do NOT dump the named schema(s)
+                  -o, --oids                   include OIDs in dump
+                  -O, --no-owner               skip restoration of object ownership in
+                                               plain-text format
+                  -s, --schema-only            dump only the schema, no data
+                  -S, --superuser=NAME         superuser user name to use in plain-text format
+                  -t, --table=TABLE            dump the named table(s) only
+                  -T, --exclude-table=TABLE    do NOT dump the named table(s)
+                  -x, --no-privileges          do not dump privileges (grant/revoke)
+                  --binary-upgrade             for use by upgrade utilities only
+                  --column-inserts             dump data as INSERT commands with column names
+                  --disable-dollar-quoting     disable dollar quoting, use SQL standard quoting
+                  --disable-triggers           disable triggers during data-only restore
+                  --exclude-table-data=TABLE   do NOT dump data for the named table(s)
+                  --if-exists                  use IF EXISTS when dropping objects
+                  --inserts                    dump data as INSERT commands, rather than COPY
+                  --no-security-labels         do not dump security label assignments
+                  --no-synchronized-snapshots  do not use synchronized snapshots in parallel jobs
+                  --no-tablespaces             do not dump tablespace assignments
+                  --no-unlogged-table-data     do not dump unlogged table data
+                  --quote-all-identifiers      quote all identifiers, even if not key words
+                  --section=SECTION            dump named section (pre-data, data, or post-data)
+                  --serializable-deferrable    wait until the dump can run without anomalies
+                  --use-set-session-authorization
+                                               use SET SESSION AUTHORIZATION commands instead of
+                                               ALTER OWNER commands to set ownership
+                  --gp-syntax                  dump with Greenplum Database syntax (default if gpdb)
+                  --no-gp-syntax               dump without Greenplum Database syntax (default if postgresql)
+                  --function-oids              dump only function(s) of given list of oids
+                  --relation-oids              dump only relation(s) of given list of oids
+                
+                Connection options:
+                  -d, --dbname=DBNAME      database to dump
+                  -h, --host=HOSTNAME      database server host or socket directory
+                  -p, --port=PORT          database server port number
+                  -U, --username=NAME      connect as specified database user
+                  -w, --no-password        never prompt for password
+                  -W, --password           force password prompt (should happen automatically)
+                  --role=ROLENAME          do SET ROLE before dump
+                
+                If no database name is supplied, then the PGDATABASE environment
+                variable value is used.
+                
+                Report bugs to &lt;bugs@greenplum.org&gt;.
+                
+                ------------------------------------------------------------------------
+                
+                pg_restore -------------------------------------------------------------
+                
+                Usage:
+                  pg_restore [OPTION]... [FILE]
+                
+                General options:
+                  -d, --dbname=NAME        connect to database name
+                  -f, --file=FILENAME      output file name
+                  -F, --format=c|d|t       backup file format (should be automatic)
+                  -l, --list               print summarized TOC of the archive
+                  -v, --verbose            verbose mode
+                  -V, --version            output version information, then exit
+                  -?, --help               show this help, then exit
+                
+                Options controlling the restore:
+                  -a, --data-only              restore only the data, no schema
+                  -c, --clean                  clean (drop) database objects before recreating
+                  -C, --create                 create the target database
+                  -e, --exit-on-error          exit on error, default is to continue
+                  -I, --index=NAME             restore named index
+                  -j, --jobs=NUM               use this many parallel jobs to restore
+                  -L, --use-list=FILENAME      use table of contents from this file for
+                                               selecting/ordering output
+                  -n, --schema=NAME            restore only objects in this schema
+                  -O, --no-owner               skip restoration of object ownership
+                  -P, --function='NAME(args)'
+                                               restore named function. name must be exactly
+                                               as appears in the TOC, and inside single quotes
+                  -s, --schema-only            restore only the schema, no data
+                  -S, --superuser=NAME         superuser user name to use for disabling triggers
+                  -t, --table=NAME             restore named table
+                  -T, --trigger=NAME           restore named trigger
+                  -x, --no-privileges          skip restoration of access privileges (grant/revoke)
+                  -1, --single-transaction     restore as a single transaction
+                  --disable-triggers           disable triggers during data-only restore
+                  --if-exists                  use IF EXISTS when dropping objects
+                  --no-data-for-failed-tables  do not restore data of tables that could not be
+                                               created
+                  --no-security-labels         do not restore security labels
+                  --no-tablespaces             do not restore tablespace assignments
+                  --section=SECTION            restore named section (pre-data, data, or post-data)
+                  --use-set-session-authorization
+                                               use SET SESSION AUTHORIZATION commands instead of
+                                               ALTER OWNER commands to set ownership
+                
+                Connection options:
+                  -h, --host=HOSTNAME      database server host or socket directory
+                  -p, --port=PORT          database server port number
+                  -U, --username=NAME      connect as specified database user
+                  -w, --no-password        never prompt for password
+                  -W, --password           force password prompt (should happen automatically)
+                  --role=ROLENAME          do SET ROLE before restore
+                
+                The options -I, -n, -P, -t, -T, and --section can be combined and specified
+                multiple times to select multiple objects.
+                
+                If no input file name is supplied, then standard input is used.
+                
+                Report bugs to &lt;bugs@greenplum.org&gt;.
+                
+                
+                This is what I would do to backup my old database and restore
+                
+                To back up your database
+                
+                pg_dump --format=c olddb_name &gt; db_dump_file.dump
+                To restore that backup
+                
+                pg_restore -v -d newdb_name db_dump_file.dump
+                
+                
+                ------------------------------------------------------------------------
+                
+                Blocking / Long Running ---------------------------------------------------------------
+                
+                
+                BLOCKING 
+                
+                SELECT blocked_locks.pid     AS blocked_pid,
+                         blocked_activity.usename  AS blocked_user,
+                         blocking_locks.pid     AS blocking_pid,
+                         blocking_activity.usename AS blocking_user,
+                         blocked_activity.query    AS blocked_statement,
+                         blocking_activity.query   AS current_statement_in_blocking_process,
+                         blocked_activity.application_name AS blocked_application,
+                         blocking_activity.application_name AS blocking_application
+                   FROM  pg_catalog.pg_locks         blocked_locks
+                    JOIN pg_catalog.pg_stat_activity blocked_activity  ON blocked_activity.pid = blocked_locks.pid
+                    JOIN pg_catalog.pg_locks         blocking_locks 
+                        ON blocking_locks.locktype = blocked_locks.locktype
+                        AND blocking_locks.DATABASE IS NOT DISTINCT FROM blocked_locks.DATABASE
+                        AND blocking_locks.relation IS NOT DISTINCT FROM blocked_locks.relation
+                        AND blocking_locks.page IS NOT DISTINCT FROM blocked_locks.page
+                        AND blocking_locks.tuple IS NOT DISTINCT FROM blocked_locks.tuple
+                        AND blocking_locks.virtualxid IS NOT DISTINCT FROM blocked_locks.virtualxid
+                        AND blocking_locks.transactionid IS NOT DISTINCT FROM blocked_locks.transactionid
+                        AND blocking_locks.classid IS NOT DISTINCT FROM blocked_locks.classid
+                        AND blocking_locks.objid IS NOT DISTINCT FROM blocked_locks.objid
+                        AND blocking_locks.objsubid IS NOT DISTINCT FROM blocked_locks.objsubid
+                        AND blocking_locks.pid != blocked_locks.pid
+                 
+                    JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
+                   WHERE NOT blocked_locks.GRANTED;
+                   
+                
+                Long Running
+                
+                select pid,datname,usename,now()-pg_stat_activity.query_start AS duration,waiting from pg_stat_activity where (now()-pg_stat_activity.query_start)&gt;interval '5 minutes' order by 4 desc;
+                
+                select pg_terminate_backend('&lt;pid&gt;');
+                
+                
+                ------------------------------------------------------------------------
+                
+                Number of connections --------------------------------------------------
+                
+                select  * from
+                (select count(*) used from pg_stat_activity) q1,
+                (select setting::int res_for_super from pg_settings where name=$$superuser_reserved_connections$$) q2,
+                (select setting::int max_conn from pg_settings where name=$$max_connections$$) q3;
+                
+                ------------------------------------------------------------------------
+                
+                Viewing Data Distribution ----------------------------------------------
+                
+                select * from pg_settings where name like 'gp_workfile_limit%';
+                
+                SELECT gp_segment_id, count(*) FROM table_name GROUP BY gp_segment_id;
+                
+                Checking for Query Processing Skew -------------------------------------
+                
+                SELECT gp_segment_id, count(*) FROM table_name WHERE column='value' GROUP BY gp_segment_id;
+                
+                
+                ------------------------------------------------------------------------
+                
+                pg_stat_operations -----------------------------------------------------
+                
+                SELECT schemaname as schema, objname as table,usename as role, actionname as action,subtype as type, statime as time FROM pg_stat_operations WHERE objname='cust';
+                
+                gpbackup ---------------------------------------------------------------
+                
+                gpbackup --dbname database_name
+                   [--backup-dir directory]
+                   [--compression-level level]
+                   [--data-only]
+                   [--debug]
+                   [--exclude-schema schema_name]
+                   [--exclude-table schema.table]
+                   [--exclude-table-file file_name]
+                   [--include-schema schema_name]
+                   [--include-table schema.table]
+                   [--include-table-file file_name]
+                   [--incremental [--from-timestamp backup-timestamp]]
+                   [--jobs int]
+                   [--leaf-partition-data]
+                   [--metadata-only]
+                   [--no-compression]
+                   [--plugin-config config_file_location]
+                   [--quiet]
+                   [--single-data-file]
+                   [--verbose]
+                   [--version]
+                   [--with-stats]
+                
+                gpbackup --help 
+                
+                ------------------------------------------------------------------------
+                
+                gprestore --------------------------------------------------------------
+                
+                gprestore --timestamp YYYYMMDDHHMMSS
+                   [--backup-dir directory]
+                   [--create-db]
+                   [--debug]
+                   [--exclude-schema schema_name]
+                   [--exclude-table schema.table]
+                   [--exclude-table-file file_name]
+                   [--include-schema schema_name]
+                   [--include-table schema.table]
+                   [--include-table-file file_name]
+                   [--data-only | --metadata-only]
+                   [--jobs int]
+                   [--on-error-continue]
+                   [--plugin-config config_file_location]
+                   [--quiet]
+                   [--redirect-db database_name]
+                   [--verbose]
+                   [--version]
+                   [--with-globals]
+                   [--with-stats]
+                
+                gprestore --help
+                
+                
+                ------------------------------------------------------------------------
+                
+                
+                Interview Questions
+                ------------------------------------------------------------------------
+                
+                1. How to check the distribution policy of test table sales?
+                
+                psql&gt;d sales
+                Table” public. sales”
+                Column | Type | Modifiers
+                ——–+———+———–
+                id | integer |
+                date | date |
+                Distributed by: (id)
+                
+                ------------------------------------------------------------------------
+                
+                2. How many user schemas are there in the database?
+                
+                Use”dn” at psql prompt.
+                
+                ------------------------------------------------------------------------
+                
+                3. When is my tables last analyzed in the Greenplum database?
+                
+                In 4.x check pg_stat_operations for all action-name performed on any object.
+                For example, a sales table:
+                
+                gpdb=# select objname,action-name,statime from pg_stat_operations where objname like ‘sales’;
+                objname | action-name | statime
+                ——–+———–+——————————-
+                sales | CREATE | 2010-10-01 12:18:41.996244-07
+                sales | ANALYZE | 2010-10-06 14:38:21.933281-07
+                sales | VACUUM | 2010-10-06 14:38:33.881245-07
+                
+                ------------------------------------------------------------------------
+                
+                4. How to check the size of a table?
+                Table Level:
+                
+                psql&gt; select pg_size_pretty(pg_relation_size(‘schema.tablename’));
+                Replace schema.tablename with your search table.
+                
+                Table and Index:
+                
+                psql&gt; select pg_size_pretty(pg_total_relation_size(‘schema.tablename’));
+                Replace schema.tablename with your search table.
+                
+                ------------------------------------------------------------------------
+                
+                5. How to check the Schema size?
+                Schema Level:
+                
+                psql&gt; select schemaname ,round(sum(pg_total_relation_size(schemaname||’.’||tablename))/1024/1024) “Size_MB”
+                from pg_tables where schemaname=’SCHEMANAME’ group by 1;
+                [ Related Article: Analytics Tools in Big Data ]
+                
+                ------------------------------------------------------------------------
+                
+                6. How to check the database size?
+                To see the size of the specific database:
+                
+                psql&gt; select pg_size_pretty(pg_database_size(‘DATBASE_NAME’));
+                Example:
+                
+                gpdb=# select pg_size_pretty(pg_database_size(‘gpdb’));
+                pg_size_pretty
+                —————-
+                24 MB
+                (1 row)
+                To see all database sizes:
+                
+                psql&gt; select datname,pg_size_pretty(pg_database_size(datname)) from pg_database;
+                
+                ------------------------------------------------------------------------
+                
+                7. How to check partitioned table size including indexes and partitions?
+                Table size with partitions:
+                
+                The following SQL gives you employee_dailly table size, which includes partitions.
+                
+                select schemaname,tablename,round(sum(pg_total_relation_size(schemaname || ‘.’ || partitiontablename))/1024/1024) “MB”
+                from pg_partitions where tablename=’employee_daily’ group by 1,2;
+                
+                schemaname | tablename | MB
+                ———–+—————-+—–
+                public | employee_daily | 254
+                
+                ------------------------------------------------------------------------
+                
+                8. How do I get help on the syntax to alter the table?
+                In psql session type halter table which will display the syntax:
+                
+                gpdb=# h alter table
+                
+                ------------------------------------------------------------------------
+                
+                9. How to connect in utility mode?
+                From master host
+                
+                PGOPTIONS=’-c gp_session_role=utility’ psql -p -h
+                Where:
+                
+                port is segment/ master database port.
+                hostname is segment/master hostname.
+                
+                ------------------------------------------------------------------------
+                
+                10. Where/How to find db logs?
+                Master: Master gpdb log file is located in the $MASTER_DATA_DIRECTORY/pg_log/ directory and the file name depends on the database “log_filename” parameter.
+                
+                1. $MASTER_DATA_DIRECTORY/pg_log/gpdb-yyyy-mm-dd_000000.csv –&gt;Log file format with default installation.
+                2. ~gpadmin/gpAdminLogs/ –&gt;gpstart,gpstop,gpstate and other utility logs.
+                Segments:
+                
+                1. primary segments run below SQL to see log file location:
+                
+                select dbid,hostname,datadir||’/pg_log’ from gp_configuration where content not in (-1) and isprimary is true;
+                2. Miror Segments run below SQL to see log file location:
+                
+                select dbid,hostname,datadir||’/pg_log’ from gp_configuration where content not in (-1) and isprimary is false;
+                11. How to see the list of available functions in Greenplum DB?
+                df schemaname.functionname (schemaname and function name support wildcard characters)
+                
+                test=# df pub*.*test*
+                List of functions
+                Schema | Name | Result data type | Argument data types
+                ——–+————-+——————+———————
+                public | bugtest | integer |
+                public | test | boolean | integer
+                public | test | void |
+                (3 rows)
+                
+                ------------------------------------------------------------------------
+                
+                12. How to check whether Greenplum server is up and running?
+                The gpstate is the utility to check gpdb status.
+                Use gpstate -Q to show a quick status. Refer to gpstate –help for more options.
+                
+                Sample output:
+                
+                [gpadmin@stinger2]/export/home/gpadmin&gt;gpstate -Q
+                gpadmin-[INFO]:-Obtaining GPDB array type, [Brief], please wait…
+                gpadmin-[INFO]:-Obtaining GPDB array type, [Brief], please wait…
+                gpadmin-[INFO]:-Quick Greenplum database status from Master instance only
+                gpadmin-[INFO]:———————————————————-
+                gpadmin-[INFO]:-GPDB fault action value = readonly
+                gpadmin-[INFO]:-Valid count in status view = 4
+                gpadmin-[INFO]:-Invalid count in status view = 0
+                gpadmin-[INFO]:———————————————————-
+                
+                ------------------------------------------------------------------------
+                
+                13. How to create a Database?
+                There are two ways to create gpdb database using psql session or the Greenplum createdb utility.
+                
+                Using psql session:
+                gpdb=# h create the database
+                Command: CREATE DATABASE
+                Description: create a new database
+                
+                Syntax:
+                
+                CREATE DATABASE name
+                [ [ WITH ] [ OWNER [=] dbowner ]
+                [ TEMPLATE [=] template ]
+                [ ENCODING [=] encoding ]
+                [ TABLESPACE [=] tablespace ]
+                [ CONNECTION LIMIT [=] connlimit ] ]
+                Using createdb utility:
+                
+                Usage: $GPHOME/bin/createdb –help
+                createdb [OPTION]… [DBNAME] [DESCRIPTION]
+                Options:
+                
+                -D, –tablespace=TABLESPACE default tablespace for the database
+                -e, –echo shows the commands being sent to the server
+                -E, –encoding=ENCODING encoding for the database
+                -O, –owner=OWNER database user to own the new database
+                -T, –template=TEMPLATE template database to copy
+                –help show this help, then exit
+                –version output version information, then exit
+                
+                ------------------------------------------------------------------------
+                
+                14. How do I get a list of databases in a Greenplum cluster?
+                gpdb=# l (lowercase letter “l”)
+                List of databases
+                
+                Name | Owner | Encoding
+                ——{}———-
+                gpdb | gpadmin | UTF8
+                gpperfmon | gpadmin | UTF8
+                postgres | gpadmin | UTF8
+                template0 | gpadmin | UTF8
+                template1 | gpadmin | UTF8
+                Check below SQL for more details on dbs.
+                
+                gpdb=# select * from pg_database;
+                
+                ------------------------------------------------------------------------
+                
+                15. How to delete/drop an existing database in Greenplum?
+                gpdb=# h DROP Database
+                Command: DROP DATABASE
+                Description: remove a database
+                Syntax:DROP DATABASE [ IF EXISTS ] name
+                
+                Also check dropdb utility:
+                
+                $GPHOME/bin/dropdb –help
+                dropdb removes a PostgreSQL database.
+                
+                Usage:
+                
+                dropdb [OPTION]… DBNAME
+                16. Where can I get help on Postgres psql commands?
+                In psql session
+                “ ?” – for all psql session help
+                “h ” For any SQL syntax help.
+                
+                ------------------------------------------------------------------------
+                
+                17. gpstart failed what should I do?
+                Check gpstart logfile in ~gpadmin/gpAdminLogs/gpstart_yyyymmdd.log
+                Take a look at the pg start log file for more details in
+                
+                $MASTER_DATA_DIRECTORY/pg_log/startup.log
+                
+                ------------------------------------------------------------------------
+                
+                18. Why do we need gpstop -m and gpstart -m?
+                
+                The gpstart -m command allows you to start the master only and none of the data segments and is used primarily by support to get system level information/configuration. An end user would not regularly or even normally use it.
+                
+                ------------------------------------------------------------------------
+                
+                19. What is the procedure to get rid of mirror segments?
+                There are no utilities available to remove mirrors from Greenplum. You need to make sure all primary segments are good then you can remove the mirror configuration from gp_configuration in 3.x.
+                
+                ------------------------------------------------------------------------
+                
+                20. How to run gpcheckcat?
+                The gpcheckcat tool is used to check catalog inconsistencies between master and segments. It can be found in the $GPHOME/bin/lib directory:
+                Usage: gpcheckcat
+                
+                [dbname]
+                
+                -?
+                
+                -B parallel: number of worker threads
+                
+                -g dir : generate SQL to rectify catalog corruption, put it in dir
+                
+                -h host : DB hostname
+                
+                -p port : DB port number
+                
+                -P passwd : DB password
+                
+                -o : check OID consistency
+                
+                -U uname : DB User Name
+                
+                -v : verbose
+                
+                Example:
+                
+                gpcheckcat gpdb &gt;gpcheckcat_gpdb_logfile.log
+                21. What is gpdetective and how do I run it in Greenplum?
+                The gpdetective utility collects information from a running Greenplum Database system and creates a bzip2-compressed tar output file. This output file helps with the diagnosis of Greenplum Database errors or system failures. for more details check help.
+                gpdetective –help
+                
+                ------------------------------------------------------------------------
+                
+                22. How to delete a standby?
+                To remove the currently configured standby master host from your Greenplum Database system, run the following command in the master only:
+                # gpinitstandby -r
+                
+                ------------------------------------------------------------------------
+                
+                23. How to re-sync a standby?
+                Use this option if you already have a standby master configured, and just want to resynchronize the data between the primary and backup master host. The Greenplum system catalog tables will not be updated.
+                # gpinitstandby -n (resynchronize)
+                
+                ------------------------------------------------------------------------
+                
+                24. How to recover an invalid segment?
+                Use the gprecoverseg tool, which will recognize which segments need recovery and will initialize recovery.
+                
+                3.3.x:
+                
+                Without “-F” option – The first files will be compared, the difference found and only different files will be synched (the first stage could last a long time if there are too many files in the data directory)
+                With “-F” option – The entire data directory will be resynched.
+                4.0.x:
+                
+                Without “-F” option – The change tracking log will be sent and applied to the mirror.
+                With “-F” option – The entire data directory will be resynched.
+                25. How to add mirrors to the array?
+                The gpaddmirrors utility configures mirror segment instances for an existing Greenplum Database system that was initially configured with primary segment instances only.
+                For more details check help.
+                # gpaddmirrors –help
+                
+                ------------------------------------------------------------------------
+                
+                26. How to see primary to mirror mapping?
+                From the database catalog following query list configuration on content ID, you can figure out primary and mirror for each content.
+                gpdb=# select * from gp_configuration order by content.
+                Note: starting from GPDB 4.x, gp_segment_configuration table is used instead.
+                gpdb=# select * from gp_segment_configuration order by dbid;
+                
+                ------------------------------------------------------------------------
+                
+                27. How to start/stop DB in admin mode?
+                Admin mode:
+                
+                The gpstart with option (-R) stands for Admin mode or restricted mode where only superusers can connect to the database when the database opened using this option.
+                
+                utility mode:
+                
+                Utility mode allows you to connect to only individual segments when started using gpstart -m, for example&lt; to connect to only master instance only:
+                PGOPTIONS=’-c gp_session_role=utility’ psql
+                
+                ------------------------------------------------------------------------
+                
+                28. How to run gpcheckperf IO/netperf?
+                Create a directory where you have free space and common in all hosts.
+                
+                For network I/O test for each nic card:
+                
+                gpcheckperf -f seg_host_file_nic-1 -r N -d /data/gpcheckperf &gt; seg_host_file_nic_1.out
+                gpcheckperf -f seg_host_file_nic-2 -r N -d /data/gpcheckperf &gt; seg_host_file_nic_2.out
+                For disk I/O:
+                
+                gpcheckperf -f seg_host_file_nic-1 -r ds -D -d /data/gpdb_p1 -d /data/gpdb_p2 -d /data/gpdb_m1 -d /data/gpdb_m2
+                
+                ------------------------------------------------------------------------
+                
+                29. How to update postgresql.conf and reload it?
+                In GP 4.0 version check gpconfig utility to change postgres.conf parameters.
+                In 3.X version manually change parameters in postgres.conf for more details check Greenplum Administrator’s Guide.
+                
+                ------------------------------------------------------------------------
+                
+                30. How to manage pg_hba.conf?
+                The pg_hba.conf file of the master instance controls client access and authentication to your Greenplum system. Check Greenplum Administrator’s Guide for instructions to add/change contents of this file.
+                
+                ------------------------------------------------------------------------
+                
+                31. How to add a new user to the database?
+                Use create user utility to create users. See create user –help for more details.
+                You can also use SQL commands in psql prompt to create users.
+                For example: CREATE USER or ROLE ….
+                
+                ------------------------------------------------------------------------
+                
+                32. How to create a password-free trusted env b/w the all the segment hosts?
+                Use gpssh-exkeys:
+                
+                gpssh-exkeys -h hostname1 -h hostname2 .. -h hostnameN
+                
+                ------------------------------------------------------------------------
+                
+                33. How to check DB version and version at init DB?
+                To check the version:
+                
+                psql&gt; select version();
+                or
+                postgres –gp-version
+                To check gp version at install:
+                
+                psql&gt; select * from gp_version_at_initdb;
+                
+                ------------------------------------------------------------------------
+                
+                34. How to see the value of GUC?
+                By connecting GPDB database using psql query catalog or do show parameter.
+                
+                Example:
+                
+                gpdb# select name,setting from pg_settings where name=’GUC’;
+                or
+                gpdb# show ;
+                
+                ------------------------------------------------------------------------
+                
+                35. What is the location of pg_hba/logfile/master_data_directory? 
+                
+                cd $MASTER_DATA_DIRECTORY – Master direcoty.
+                pg_hba.conf and postgres.conf location and other GPDB internal directories.
+                cd $MASTER_DATA_DIRECTORY/pg_logs — Master database logfiles location.
+                
+                ------------------------------------------------------------------------
+                
+                36. How to find errors / fatal from log files?
+                
+                grep for ERRORS, FATAL, SIGSEGV in pg_logs directory.
+                
+                ------------------------------------------------------------------------
+                
+                37. What is a vacuum and when should I run this?
+                
+                VACUUM reclaims storage occupied by deleted tuples. In normal GPDB operation, tuples that are deleted or obsoleted by an update are not physically removed from their table. They remain present on the disk until a VACUUM is done. Therefore, it is necessary to do VACUUM periodically, especially on a frequently updated table.
+                
+                ------------------------------------------------------------------------
+                
+                38. What is the difference between vacuum and vacuum full?
+                
+                Unless you need to return space to the OS so that other tables or other parts of the system can use that space, you should use VACUUM instead of VACUUM FULL.
+                VACUUM FULL is only needed when you have a table that is mostly dead rows, that is, the vast majority of its contents have been deleted.
+                
+                Even then, there is no point using VACUUM FULL unless you urgently need that disk space back for other things or you expect that the table will never again grow to its past size. Do not use it for table optimization or periodic maintenance as it is counterproductive.
+                
+                ------------------------------------------------------------------------
+                
+                39. What is Analyze and how frequently should I run this?
+                
+                ANALYZE collects statistics about the contents of tables in the database, and stores the results in the system table pg_statistic. Subsequently, the query planner uses these statistics to help determine the most efficient execution plans for queries.
+                It is a good idea to run ANALYZE periodically, or just after making major changes in the contents of a table. Accurate statistics will help the query planner to choose the most appropriate query plan, and thereby improve the speed of query processing. A common strategy is to run VACUUM and ANALYZE once a day during a low-usage time of day.
+                
+                ------------------------------------------------------------------------
+                
+                40. What are resource queues?
+                
+                Resource queues are used to manage Greenplum database workload management. All user/queries can be prioritized using Resource queues. Refer to Admin guide for more details.
+                
+                ------------------------------------------------------------------------
+                
+                41. What is gp_toolkit?
+                
+                The gp_toolkit is a database schema, which has many tables, views and functions to better manage Greenplum Database when DB is up. In 3.x earlier versions, it was referred to as gp_jetpack.
+                
+                ------------------------------------------------------------------------
+                
+                42. How to generate DDL for a table?
+                
+                Use pg_dump utility to generate DDL.
+                
+                Example:
+                
+                pg_dump -t njonna.accounts -s -f ddl_accounts.sql
+                
+                Where:
+                
+                -f ddl_accounts.sql is output file.
+                -t njonna.accounts is table name with schema njonna.
+                -s dump only schema no data
+                
+                ------------------------------------------------------------------------
+                
+                43. What are the tools available in Greenplum to take backup and restores?
+                
+                For non-parallel backups:
+                Use postgres utilities (pg_dump, pg_dumpall for backup, and pg_restore for restore).
+                Another useful command for getting data out of the database is the COPY to.
+                
+                For parallel backups:
+                gp_dump and gpcrondump for backups and gp_restore for restore process.
+                
+                ------------------------------------------------------------------------
+                
+                44. How do I clone my production databaes to PreProd / QA environment?
+                
+                If Prod and QA on same GPDB cluster, use CREATE database template.
+                If Prod and QA are on different clusters, use backup and restore utilities.
+                
+                ------------------------------------------------------------------------
+                
+                45. What is the difference between pg_dump and gp_dump?
+                
+                pg_dump – Non-parallel backup utility, you need a big file system where the backup will be created in the master node only.
+                gp_dump – Parallel backup utility. The backup will be created in the master and segments file system.
+                
+                ------------------------------------------------------------------------
+                
+                46. What is gpcrondump?
+                A wrapper utility for gp_dump, which can be called directly or from a crontab entry.
+                
+                Example: gpcrondump -x
+                
+                ------------------------------------------------------------------------
+                
+                47. What are the backup options available at OS level?
+                
+                Solaris: zfs snapshots at the file system level.
+                All OS: gpcrondump / gp_dump.
+                
+                ------------------------------------------------------------------------
+                
+                48. My SQL query is running very slow, it was running fine yesterday what should I do? 
+                
+                Check that your connection to the Greenplum cluster is still good if you are using a remote client. You can do this by running the SQL locally to the GP cluster.
+                Check that the system tables and user tables involved are not bloated or skewed. Read jetpack or Greenplum toolkit documentation about how to do this.
+                Check with your DBA that the Greenplum interconnect is still performing correctly.
+                This can be done by checking for dropped packets on the interconnect “netstat -i” and by running gpcheckperf. It is also possible that a segment is experiencing hardware problems, which can be found in the output of dmesg or in
+                
+                cd $MASTER_DATA_DIRECTORY – Master direcoty.
+                pg_hba.conf and postgres.conf location and other GPDB internal directories.
+                cd $MASTER_DATA_DIRECTORY/pg_logs — Master database logfiles location.
+                
+                ------------------------------------------------------------------------
+                
+                49. How to turn on timing, and checking how much time a query takes to execute? 
+                
+                You can turn in timing per session before you run your SQL with the timing command.
+                You can run explain analysis against your SQL statement to get the timing.
+                
+                ------------------------------------------------------------------------
+                
+                50. How to trace child processes on the segment server?
+                When the session starts in master and segments, all the child processes in segments will be identified with a master session_id connection string (con+sess_id).
+                
+                For example:
+                
+                gpdb=# select * from pg_Stat_activity;
+                datid | datname | procpid | sess_id |.. ..
+                ——-+———+———+———+
+                16986 | gpdb | 18162 | 76134 | .. ..
+                In all segments child processes for session 76134:
+                
+                [gpadmin@stinger2]/export/home/gpadmin/gp40&gt;gpssh -f host_file /usr/ucb/ps -auxww |grep con76134
+                [stinger2] gpadmin 18162 1.7 6.0386000124480 ? S 09:57:55 0:04 postgres: port 4000, gpadmin gpdb [local] con76134 [local] cmd3 CREATE DATABASE…………………………………
+                [stinger2] gpadmin 18625 0.3 2.726056455932 ? S 10:01:56 0:01 postgres: port 40000, gpadmin gpdb 10.5.202.12(18864) con76134 seg0 cmd4 MPPEXEC UTILITY………………………….
+                [stinger2] gpadmin 18669 0.0 0.1 3624 752 pts/2 S 10:02:36 0:00 grep con76134
+                [stinger3] gpadmin 22289 0.8 9.4531860196404 ? S 09:36:20 0:05 postgres: port 40000, gpadmin gpdb 10.5.202.12(18866) con76134 seg1 cmd4 MPPEXEC UTILITY………………………….
+                51. How to check if my session queries are running or waiting on locks?
+                Check the “waiting” column in pg_stat_activity and the “granted” column in pg_locks for any object-level locks.
+                
+                ------------------------------------------------------------------------
+                
+                52. What kind of locks should we focus on the MPP system when the system is slow /hung?
+                Locks that are held for a very long time and multiple other queries are waiting for that lock also.
+                
+                ------------------------------------------------------------------------
+                
+                53. How do I monitor user activity history in the Greenplum database?
+                Use Greenplum performance monitor (gpperfmon), which has GUI to monitor and query performance history.
+                
+                ------------------------------------------------------------------------
+                
+                54. What is the Greenplum performance monitor and how to install it?
+                It's a monitoring tool that collects statistics on system and query performance and builds historical data.
+                
+                ------------------------------------------------------------------------
+                
+                55. when the client connects does he connect to the Master or segment node?
+                Master
+                
+                ------------------------------------------------------------------------
+                
+                56. Can you explain the process of data migration from Oracle to Greenplum?
+                There are many ways. The simplest steps are Unload data into csv files, create tables in the Greenplum database corresponding to Oracle, Create an external table,  start gpfdist pointing to external table location, Load data into Greenplum. You can also use gpload utility. Gpload creates an external table at runtime.
+                
+                ------------------------------------------------------------------------
+                
+                57. Which command would you use to back up a database?
+                gp_dump,  gpcrondump, pg_dump, pg_dumpall, copy
+                
+                ------------------------------------------------------------------------
+                
+                58. When you restore from a backup taken from gp_dump, can you import a table?
+                NO. Yes if during the gp_dump you backed up one table only.
+                
+                ------------------------------------------------------------------------
+                
+                59. Can you open and view a dump file?
+                Yes
+                
+                ------------------------------------------------------------------------
+                
+                60. Which option would you use to export the DDL of the database or table?
+                -s (-s | –schema-only Dump only the object definitions (schema), not data.)
+                
+                ------------------------------------------------------------------------
+                
+                61. When a user submits a query, where does it run in Master or segment nodes?
+                Segment nodes
+                
+                ------------------------------------------------------------------------
+                
+                62. If you configure you are with Master and Segment nodes, where would the data reside?
+                Segment nodes
+                
+                ------------------------------------------------------------------------
+                
+                63. What would you do when a user or users are complaining that a particular query is running slow?
+                look at the query plan
+                Look at the stats of the table/tables in the query
+                look at the table distribution keys and joins in the query
+                look at the network performance
+                look at the resource queues
+                look at the interconnect performance
+                look at the join order of tables in the query
+                look at the query itself i.e. if it can be written in a more efficient way
+                
+                ------------------------------------------------------------------------
+                
+                64. What would you do to gather statistics in the database? as well as reclaim the space?
+                VACUUM FULL, CTAS.
+                
+                A VACUUM FULL will reclaim all expired row space, but is a very expensive operation and may take an unacceptably long time to finish on large, distributed Greenplum Database tables. If you do get into a situation where the free space map has overflowed, it may be more timely to recreate the table with a CREATE TABLE AS statement and drop the old table.
+                
+                A VACUUM FULL is not recommended in Greenplum Database
+                
+                ------------------------------------------------------------------------.
+                
+                65. How would you implement compression and explain possibly the compression types?
+                There are two types of in-database compression available in the Greenplum Database for append-only tables:
+                
+                Table-level compression is applied to an entire table.
+                Column-level compression is applied to a specific column. You can apply different column-level compression algorithms to different columns.
+                66. What are the major differences between Oracle and Greenplum?
+                Oracle is a relational database. Greenplum is MPP nature. Greenplum is shared-nothing architecture. There are many other differences in terms of functionality and behavior.
+                
+                ------------------------------------------------------------------------
+                
+                67. What is good and bad about the Greenplum, compared to Oracle and Greenplum?
+                Greenplum is built on top of Postgresql. It is a shared-nothing, MPP architecture best for data warehousing env. Good for big data analytics purposes.
+                Oracle is an all-purpose database.
+                
+                ------------------------------------------------------------------------
+                
+                68. How would troubleshoot an issue/error/problem when there is no one available to help you or you are all by yourself?
+                Look at the log files. querying the GP perfmon and tools schema for various data and statistics.
+                
+                ------------------------------------------------------------------------
+                
+                69. Do you know PL/pgsql?
+                Yes
+                
+                ------------------------------------------------------------------------
+                
+                70. Can you write stored procedures in Greenplum/Postgres?
+                No
+                
+                ------------------------------------------------------------------------
+                
+                71. Can you create stored functions and use them in Greenplum?
+                Yes
+                
+                ------------------------------------------------------------------------
+                
+                72. Can you do partitioning in Greenplum tables?
+                Yes
+                
+                ------------------------------------------------------------------------
+                
+                73. Which parameters can you use to manage workload in a Greenplum database?
+                
+                workload management is done by creating resource queues and assigning various limits.
+                
+                ------------------------------------------------------------------------
+                
+                74. Tell me some of the aspects/implementations/configurations you have done in Greenplum?
+                A configuration like port change, Active directory authentication, pg_hba.conf changes, postgresql.conf changes, gpfdist, etc.
+                
+                ------------------------------------------------------------------------</pre>
               <!-- End Table with stripped rows -->
               <h3 class="card-title" style="padding: 5px 0 5px 0;font-size: 16px;"> Official VMware Link <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/index.html"> VMware Greenplum Database<a></h3>
               <h3 class="card-title" style="padding: 5px 0 5px 0;font-size: 16px;"> Official Github Link <a href="https://github.com/greenplum-db/gpdb"> Greenplum Database Open Source<a></h3>
