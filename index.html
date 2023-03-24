@@ -46,10 +46,10 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-right justify-content-between">
-      <i class="bi bi-list toggle-sidebar-btn"></i>&nbsp;&nbsp;
+      <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">&nbsp;Greenplum DBA</span>
+        <span class="d-none d-lg-block" style="color: #012970;">&nbsp;Greenplum DBA</span>
       </a>
     </div><!-- End Logo -->
 
@@ -530,6 +530,96 @@
                 <p>Delete specific data</p>  
                 <code>DELETE FROM table_name
                   WHERE column_name = value;</code>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Users</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>List roles</p>
+                <hr>
+                <code>SELECT rolname FROM pg_roles;</code>
+                <br>
+                <hr>
+                <p>Create user</p>
+                <hr>
+                <code>CREATE USER user_name WITH PASSWORD 'password';</code>
+                <br>
+                <hr>
+                <p>Drop user</p>
+                <hr>
+                <code>DROP USER IF EXISTS user_name;</code>
+                <br>
+                <hr>
+                <p>Alter user password</p>
+                <hr>
+                <code>ALTER ROLE user_name WITH PASSWORD 'password';</code>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Schema</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>List schemas</p>
+                <hr>
+                <code>\dn</code>
+                <br>
+                <code>SELECT schema_name FROM information_schema.schemata;</code>
+                <br>
+                <code>SELECT nspname FROM pg_catalog.pg_namespace;</code>
+                <br>
+                <hr>
+                <p>Create schema</p>
+                <hr>
+                <code>CREATE SCHEMA IF NOT EXISTS schema_name;</code>
+                <br>
+                <hr>
+                <p>Drop schema</p>
+                <hr>
+                <code>DROP SCHEMA IF EXISTS schema_name CASCADE;</code>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Dates</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>Show current date YYYY-MM-DD</p>
+                <hr>
+                <code>SELECT current_date;</code>
+                <br>
+                <hr>
+                <p>Calculate age between two dates</p>
+                <hr>
+                <code>SELECT age(timestamp, timestamp);</code>
+                <br>
+                <hr>
+                <p>Show current time with time zone</p>
+                <hr>
+                <code>SELECT current_time;</code>
+                <br>
+                <hr>
+                <p>Make dates using integers</p>
+                <hr>
+                <code>SELECT make_date(2021,03,25);</code>
                 <hr>
               </div>
             </div>
