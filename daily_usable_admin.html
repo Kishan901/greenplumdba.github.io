@@ -82,7 +82,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="admin_docs.html">
               <i class="bi bi-circle"></i><span>Documents Admin</span>
             </a>
           </li>
@@ -151,18 +151,18 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Developer Documents</h1>
+      <h1>Admin Documents</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Developer Documents</li>
+          <li class="breadcrumb-item active">Admin Documents</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <hr>
     <section class="section">
-      <h1 style="color: #012970; font-family: 'Poppins', sans-serif;">Developer Documents</h1>
+      <h1 style="color: #012970; font-family: 'Poppins', sans-serif;">Admin Documents</h1>
       <br>
       <div class="row">
 
@@ -175,21 +175,61 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Version</th>
+                    <th scope="col">Option</th>
+                    <th scope="col">Example</th>
+                    <th scope="col">Description</th>
                   </tr>
                 </thead>
                 <tbody>
                     <tr>
-                       <td>Greenplum Database <a href="#">7.x.x</a></td>
+                        <td><code>[-d] &lt;database&gt;</code></td>
+                        <td>psql -d mydb</td>
+                        <td>Connecting to database</td>
                     </tr>
                     <tr>
-                      <td>Greenplum Database <a href="assets/gpdocs/greenplum-database-6-23.pdf" attributes-list download>6.x.x</a></td>
+                      <td><code>-U</code></td>
+                      <td>psql -U john mydb</td>
+                      <td>Connecting as a specific user</td>
                     </tr>
                     <tr>
-                      <td>Greenplum Database <a href="assets/gpdocs/greenplum-database-5-29.pdf" attributes-list download>5.x.x</a></td>
+                      <td><code>-h</code> <code>-p</code></td>
+                      <td>psql -h localhost -p 5432 mydb</td>
+                      <td>Connecting to a host/port</td>
                     </tr>
                     <tr>
-                      <td>Greenplum Database <a href="assets/gpdocs/greenplum-database-4-3.pdf" attributes-list download>4.x.x</a></td>
+                      <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
+                      <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
+                      <td>Connect remote PostgreSQL</td>
+                    </tr>
+                    <tr>
+                      <td><code>-W</code></td>
+                      <td>psql -W mydb</td>
+                      <td>Force password</td>
+                    </tr>
+                    <tr>
+                      <td><code>-c</code></td>
+                      <td>psql -c '\c postgres' -c '\dt'</td>
+                      <td>Execute a SQL query or command</td>
+                    </tr>
+                    <tr>
+                      <td><code>-H</code></td>
+                      <td>psql -c "\l+" -H postgres &gt; database.html</td>
+                      <td>Generate HTML report</td>
+                    </tr>
+                    <tr>
+                      <td><code>-l</code></td>
+                      <td>psql -l</td>
+                      <td>List all databases</td>
+                    </tr>
+                    <tr>
+                      <td><code>-f</code></td>
+                      <td>psql mydb -f file.sql</td>
+                      <td>Execute commands from a file</td>
+                    </tr>
+                    <tr>
+                      <td><code>-V</code></td>
+                      <td>psql -V</td>
+                      <td>Print the psql version</td>
                     </tr>
                 </tbody>
               </table>
