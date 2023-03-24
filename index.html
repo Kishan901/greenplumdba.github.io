@@ -160,14 +160,15 @@
       </nav>
     </div><!-- End Page Title -->
     <section class="section">
-      <h1 class="card-title">Greenplum CheatSheet</h1>
+      <h1 style="color: #012970; font-family: 'Poppins', sans-serif;">Greenplum CheatSheet</h1>
+      <br>
       <div class="row">
         <div class="col-lg-6">
-          <div class="card">
+          <div class="card">          
             <div class="card-body">
-              <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Getting Started</h4>
-                <br><hr>
+              <h5 class="card-title">Getting Started</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">                
+                <hr>
                 <p>Switch and connect</p>
                 <hr>
                 <code>sudo -u postgres psql</code>
@@ -188,17 +189,17 @@
                 <code>postgres=# \q</code>
                 <br>
                 <code>postgres=# \!</code>
-
+                <hr>
               </div>
-
+              <h5 class="card-title">Getting help</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Getting help</h4>
                 <hr>
                 <code>\h	Help on syntax of SQL commands</code>
                 <hr>
                 <code>\h DELETE	DELETE SQL statement syntax</code>
                 <hr>
                 <code>\?	List of PostgreSQL command</code>
+                <hr>
               </div>
 
             </div>
@@ -281,10 +282,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <br>
+              <h5 class="card-title">Database</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Database</h4>
-                <br>
                 <hr>
                 <p>Show version</p>
                 <hr>
@@ -329,7 +328,7 @@
                 <p>List functions</p>
                 <hr>
                 <code>\df schema</code>
-
+                <hr>
               </div>
             </div>
           </div>
@@ -339,10 +338,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <br>
+              <h5 class="card-title">Tables</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Tables</h4>
-                <br>
                 <hr>
                 <p>List tables, in current db</p>
                 <hr>
@@ -387,7 +384,7 @@
                 <p>Delete table</p>
                 <hr>
                 <code>DROP TABLE IF EXISTS table_name CASCADE;</code>
-              
+                <hr>
               </div>
             </div>
           </div>
@@ -396,10 +393,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <br>
+              <h5 class="card-title">Permissions</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Permissions</h4>
-                <br>
                 <hr>
                 <p>Become the postgres user, if you have permission errors</p>
                 <hr>
@@ -441,7 +436,7 @@
                 <p>Grant permissions, to select, on a table</p>
                 <hr>
                 <code>GRANT SELECT ON ALL TABLES IN SCHEMA public TO user_name;</code>
-              
+                <hr>
               </div>
             </div>
           </div>
@@ -450,10 +445,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <br>
+              <h5 class="card-title">Columns</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Columns</h4>
-                <br>
                 <hr>
                 <p>Add column</p>
                 <hr>
@@ -488,6 +481,7 @@
                 <code>INSERT INTO table_name (column1_name,column2_name)
                   VALUES ( value1,value2 );
                 </code>
+                <hr>
               </div>
             </div>
           </div>
@@ -497,10 +491,8 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <br>
+              <h5 class="card-title">Data</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Data</h4>
-                <br>
                 <hr>
                 <p>Select all data</p>
                 <hr>
@@ -538,7 +530,7 @@
                 <p>Delete specific data</p>  
                 <code>DELETE FROM table_name
                   WHERE column_name = value;</code>
-                <br>
+                <hr>
               </div>
             </div>
           </div>
