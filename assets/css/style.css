@@ -234,7 +234,7 @@ h6 {
 
 .card-title {
   padding: 20px 0 15px 0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
@@ -242,7 +242,7 @@ h6 {
 
 .card-title span {
   color: #899bbd;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -258,7 +258,7 @@ h6 {
 .alert-heading {
   font-weight: 500;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 /* Close Button */
