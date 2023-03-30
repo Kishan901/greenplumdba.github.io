@@ -38,6 +38,17 @@ h6 {
   font-family: "Nunito", sans-serif;
 }
 
+p {
+  font-size: 14px;
+}
+
+td {
+	font-size: 12px;
+}
+code {
+  font-size: 12px;
+}
+
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
@@ -61,7 +72,7 @@ h6 {
 }
 
 .pagetitle h1 {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 0;
   font-weight: 600;
   color: #012970;
@@ -258,7 +269,7 @@ h6 {
 .alert-heading {
   font-weight: 500;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 /* Close Button */
@@ -365,12 +376,13 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
-  margin-right: 6px;
+  max-height: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .logo span {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   color: #012970;
   font-family: "Nunito", sans-serif;
@@ -482,7 +494,7 @@ h6 {
 }
 
 .header-nav .nav-profile span {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -682,7 +694,7 @@ h6 {
 .sidebar-nav .nav-link {
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #4154f1;
   transition: 0.3;
@@ -695,6 +707,10 @@ h6 {
   font-size: 16px;
   margin-right: 10px;
   color: #4154f1;
+}
+
+.sidebar-nav .nav-link span {
+  font-size: 14px;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -739,6 +755,10 @@ h6 {
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
+}
+
+.sidebar-nav .nav-content span {
+  font-size: 13px;
 }
 
 .sidebar-nav .nav-content a i {
