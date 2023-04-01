@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - Greenplum DBA</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-right justify-content-between">
+      <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block" style="color: #012970;">&nbsp;Greenplum DBA</span>
+      </a>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <script>
+    $(function(){
+      $("#sidebar").load("aside.html");
+    });
+    </script>
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>In-Progress</h1>
+      <hr>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Interview Questions</li>
+        </ol>
+      </nav>
+      <hr>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <br>
+      
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                      <p>1. How to check the distribution policy of test table sales?</p>
+                      <hr>
+                      <pre class="mb-0">psql>\d sales
+Table” public. sales”
+Column | Type | Modifiers
+——–+———+———–
+id | integer |
+date | date |
+Distributed by: (id)</pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                      <p>2. How many user schemas are there in the database?</p>
+                      <hr>
+                      <p class="mb-0">Use ”\dn” at psql prompt.</p>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <p>3. When is my tables last analyzed in the Greenplum database?</p>
+                      <hr>
+                      <pre class="mb-0">In 4.x check pg_stat_operations for all action-name performed on any object.
+For example, a sales table:
+                        
+gpdb=# select objname,action-name,statime from pg_stat_operations where objname like ‘sales’;
+objname | action-name | statime
+——–+———–+——————————-
+sales | CREATE | 2010-10-01 12:18:41.996244-07
+sales | ANALYZE | 2010-10-06 14:38:21.933281-07
+sales | VACUUM | 2010-10-06 14:38:33.881245-07</pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <p>4. How to check the size of a table?</p>
+                      <hr>
+                      <pre class="mb-0">Table Level:
+psql> select pg_size_pretty(pg_relation_size(‘schema.tablename’));
+Replace schema.tablename with your search table.
+                        
+Table and Index:
+                        
+psql> select pg_size_pretty(pg_total_relation_size(‘schema.tablename’));
+Replace schema.tablename with your search table.</pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                      <p>5. How to check the Schema size?</p>
+                      <hr>
+                      <pre class="mb-0">Schema Level:
+
+psql> select schemaname ,round(sum(pg_total_relation_size(schemaname||’.’||tablename))/1024/1024) “Size_MB”
+from pg_tables where schemaname=’SCHEMANAME’ group by 1;
+[ Related Article: Analytics Tools in Big Data ]
+                        </pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                      <p>6. How to check the database size?</p>
+                      <hr>
+                      <pre class="mb-0">To see the size of the specific database:
+
+psql> select pg_size_pretty(pg_database_size(‘DATBASE_NAME’));
+Example:
+                        
+gpdb=# select pg_size_pretty(pg_database_size(‘gpdb’));
+pg_size_pretty
+—————-
+24 MB
+(1 row)
+To see all database sizes:
+                        
+psql> select datname,pg_size_pretty(pg_database_size(datname)) from pg_database;</pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                      <p>7. How to check partitioned table size including indexes and partitions?</p>
+                      <hr>
+                      <pre class="mb-0">Table size with partitions:
+
+The following SQL gives you employee_dailly table size, which includes partitions.
+                        
+select schemaname,tablename,round(sum(pg_total_relation_size(schemaname || ‘.’ || partitiontablename))/1024/1024) “MB”
+from pg_partitions where tablename=’employee_daily’ group by 1,2;
+                        
+schemaname | tablename | MB
+———–+—————-+—–
+public | employee_daily | 254
+                        </pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+      
+                    <div class="alert alert-dark  alert-dismissible fade show" role="alert">
+                      <p>8. How do I get help on the syntax to alter the table?</p>
+                      <hr>
+                      <pre class="mb-0">In psql session type halter table which will display the syntax:
+
+gpdb=# h alter table</pre>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+
+                    <p>How to connect in utility mode?</p>
+                    <hr>
+                    <pre class="mb-0">From master host
+
+PGOPTIONS=’-c gp_session_role=utility’ psql -p -h
+Where:
+                        
+port is segment/ master database port.
+hostname is segment/master hostname.</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                    <p>10. Where/How to find db logs?</p>
+                    <hr>
+                    <pre class="mb-0">Master: Master gpdb log file is located in the $MASTER_DATA_DIRECTORY/pg_log/ directory and the file name depends on the database “log_filename” parameter.
+
+a. $MASTER_DATA_DIRECTORY/pg_log/gpdb-yyyy-mm-dd_000000.csv –>Log file format with default installation.
+b. ~gpadmin/gpAdminLogs/ –>gpstart,gpstop,gpstate and other utility logs.
+Segments:
+
+a. primary segments run below SQL to see log file location:
+
+select dbid,hostname,datadir||’/pg_log’ from gp_configuration where content not in (-1) and isprimary is true;
+b. Miror Segments run below SQL to see log file location:
+
+select dbid,hostname,datadir||’/pg_log’ from gp_configuration where content not in (-1) and isprimary is false;
+</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p>11. How to see the list of available functions in Greenplum DB?</p>
+                    <hr>
+                    <pre class="mb-0">df schemaname.functionname (schemaname and function name support wildcard characters)
+
+test=# df pub*.*test*
+List of functions
+Schema | Name | Result data type | Argument data types
+——–+————-+——————+———————
+public | bugtest | integer |
+public | test | boolean | integer
+public | test | void |
+(3 rows)</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p>12. How to check whether Greenplum server is up and running?</p>
+                    <hr>
+                    <pre class="mb-0">The gpstate is the utility to check gpdb status.
+Use gpstate -Q to show a quick status. Refer to gpstate –help for more options.
+                        
+Sample output:
+                        
+[gpadmin@stinger2]/export/home/gpadmin>gpstate -Q
+gpadmin-[INFO]:-Obtaining GPDB array type, [Brief], please wait…
+gpadmin-[INFO]:-Obtaining GPDB array type, [Brief], please wait…
+gpadmin-[INFO]:-Quick Greenplum database status from Master instance only
+gpadmin-[INFO]:———————————————————-
+gpadmin-[INFO]:-GPDB fault action value = readonly
+gpadmin-[INFO]:-Valid count in status view = 4
+gpadmin-[INFO]:-Invalid count in status view = 0
+gpadmin-[INFO]:———————————————————-</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                    <p>13. How to create a Database?</p>
+                    <hr>
+                    <pre class="mb-0">There are two ways to create gpdb database using psql session or the Greenplum createdb utility.
+
+Using psql session:
+gpdb=# h create the database
+Command: CREATE DATABASE
+Description: create a new database
+                        
+Syntax:
+                        
+CREATE DATABASE name
+[ [ WITH ] [ OWNER [=] dbowner ]
+[ TEMPLATE [=] template ]
+[ ENCODING [=] encoding ]
+[ TABLESPACE [=] tablespace ]
+[ CONNECTION LIMIT [=] connlimit ] ]
+Using createdb utility:
+                        
+Usage: $GPHOME/bin/createdb –help
+createdb [OPTION]… [DBNAME] [DESCRIPTION]
+Options:
+                        
+-D, –tablespace=TABLESPACE default tablespace for the database
+-e, –echo shows the commands being sent to the server
+-E, –encoding=ENCODING encoding for the database
+-O, –owner=OWNER database user to own the new database
+-T, –template=TEMPLATE template database to copy
+–help show this help, then exit
+–version output version information, then exit
+                        
+                      </pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                    <p>14. How do I get a list of databases in a Greenplum cluster?</p>
+                    <hr>
+                    <pre class="mb-0">gpdb=# l (lowercase letter “l”)
+List of databases
+                        
+Name | Owner | Encoding
+——{}———-
+gpdb | gpadmin | UTF8
+gpperfmon | gpadmin | UTF8
+postgres | gpadmin | UTF8
+template0 | gpadmin | UTF8
+template1 | gpadmin | UTF8
+Check below SQL for more details on dbs.
+                        
+gpdb=# select * from pg_database;
+</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                    <p>15. How to delete/drop an existing database in Greenplum?</p>
+                    <hr>
+                    <pre class="mb-0">gpdb=# h DROP Database
+Command: DROP DATABASE
+Description: remove a database
+Syntax:DROP DATABASE [ IF EXISTS ] name
+                        
+Also check dropdb utility:
+                        
+$GPHOME/bin/dropdb –help
+dropdb removes a PostgreSQL database.
+                        
+Usage:
+                        
+dropdb [OPTION]… DBNAME
+16. Where can I get help on Postgres psql commands?
+In psql session
+“ ?” – for all psql session help
+“h ” For any SQL syntax help.
+                      </pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+    
+                  <div class="alert alert-dark  alert-dismissible fade show" role="alert">
+                    <p>17. gpstart failed what should I do?</p>
+                    <hr>
+                    <pre class="mb-0">Check gpstart logfile in ~gpadmin/gpAdminLogs/gpstart_yyyymmdd.log
+Take a look at the pg start log file for more details in
+                        
+$MASTER_DATA_DIRECTORY/pg_log/startup.log</pre>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+      
+                  </div>
+            </div> 
+        </div>      
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
