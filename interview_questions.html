@@ -37,12 +37,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-     fillCardFromExcel();
-    });
-  </script>
-  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
 </head>
 
 <body>
@@ -65,6 +60,12 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+     fillCardFromExcel();
+    });
+  </script>
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
   <script>
     $(function(){
       $("#sidebar").load("aside.html");
@@ -129,6 +130,13 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>2. How many user schemas are there in the database?</p>
+                    <hr>
+                    <p class="mb-0">Use ”\dn” at psql prompt.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  
                 </div>
             </div> 
         </div>      
