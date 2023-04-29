@@ -101,14 +101,14 @@ Distributed by: (id)</pre>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>2. How many user schemas are there in the database?</p>
                       <hr>
                       <p class="mb-0">Use ”\dn” at psql prompt.</p>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>3. When is my tables last analyzed in the Greenplum database?</p>
                       <hr>
                       <pre class="mb-0">In 4.x check pg_stat_operations for all action-name performed on any object.
@@ -123,7 +123,7 @@ sales | VACUUM | 2010-10-06 14:38:33.881245-07</pre>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>4. How to check the size of a table?</p>
                       <hr>
                       <pre class="mb-0">Table Level:
@@ -137,7 +137,7 @@ Replace schema.tablename with your search table.</pre>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>5. How to check the Schema size?</p>
                       <hr>
                       <pre class="mb-0">Schema Level:
@@ -149,7 +149,7 @@ from pg_tables where schemaname=’SCHEMANAME’ group by 1;
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>6. How to check the database size?</p>
                       <hr>
                       <pre class="mb-0">To see the size of the specific database:
@@ -168,7 +168,7 @@ psql> select datname,pg_size_pretty(pg_database_size(datname)) from pg_database;
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>7. How to check partitioned table size including indexes and partitions?</p>
                       <hr>
                       <pre class="mb-0">Table size with partitions:
@@ -185,21 +185,21 @@ public | employee_daily | 254
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
       
-                    <div class="alert alert-dark  alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                       <p>8. How do I get help on the syntax to alter the table?</p>
                       <hr>
                       <pre class="mb-0">In psql session type halter table which will display the syntax:
 
 gpdb=# h alter table</pre>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                  </div>
 
-                  <div>
-                    <p>How to connect in utility mode?</p>
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>9. How to connect in utility mode?</p>
                     <hr>
                     <pre class="mb-0">From master host
 
-PGOPTIONS=’-c gp_session_role=utility’ psql -p -h
+PGOPTIONS='-c gp_session_role=utility' psql -p -h
 Where:
                         
 port is segment/ master database port.
@@ -207,13 +207,13 @@ hostname is segment/master hostname.</pre>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>10. Where/How to find db logs?</p>
                     <hr>
                     <pre class="mb-0">Master: Master gpdb log file is located in the $MASTER_DATA_DIRECTORY/pg_log/ directory and the file name depends on the database “log_filename” parameter.
 
-a. $MASTER_DATA_DIRECTORY/pg_log/gpdb-yyyy-mm-dd_000000.csv –>Log file format with default installation.
-b. ~gpadmin/gpAdminLogs/ –>gpstart,gpstop,gpstate and other utility logs.
+a. $MASTER_DATA_DIRECTORY/pg_log/gpdb-yyyy-mm-dd_000000.csv ->Log file format with default installation.
+b. ~gpadmin/gpAdminLogs/ ->gpstart,gpstop,gpstate and other utility logs.
 Segments:
 
 a. primary segments run below SQL to see log file location:
@@ -226,7 +226,7 @@ select dbid,hostname,datadir||’/pg_log’ from gp_configuration where content 
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>11. How to see the list of available functions in Greenplum DB?</p>
                     <hr>
                     <pre class="mb-0">df schemaname.functionname (schemaname and function name support wildcard characters)
@@ -242,7 +242,7 @@ public | test | void |
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>12. How to check whether Greenplum server is up and running?</p>
                     <hr>
                     <pre class="mb-0">The gpstate is the utility to check gpdb status.
@@ -262,7 +262,7 @@ gpadmin-[INFO]:———————————————————-</pre>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>13. How to create a Database?</p>
                     <hr>
                     <pre class="mb-0">There are two ways to create gpdb database using psql session or the Greenplum createdb utility.
@@ -298,7 +298,7 @@ Options:
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>14. How do I get a list of databases in a Greenplum cluster?</p>
                     <hr>
                     <pre class="mb-0">gpdb=# l (lowercase letter “l”)
@@ -318,7 +318,7 @@ gpdb=# select * from pg_database;
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>15. How to delete/drop an existing database in Greenplum?</p>
                     <hr>
                     <pre class="mb-0">gpdb=# h DROP Database
@@ -342,7 +342,7 @@ In psql session
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
     
-                  <div class="alert alert-dark  alert-dismissible fade show" role="alert">
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <p>16. gpstart failed what should I do?</p>
                     <hr>
                     <pre class="mb-0">Check gpstart logfile in ~gpadmin/gpAdminLogs/gpstart_yyyymmdd.log
