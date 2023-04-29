@@ -76,7 +76,7 @@
   <script>function fillCardFromExcel() {
     const cardBody = document.querySelector('.card-body');
   
-    fetch('questions_answer.xlsx')
+    fetch('assets/data/questions_answer.xlsx')
       .then(response => response.arrayBuffer())
       .then(buffer => {
         const data = new Uint8Array(buffer);
