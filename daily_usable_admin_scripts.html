@@ -28,6 +28,7 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
@@ -69,6 +70,69 @@
     <aside id="sidebar" class="sidebar">
 
     </aside><!-- End Sidebar-->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            readExcelAndAppendToAccordion();
+        });
+    </script>
+    <script>
+        function readExcelAndAppendToAccordion() {
+            const accordion = document.getElementById('accordionExample');
+
+            fetch('assets/data/questions_answer.xlsx')
+                .then((response) => response.arrayBuffer())
+                .then((arrayBuffer) => {
+                    const data = new Uint8Array(arrayBuffer);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[1]; // Assuming the data is in the second sheet
+                    const worksheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                    jsonData.forEach((row) => {
+                        const columnName = row[0];
+                        const columnValue = row[1];
+
+                        // Create accordion item elements
+                        const accordionItem = document.createElement('div');
+                        accordionItem.className = 'accordion-item';
+
+                        const accordionHeader = document.createElement('h2');
+                        accordionHeader.className = 'accordion-header';
+                        accordionHeader.id = `heading${columnName}`;
+
+                        const accordionButton = document.createElement('button');
+                        accordionButton.className = 'accordion-button collapsed';
+                        accordionButton.type = 'button';
+                        accordionButton.setAttribute('data-bs-toggle', 'collapse');
+                        accordionButton.setAttribute('data-bs-target', `#collapse${columnName}`);
+                        accordionButton.setAttribute('aria-expanded', 'false');
+                        accordionButton.setAttribute('aria-controls', `collapse${columnName}`);
+                        accordionButton.textContent = columnName;
+
+                        const accordionCollapse = document.createElement('div');
+                        accordionCollapse.id = `collapse${columnName}`;
+                        accordionCollapse.className = 'accordion-collapse collapse';
+
+                        const accordionBody = document.createElement('div');
+                        accordionBody.className = 'accordion-body';
+
+                        const preElement = document.createElement('pre');
+                        preElement.textContent = columnValue;
+                        accordionBody.appendChild(preElement);
+
+                        // Append elements to accordion
+                        accordionCollapse.appendChild(accordionBody);
+                        accordionHeader.appendChild(accordionButton);
+                        accordionItem.appendChild(accordionHeader);
+                        accordionItem.appendChild(accordionCollapse);
+                        accordion.appendChild(accordionItem);
+                    });
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    </script>
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Daily Usable</h1>
@@ -91,27 +155,8 @@
                             <br>
                             <!-- Default Accordion -->
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="false" aria-controls="collapseOne">
-                                            Vacuum Old Tables
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                                        <div class="accordion-body">
-                                            <strong>This is the first item's accordion body.</strong> It is hidden by
-                                            default, until the collapse plugin adds the appropriate classes that we use
-                                            to style each element. These classes control the overall appearance, as well
-                                            as the showing and hiding via CSS transitions. You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML can go within the <code>.accordion-body</code>,
-                                            though the transition does limit overflow.
-                                        </div>
-                                    </div>
-                                </div>
+                            <div>    
+                            </div>
                             </div><!-- End Default Accordion Example -->
                         </div>
                     </div>
@@ -146,4 +191,5 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
