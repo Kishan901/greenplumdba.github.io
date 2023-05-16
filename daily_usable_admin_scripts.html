@@ -79,7 +79,7 @@
         function readExcelAndAppendToAccordion() {
             const accordion = document.getElementById('accordionExample');
 
-            fetch('/path/to/your/excel-file.xlsx')
+            fetch('assets/data/questions_answer.xlsx')
                 .then((response) => response.arrayBuffer())
                 .then((arrayBuffer) => {
                     const data = new Uint8Array(arrayBuffer);
