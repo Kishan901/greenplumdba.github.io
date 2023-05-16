@@ -124,6 +124,15 @@
                         accordionItem.appendChild(accordionCollapse);
                         accordion.appendChild(accordionItem);
                     });
+
+                    // Attach event listener to parent accordion element
+                    accordion.addEventListener('click', function (event) {
+                        if (event.target.matches('.accordion-button')) {
+                            const accordionCollapse = event.target.getAttribute('data-bs-target');
+                            const collapseElement = document.querySelector(accordionCollapse);
+                            collapseElement.classList.toggle('show');
+                        }
+                    });
                 })
                 .catch((error) => {
                     console.error(error);
