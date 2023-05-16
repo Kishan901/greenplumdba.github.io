@@ -61,18 +61,6 @@
 
   <!-- ======= Sidebar ======= -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const filePaths = [
-  'assets/scripts/Vacuum Old Tables.sh',
-  'assets/scripts/Vacuum Old Tables.sh',
-  'assets/scripts/Vacuum Old Tables.sh',
-  ];
-
-   readFileAndAppendToAccordion(filePaths);
-    });
-  </script>
-
-  <script>
     $(function(){
       $("#sidebar").load("aside.html");
     });
@@ -133,6 +121,17 @@ function readFileAndAppendToAccordion(filePaths) {
   });
 }
   </script>
+  <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filePaths = [
+      'assets/scripts/Vacuum Old Tables.sh',
+      'assets/scripts/Vacuum Old Tables.sh',
+      'assets/scripts/Vacuum Old Tables.sh',
+      ];
+    
+       readFileAndAppendToAccordion(filePaths);
+        });
+    </script>
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Daily Usable</h1>
