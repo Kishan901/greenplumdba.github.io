@@ -116,9 +116,11 @@
 
                         const accordionBody = document.createElement('div');
                         accordionBody.className = 'accordion-body';
-                        accordionBody.textContent = column1;
 
-                        // Append elements to accordion
+                        const pre = document.createElement('pre');
+                        pre.textContent = column1;
+
+                        accordionBody.appendChild(pre);
                         accordionCollapse.appendChild(accordionBody);
                         accordionHeader.appendChild(accordionButton);
                         accordionItem.appendChild(accordionHeader);
