@@ -79,7 +79,7 @@
         function readExcelAndAppendToAccordion() {
             const accordion = document.getElementById('accordionExample');
 
-            fetch('assets/data/questions_answer.xlsx')
+            fetch('/path/to/your/excel-file.xlsx')
                 .then((response) => response.arrayBuffer())
                 .then((arrayBuffer) => {
                     const data = new Uint8Array(arrayBuffer);
@@ -115,10 +115,7 @@
 
                         const accordionBody = document.createElement('div');
                         accordionBody.className = 'accordion-body';
-
-                        const preElement = document.createElement('pre');
-                        preElement.textContent = columnValue;
-                        accordionBody.appendChild(preElement);
+                        accordionBody.textContent = columnValue;
 
                         // Append elements to accordion
                         accordionCollapse.appendChild(accordionBody);
@@ -147,16 +144,16 @@
         <hr>
         <section class="section">
             <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <br>
-                            <!-- Default Accordion -->
-                            <div class="accordion" id="accordionExample">
-                            <div>    
+                <div class="card">
+                    <div class="card-body">
+                        <br>
+                        <!-- Default Accordion -->
+                        <div class="accordion" id="accordionExample">
+                            <div>
                             </div>
-                            </div><!-- End Default Accordion Example -->
-                        </div>
+                        </div><!-- End Default Accordion Example -->
                     </div>
+                </div>
         </section>
 
     </main><!-- End #main -->
