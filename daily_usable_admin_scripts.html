@@ -86,78 +86,51 @@
       <div class="row">
 
         <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">PSQL commands</h5>
 
-              <!-- Table with stripped rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Option</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>[-d] &lt;database&gt;</code></td>
-                        <td>psql -d mydb</td>
-                        <td>Connecting to database</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code></td>
-                      <td>psql -U john mydb</td>
-                      <td>Connecting as a specific user</td>
-                    </tr>
-                    <tr>
-                      <td><code>-h</code> <code>-p</code></td>
-                      <td>psql -h localhost -p 5432 mydb</td>
-                      <td>Connecting to a host/port</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
-                      <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
-                      <td>Connect remote PostgreSQL</td>
-                    </tr>
-                    <tr>
-                      <td><code>-W</code></td>
-                      <td>psql -W mydb</td>
-                      <td>Force password</td>
-                    </tr>
-                    <tr>
-                      <td><code>-c</code></td>
-                      <td>psql -c '\c postgres' -c '\dt'</td>
-                      <td>Execute a SQL query or command</td>
-                    </tr>
-                    <tr>
-                      <td><code>-H</code></td>
-                      <td>psql -c "\l+" -H postgres &gt; database.html</td>
-                      <td>Generate HTML report</td>
-                    </tr>
-                    <tr>
-                      <td><code>-l</code></td>
-                      <td>psql -l</td>
-                      <td>List all databases</td>
-                    </tr>
-                    <tr>
-                      <td><code>-f</code></td>
-                      <td>psql mydb -f file.sql</td>
-                      <td>Execute commands from a file</td>
-                    </tr>
-                    <tr>
-                      <td><code>-V</code></td>
-                      <td>psql -V</td>
-                      <td>Print the psql version</td>
-                    </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
+            <div class="card">
+              <div class="card-body">
+                <br>
+                <!-- Default Accordion -->
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Accordion Item #1
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                      <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Accordion Item #2
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+                      <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Accordion Item #3
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="">
+                      <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- End Default Accordion Example -->
             </div>
           </div>
-        </div>
-
       </div>
     </section>
 
