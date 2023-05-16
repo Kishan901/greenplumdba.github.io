@@ -31,7 +31,24 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .marquee {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: marquee 10s linear infinite;
+    }
 
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
@@ -51,6 +68,9 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span>
+        <div class="marquee">
+          Website Building In-Progress 
+        </div>
       </a>
     </div><!-- End Logo -->
 
@@ -60,10 +80,10 @@
 
   </header><!-- End Header -->
   <script>
-    $(function(){
+    $(function () {
       $("#sidebar").load("aside.html");
     });
-    </script>
+  </script>
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -84,10 +104,10 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-          <div class="card">          
+          <div class="card">
             <div class="card-body">
               <h5 class="card-title">Getting Started</h5>
-              <div class="alert alert-primary alert-dismissible fade show" role="alert">                
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <hr>
                 <p>Switch and connect</p>
                 <hr>
@@ -141,56 +161,56 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><code>[-d] &lt;database&gt;</code></td>
-                        <td>psql -d mydb</td>
-                        <td>Connecting to database</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code></td>
-                      <td>psql -U john mydb</td>
-                      <td>Connecting as a specific user</td>
-                    </tr>
-                    <tr>
-                      <td><code>-h</code> <code>-p</code></td>
-                      <td>psql -h localhost -p 5432 mydb</td>
-                      <td>Connecting to a host/port</td>
-                    </tr>
-                    <tr>
-                      <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
-                      <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
-                      <td>Connect remote PostgreSQL</td>
-                    </tr>
-                    <tr>
-                      <td><code>-W</code></td>
-                      <td>psql -W mydb</td>
-                      <td>Force password</td>
-                    </tr>
-                    <tr>
-                      <td><code>-c</code></td>
-                      <td>psql -c '\c postgres' -c '\dt'</td>
-                      <td>Execute a SQL query or command</td>
-                    </tr>
-                    <tr>
-                      <td><code>-H</code></td>
-                      <td>psql -c "\l+" -H postgres &gt; database.html</td>
-                      <td>Generate HTML report</td>
-                    </tr>
-                    <tr>
-                      <td><code>-l</code></td>
-                      <td>psql -l</td>
-                      <td>List all databases</td>
-                    </tr>
-                    <tr>
-                      <td><code>-f</code></td>
-                      <td>psql mydb -f file.sql</td>
-                      <td>Execute commands from a file</td>
-                    </tr>
-                    <tr>
-                      <td><code>-V</code></td>
-                      <td>psql -V</td>
-                      <td>Print the psql version</td>
-                    </tr>
+                  <tr>
+                    <td><code>[-d] &lt;database&gt;</code></td>
+                    <td>psql -d mydb</td>
+                    <td>Connecting to database</td>
+                  </tr>
+                  <tr>
+                    <td><code>-U</code></td>
+                    <td>psql -U john mydb</td>
+                    <td>Connecting as a specific user</td>
+                  </tr>
+                  <tr>
+                    <td><code>-h</code> <code>-p</code></td>
+                    <td>psql -h localhost -p 5432 mydb</td>
+                    <td>Connecting to a host/port</td>
+                  </tr>
+                  <tr>
+                    <td><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td>
+                    <td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td>
+                    <td>Connect remote PostgreSQL</td>
+                  </tr>
+                  <tr>
+                    <td><code>-W</code></td>
+                    <td>psql -W mydb</td>
+                    <td>Force password</td>
+                  </tr>
+                  <tr>
+                    <td><code>-c</code></td>
+                    <td>psql -c '\c postgres' -c '\dt'</td>
+                    <td>Execute a SQL query or command</td>
+                  </tr>
+                  <tr>
+                    <td><code>-H</code></td>
+                    <td>psql -c "\l+" -H postgres &gt; database.html</td>
+                    <td>Generate HTML report</td>
+                  </tr>
+                  <tr>
+                    <td><code>-l</code></td>
+                    <td>psql -l</td>
+                    <td>List all databases</td>
+                  </tr>
+                  <tr>
+                    <td><code>-f</code></td>
+                    <td>psql mydb -f file.sql</td>
+                    <td>Execute commands from a file</td>
+                  </tr>
+                  <tr>
+                    <td><code>-V</code></td>
+                    <td>psql -V</td>
+                    <td>Print the psql version</td>
+                  </tr>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -198,7 +218,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
@@ -232,7 +252,7 @@
                 <hr>
                 <p>Show current user's permissions</p>
                 <hr>
-                <code>\du</code>                
+                <code>\du</code>
                 <br>
                 <hr>
                 <p>Show current database</p>
@@ -254,7 +274,7 @@
           </div>
         </div>
 
-        
+
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
@@ -345,7 +365,7 @@
                 <hr>
                 <p>Grant permissions to select, update, insert, delete, on a all tables</p>
                 <hr>
-                <code>GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</code>              
+                <code>GRANT SELECT, UPDATE, INSERT ON ALL TABLES IN SCHEMA public TO user_name;</code>
                 <br>
                 <hr>
                 <p>Grant permissions, on a table</p>
@@ -390,14 +410,14 @@
                 <hr>
                 <code>ALTER TABLE table_name
                   ADD COLUMN column_name SERIAL PRIMARY KEY;</code>
-                  <br>
-                  <hr>
+                <br>
+                <hr>
                 <p>Insert into a table, with an auto-incrementing primary key</p>
                 <hr>
                 <code>INSERT INTO table_name
                   VALUES (DEFAULT, value1);
                 </code>
-                  <br>
+                <br>
                 <code>INSERT INTO table_name (column1_name,column2_name)
                   VALUES ( value1,value2 );
                 </code>
@@ -432,8 +452,8 @@
                 <p>Insert data</p>
                 <hr>
                 <code>INSERT INTO table_name VALUES( value_1, value_2 );</code>
-                  <br>
-                  <hr>
+                <br>
+                <hr>
                 <p>Update data</p>
                 <hr>
                 <code>UPDATE table_name
@@ -442,12 +462,12 @@
                 </code>
                 <br>
                 <hr>
-                <p>Delete all data</p>  
+                <p>Delete all data</p>
                 <hr>
                 <code>DELETE FROM table_name;</code>
                 <br>
                 <hr>
-                <p>Delete specific data</p>  
+                <p>Delete specific data</p>
                 <code>DELETE FROM table_name
                   WHERE column_name = value;</code>
                 <hr>
