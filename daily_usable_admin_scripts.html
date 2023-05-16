@@ -20,7 +20,6 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <script data-main="assets/js/main.js" src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -70,68 +69,6 @@
     <aside id="sidebar" class="sidebar">
 
     </aside><!-- End Sidebar-->
-
-    <script>
-        const fs = require(['fs']);
-        function readFileAndAppendToAccordion(filePaths) {
-            const accordion = document.getElementById('accordionExample');
-
-            // Iterate over each file path
-            filePaths.forEach((filePath, index) => {
-                fs.readFile(filePath, 'utf-8', (err, fileContent) => {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
-
-                    // Create accordion item elements
-                    const accordionItem = document.createElement('div');
-                    accordionItem.className = 'accordion-item';
-
-                    const accordionHeader = document.createElement('h2');
-                    accordionHeader.className = 'accordion-header';
-                    accordionHeader.id = `heading${index}`;
-
-                    const accordionButton = document.createElement('button');
-                    accordionButton.className = 'accordion-button collapsed';
-                    accordionButton.type = 'button';
-                    accordionButton.setAttribute('data-bs-toggle', 'collapse');
-                    accordionButton.setAttribute('data-bs-target', `#collapse${index}`);
-                    accordionButton.setAttribute('aria-expanded', 'false');
-                    accordionButton.setAttribute('aria-controls', `collapse${index}`);
-                    accordionButton.textContent = filePath;
-
-                    const accordionCollapse = document.createElement('div');
-                    accordionCollapse.id = `collapse${index}`;
-                    accordionCollapse.className = 'accordion-collapse collapse';
-
-                    const accordionBody = document.createElement('div');
-                    accordionBody.className = 'accordion-body';
-                    const preElement = document.createElement('pre');
-                    preElement.textContent = fileContent;
-                    accordionBody.appendChild(preElement);
-
-                    // Append elements to accordion
-                    accordionCollapse.appendChild(accordionBody);
-                    accordionHeader.appendChild(accordionButton);
-                    accordionItem.appendChild(accordionHeader);
-                    accordionItem.appendChild(accordionCollapse);
-                    accordion.appendChild(accordionItem);
-                });
-            });
-        }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filePaths = [
-                'assets/scripts/Vacuum Old Tables.sh',
-                'assets/scripts/Vacuum Old Tables.sh',
-                'assets/scripts/Vacuum Old Tables.sh',
-            ];
-
-            readFileAndAppendToAccordion(filePaths);
-        });
-    </script>
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Daily Usable</h1>
@@ -207,6 +144,6 @@
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-   <!--<script src="assets/js/main.js"></script>-->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
