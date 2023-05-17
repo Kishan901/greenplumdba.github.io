@@ -365,6 +365,21 @@ code {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+@media (max-width: 991.98px) {
+  /* Hide the desktop text on mobile screens */
+  .desktop-text {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Hide the mobile text on desktop screens */
+  .mobile-text {
+    display: none;
+  }
+}
+
+
 .logo {
   line-height: 1;
 }
