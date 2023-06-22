@@ -13,18 +13,20 @@
           const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
           // Generate the HTML code
-          const htmlCode = generateHTML(jsonData);
+          const elements = generateElements(jsonData);
 
-          // Append the HTML code to the existing structure
+          // Append the elements to the existing structure
           const tutorialNav = document.querySelector('#tutorial-nav');
-          tutorialNav.innerHTML += htmlCode;
+          elements.forEach(element => {
+            tutorialNav.appendChild(element);
+          });
         })
         .catch(error => console.log(error));
     }
 
-    // Function to generate the HTML code
-    function generateHTML(data) {
-      let html = '';
+    // Function to generate the HTML elements
+    function generateElements(data) {
+      const elements = [];
 
       // Iterate over the data rows
       for (let i = 0; i < data.length; i++) {
@@ -33,19 +35,29 @@
         const spanText = row[0];
         const dataGuid = 'GUID-utility_guide-' + spanText;
 
-        html += '<li>';
-        html += '  <a href="' + href + '" data-guid="' + dataGuid + '">';
-        html += '    <i class="bi bi-circle" aria-hidden="true"></i>';
-        html += '    <span>' + spanText + '</span>';
-        html += '  </a>';
-        html += '</li>';
+        const liElement = document.createElement('li');
+        const aElement = document.createElement('a');
+        const iElement = document.createElement('i');
+        const spanElement = document.createElement('span');
+
+        aElement.href = href;
+        aElement.setAttribute('data-guid', dataGuid);
+        iElement.classList.add('bi', 'bi-circle');
+        spanElement.textContent = spanText;
+
+        aElement.appendChild(iElement);
+        aElement.appendChild(spanElement);
+        liElement.appendChild(aElement);
+
+        elements.push(liElement);
       }
 
-      return html;
+      return elements;
     }
 
     // Call the fetchDataAndAppend function when you want to fetch the data and append it
-    // fetchDataAndAppend();
+    //fetchDataAndAppend();
+
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
