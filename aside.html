@@ -1,5 +1,63 @@
 <aside id="sidebar" class="sidebar">
+  <script>
+    // Assuming you have included the xlsx library
 
+    // Function to fetch data from Excel and append it to the HTML structure
+    function fetchDataAndAppend() {
+      // Load the Excel file
+      const file = document.querySelector('#excel-file').files[0]; // Replace '#excel-file' with the actual file input selector
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        // Get the sheet data
+        const sheetName = 'Sheet3'; // Replace with your sheet name
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        // Generate the HTML code
+        const htmlCode = generateHTML(jsonData);
+
+        // Append the HTML code to the existing structure
+        const tutorialNav = document.querySelector('#tutorial-nav');
+        tutorialNav.innerHTML += htmlCode;
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+
+    // Function to generate the HTML code
+    function generateHTML(data) {
+      let html = '';
+
+      // Iterate over the data rows
+      for (let i = 0; i < data.length; i++) {
+        const row = data[i];
+        const href = row[1];
+        const spanText = row[0];
+        const dataGuid = 'GUID-utility_guide-' + spanText;
+
+        html += '<li>';
+        html += '  <a href="' + href + '" data-guid="' + dataGuid + '">';
+        html += '    <i class="bi bi-circle" aria-hidden="true"></i>';
+        html += '    <span>' + spanText + '</span>';
+        html += '  </a>';
+        html += '</li>';
+      }
+
+      return html;
+    }
+
+    // Call the fetchDataAndAppend function when you want to fetch the data and append it
+    fetchDataAndAppend();
+  </script>
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetchDataAndAppend();
+      });
+  </script>
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
@@ -27,328 +85,8 @@
         <i class="bi bi-menu-button-wide"></i><span>Management Utility</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="tutorial-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-analyzedb.html" data-guid="GUID-utility_guide-ref-analyzedb"> 
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>analyzedb</span>
-            </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-clusterdb.html" data-guid="GUID-utility_guide-ref-clusterdb">      
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>clusterdb</span>
-            </a>
-          </li>
-          <li>           
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-createdb.html" data-guid="GUID-utility_guide-ref-createdb">             
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>createdb</span>
-            </a>
-          </li>
-          <li>           
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-createuser.html" data-guid="GUID-utility_guide-ref-createuser">              
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>createuser</span>
-            </a>
-          </li>
-          <li>            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-dropdb.html" data-guid="GUID-utility_guide-ref-dropdb">             
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>dropdb</span>
-            </a>
-          </li>
-          <li>         
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-dropuser.html" data-guid="GUID-utility_guide-ref-dropuser">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>dropuser</span>
-            </a>
-          </li>
-          <li>          
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpactivatestandby.html" data-guid="GUID-utility_guide-ref-gpactivatestandby">    
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpactivatestandby</span>
-            </a>
-          </li>
-          <li>          
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpaddmirrors.html" data-guid="GUID-utility_guide-ref-gpaddmirrors">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpaddmirrors</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Backup-and-Restore/1.24/tanzu-greenplum-backup-and-restore/GUID-utility_guide-ref-gpbackup_manager.html" data-guid="GUID-utility_guide-ref-gpbackup_manager">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpbackup_manager</span>    
-            </a>
-          </li>
-          <li>  
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Backup-and-Restore/1.24/tanzu-greenplum-backup-and-restore/GUID-utility_guide-ref-gpbackup.html" data-guid="GUID-utility_guide-ref-gpbackup">  
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpbackup</span>    
-            </a>
-          </li>
-          <li>           
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpcheckcat.html" data-guid="GUID-utility_guide-ref-gpcheckcat">              
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpcheckcat</span> 
-            </a>
-          </li>
-          <li>
-           <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpcheckperf.html" data-guid="GUID-utility_guide-ref-gpcheckperf">
-            <i class="bi bi-circle" aria-hidden="true"></i>
-            <span>gpcheckperf</span>            
-           </a>
-          </li>
-          <li>           
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpconfig.html" data-guid="GUID-utility_guide-ref-gpconfig">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpconfig</span>   
-            </a>
-          </li>
-          <li>
-             
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpcopy.html" data-guid="GUID-utility_guide-ref-gpcopy">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpcopy</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpdeletesystem.html" data-guid="GUID-utility_guide-ref-gpdeletesystem">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpdeletesystem</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpexpand.html" data-guid="GUID-utility_guide-ref-gpexpand">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpexpand</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpfdist.html" data-guid="GUID-utility_guide-ref-gpfdist">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpfdist</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpinitstandby.html" data-guid="GUID-utility_guide-ref-gpinitstandby">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpinitstandby</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpinitsystem.html" data-guid="GUID-utility_guide-ref-gpinitsystem">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpinitsystem</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Streaming-Server/1.7/greenplum-streaming-server/GUID-kafka-gpkafka.html" data-guid="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Streaming-Server/1.7/greenplum-streaming-server/GUID-kafka-gpkafka">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpkafka</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpload.html" data-guid="GUID-utility_guide-ref-gpload">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpload</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gplogfilter.html" data-guid="GUID-utility_guide-ref-gplogfilter">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gplogfilter</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmapreduce.html" data-guid="GUID-utility_guide-ref-gpmapreduce">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpmapreduce</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmapreduce-yaml.html" data-guid="GUID-utility_guide-ref-gpmapreduce-yaml">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpmapreduce.yaml</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmemreport.html" data-guid="GUID-utility_guide-ref-gpmemreport">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpmemreport</span>   
-              </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmemwatcher.html" data-guid="GUID-utility_guide-ref-gpmemwatcher">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpmemwatcher</span>   
-              </a>
-          </li>
-          <li>         
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmovemirrors.html" data-guid="GUID-utility_guide-ref-gpmovemirrors">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpmovemirrors</span>   
-              </a>
-          </li>
-          <li>
-                <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpmt.html" data-guid="GUID-utility_guide-ref-gpmt">
-                <i class="bi bi-circle" aria-hidden="true"></i>
-                <span>gpmt</span>
-             </a>
-          </li>
-          <li>
-            
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gppkg.html" data-guid="GUID-utility_guide-ref-gppkg">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gppkg</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gprecoverseg.html" data-guid="GUID-utility_guide-ref-gprecoverseg">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gprecoverseg</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpreload.html" data-guid="GUID-utility_guide-ref-gpreload">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpreload</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Backup-and-Restore/1.24/tanzu-greenplum-backup-and-restore/GUID-utility_guide-ref-gprestore.html" data-guid="GUID-utility_guide-ref-gprestore">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gprestore</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpscp.html" data-guid="GUID-utility_guide-ref-gpscp">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpscp</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Streaming-Server/1.7/greenplum-streaming-server/GUID-ref-gpss.html" data-guid="https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Streaming-Server/1.7/greenplum-streaming-server/GUID-ref-gpss">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpss</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpssh.html" data-guid="GUID-utility_guide-ref-gpssh">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpssh</span>   
-              </a>
-          </li>
-          <li>
-             <a
-              href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpssh-exkeys.html" data-guid="GUID-utility_guide-ref-gpssh-exkeys">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpssh-exkeys</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpstart.html" data-guid="GUID-utility_guide-ref-gpstart">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpstart</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpstate.html" data-guid="GUID-utility_guide-ref-gpstate">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpstate</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-gpstop.html" data-guid="GUID-utility_guide-ref-gpstop">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>gpstop</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pg_config.html" data-guid="GUID-utility_guide-ref-pg_config">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pg_config</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pg_dump.html" data-guid="GUID-utility_guide-ref-pg_dump">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pg_dump</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pg_dumpall.html" data-guid="GUID-utility_guide-ref-pg_dumpall">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pg_dumpall</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pg_restore.html" data-guid="GUID-utility_guide-ref-pg_restore">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pg_restore</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pgbouncer.html" data-guid="GUID-utility_guide-ref-pgbouncer">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pgbouncer</span>   
-              </a>
-          </li>
-          <li>
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pgbouncer-ini.html" data-guid="GUID-utility_guide-ref-pgbouncer-ini">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pgbouncer.ini</span>   
-              </a>
-          </li>
-          <li>  
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-pgbouncer-admin.html" data-guid="GUID-utility_guide-ref-pgbouncer-admin">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>pgbouncer-admin</span>   
-              </a>
-          </li>
-          <li>
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-plcontainer.html" data-guid="GUID-utility_guide-ref-plcontainer">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>plcontainer</span>   
-              </a>
-          </li>
-          <li>           
-            <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-plcontainer-configuration.html" data-guid="GUID-utility_guide-ref-plcontainer-configuration">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>plcontainer Configuration File</span>   
-              </a>
-          </li>
-          <li>            
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-psql.html" data-guid="GUID-utility_guide-ref-psql">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>psql</span>   
-              </a>
-          </li>
-          <li>          
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-reindexdb.html" data-guid="GUID-utility_guide-ref-reindexdb">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>reindexdb</span>   
-              </a>
-          </li>
-          <li>            
-             <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-utility_guide-ref-vacuumdb.html" data-guid="GUID-utility_guide-ref-vacuumdb">
-              <i class="bi bi-circle" aria-hidden="true"></i>
-              <span>vacuumdb</span>   
-             </a>
-          </li>
-      </ul> 
+
+      </ul>
     </li><!-- End Components Nav -->
 
     <li class="nav-item">
@@ -458,7 +196,7 @@
     <br>
     <br>
     <marquee behavior="scroll" direction="left">
-      Website Building In-Progress 
+      Website Building In-Progress
     </marquee>
   </ul>
 
