@@ -1,31 +1,25 @@
 <aside id="sidebar" class="sidebar">
   <script>
-    // Assuming you have included the xlsx library
-
     // Function to fetch data from Excel and append it to the HTML structure
     function fetchDataAndAppend() {
-      // Load the Excel file
-      const file = document.querySelector('#excel-file').files[0]; // Replace '#excel-file' with the actual file input selector
-      const reader = new FileReader();
+      const url = 'assets/data/questions_answer.xlsx'; // Replace with the URL or path to your Excel file
 
-      reader.onload = function (e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
+      fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+          const data = new Uint8Array(buffer);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const worksheet = workbook.Sheets['Sheet3']; // Replace 'Sheet3' with your sheet name
+          const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-        // Get the sheet data
-        const sheetName = 'Sheet3'; // Replace with your sheet name
-        const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+          // Generate the HTML code
+          const htmlCode = generateHTML(jsonData);
 
-        // Generate the HTML code
-        const htmlCode = generateHTML(jsonData);
-
-        // Append the HTML code to the existing structure
-        const tutorialNav = document.querySelector('#tutorial-nav');
-        tutorialNav.innerHTML += htmlCode;
-      };
-
-      reader.readAsArrayBuffer(file);
+          // Append the HTML code to the existing structure
+          const tutorialNav = document.querySelector('#tutorial-nav');
+          tutorialNav.innerHTML += htmlCode;
+        })
+        .catch(error => console.log(error));
     }
 
     // Function to generate the HTML code
@@ -51,12 +45,12 @@
     }
 
     // Call the fetchDataAndAppend function when you want to fetch the data and append it
-    fetchDataAndAppend();
+    // fetchDataAndAppend();
   </script>
   <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        fetchDataAndAppend();
-      });
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchDataAndAppend();
+    });
   </script>
   <ul class="sidebar-nav" id="sidebar-nav">
 
