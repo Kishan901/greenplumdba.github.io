@@ -66,6 +66,72 @@
 
   </aside><!-- End Sidebar-->
 
+  <script>
+    // Function to fetch data from Excel and append it to the HTML structure
+    function fetchDataAndAppend() {
+      const url = 'assets/data/questions_answer.xlsx'; // Replace with the URL or path to your Excel file
+
+      fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+          const data = new Uint8Array(buffer);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const worksheet = workbook.Sheets['Sheet3']; // Replace 'Sheet3' with your sheet name
+          const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+          // Generate the HTML code
+          const elements = generateElements(jsonData);
+
+          // Append the elements to the existing structure
+          const tutorialNav = document.querySelector('#tutorial-nav');
+          elements.forEach(element => {
+            tutorialNav.appendChild(element);
+          });
+        })
+        .catch(error => console.log(error));
+    }
+
+    // Function to generate the HTML elements
+    function generateElements(data) {
+      const elements = [];
+
+      // Iterate over the data rows
+      for (let i = 0; i < data.length; i++) {
+        const row = data[i];
+        const href = row[1];
+        const spanText = row[0];
+        const dataGuid = 'GUID-utility_guide-' + spanText;
+
+        const liElement = document.createElement('li');
+        const aElement = document.createElement('a');
+        const iElement = document.createElement('i');
+        const spanElement = document.createElement('span');
+
+        aElement.href = href;
+        aElement.setAttribute('data-guid', dataGuid);
+        iElement.classList.add('bi', 'bi-circle');
+        spanElement.textContent = spanText;
+
+        aElement.appendChild(iElement);
+        aElement.appendChild(spanElement);
+        liElement.appendChild(aElement);
+
+        elements.push(liElement);
+      }
+
+      return elements;
+    }
+
+    // Call the fetchDataAndAppend function when you want to fetch the data and append it
+    //fetchDataAndAppend();
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchDataAndAppend();
+    });
+  </script>
+  
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Greenplum CheatSheet</h1>
