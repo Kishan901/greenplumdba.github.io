@@ -93,39 +93,33 @@
           const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
           // Find the row that matches the current file name (searching in column 2)
-          const matchedRow = jsonData.find(row => row[1] === currentFileName);
+          const matchedRow = jsonData.find(row => row[2] === currentFileName);
 
           if (matchedRow) {
-            // Define the static column names
-            const columnNames = ['What does analyzedb do?', 'Why is it important?', 'How to use analyzedb:'];
-
-            // Create a card element for the matched row
+            // Create a card element
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
 
-            // Iterate through the columns and create the HTML structure
-            for (let j = 2; j <= 6; j++) {
-              // Create an h5 tag for the column name
-              const h5Title = document.createElement('h5');
-              h5Title.classList.add('card-title');
-              h5Title.textContent = columnNames[j - 2];
+            // Create an h5 tag for the card title
+            const h5Title = document.createElement('h5');
+            h5Title.classList.add('card-title');
+            h5Title.textContent = 'What does analyzedb do?';
 
-              // Create an alert div for styling
-              const alertDiv = document.createElement('div');
-              alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-              alertDiv.role = 'alert';
+            // Create an alert div for styling
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
+            alertDiv.role = 'alert';
 
-              // Create a paragraph or code block based on the column
-              const content = document.createElement(j === 2 || j === 3 ? 'p' : 'code');
-              content.textContent = matchedRow[j];
+            // Create a paragraph for the description (pulling data from column 3)
+            const description = document.createElement('p');
+            description.textContent = matchedRow[3];
 
-              // Append the h5 tag and content to the alert div
-              alertDiv.appendChild(h5Title);
-              alertDiv.appendChild(content);
+            // Append the h5 tag and description to the alert div
+            alertDiv.appendChild(h5Title);
+            alertDiv.appendChild(description);
 
-              // Append the alert div to the card
-              cardDiv.appendChild(alertDiv);
-            }
+            // Append the alert div to the card
+            cardDiv.appendChild(alertDiv);
 
             // Append the card to the card body container
             cardBody.appendChild(cardDiv);
