@@ -88,7 +88,19 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
+                What does analyzedb do?
+analyzedb makes sure that your database has up-to-date information about your data. It does this by running the ANALYZE command on all tables in a specified part of your database.
+
+Why is it important?
+Good statistics are crucial for the database to understand your data. They help the database figure out the best way to execute your queries efficiently.
+
+How to use analyzedb:
+You can use analyzedb to analyze a specific part of your database. For example, let's say you have a database named "sales_db" and you want to analyze all the tables in the "public" schema.
+Example:
+
+analyzedb -d sales_db public
+
+In this example, analyzedb is instructed to analyze the "public" schema in the "sales_db" database. This ensures that the database has accurate information to make queries run faster.
               </div>
             </div> 
         </div>      
