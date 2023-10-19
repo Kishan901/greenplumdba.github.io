@@ -92,8 +92,8 @@
           const worksheet = workbook.Sheets[sheetName];
           const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-          // Find the row that matches the current file name (searching in column 2)
-          const matchedRow = jsonData.find(row => row[2] === currentFileName);
+          // Find the row that matches the current file name (searching in column B)
+          const matchedRow = jsonData.find(row => row[1] === currentFileName);
 
           if (matchedRow) {
             // Create a card element
@@ -110,9 +110,9 @@
             alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
             alertDiv.role = 'alert';
 
-            // Create a paragraph for the description (pulling data from column 3)
+            // Create a paragraph for the description (pulling data from column C)
             const description = document.createElement('p');
-            description.textContent = matchedRow[3];
+            description.textContent = matchedRow[2];
 
             // Append the h5 tag and description to the alert div
             alertDiv.appendChild(h5Title);
