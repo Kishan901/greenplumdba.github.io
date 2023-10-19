@@ -19,7 +19,7 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
   <!-- Vendor CSS Files -->
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -48,7 +48,8 @@
       <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
+        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span
+          class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">
@@ -57,10 +58,10 @@
 
   <!-- ======= Sidebar ======= -->
   <script>
-    $(function(){
+    $(function () {
       $("#sidebar").load("aside.html");
     });
-    </script>
+  </script>
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -72,12 +73,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpbackupmanager</li>
         </ol>
       </nav>
       <hr>
@@ -85,13 +85,39 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <br>
-                <h3>Page In Progress</h3>  
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <h5 class="card-title">What does gpbackupmanager do?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>The `gpbackupmanager` command in Greenplum is a powerful tool designed for managing and automating
+                  backup and restore operations for Greenplum databases. It simplifies backup and restore tasks,
+                  centralizes control, and improves operational efficiency.</p>
               </div>
-            </div> 
-        </div>      
+              <h5 class="card-title">Why is it important?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>Effective backup and restore procedures are critical for database management. The `gpbackupmanager`
+                  utility is essential for ensuring data protection, disaster recovery, and seamless database
+                  operations.</p>
+              </div>
+              <h5 class="card-title">How to use gpbackupmanager:</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>You can use `gpbackupmanager` to initiate, manage, and automate backup and restore tasks. To perform
+                  a full database backup, use the following command:</p>
+                <code>Example: gpbackupmanager -backup</code>
+                <hr>
+                <code>
+                        gpbackupmanager [OPTIONS] <br>
+                        <br>
+                        -backup      Perform a backup operation. <br>
+                        -restore     Perform a restore operation. <br>
+                        -help        Display help information. <br>
+                        -version     Display the utility version. <br>
+                    </code>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

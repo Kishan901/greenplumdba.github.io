@@ -88,8 +88,35 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpbackup do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The `gpbackup` command in Greenplum is used to perform backup operations for Greenplum databases. It allows you to create full, incremental, or differential backups of your database, ensuring data protection and disaster recovery readiness.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Database backups are crucial for data protection and recovery in the event of system failures or data loss. The `gpbackup` command is essential for maintaining data integrity and business continuity.</p>
+                </div>
+                <h5 class="card-title">How to use gpbackup:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use `gpbackup` to create database backups. For example, to perform a full backup of your Greenplum database, use the following command:</p>
+                    <code>Example: gpbackup --backup-dir /path/to/backup_directory</code>
+                    <hr>
+                    <code>
+                        gpbackup [OPTIONS] <br>
+                        <br>
+                        --backup-dir=BACKUPDIR  <br>
+                        --dbname=DBNAME  <br>
+                        --include-schema=SCHEMA  <br>
+                        --include-table=TABLE  <br>
+                        --exclude-schema=SCHEMA  <br>
+                        --exclude-table=TABLE  <br>
+                        --with-stats  <br>
+                        --help  <br>
+                        --version  <br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

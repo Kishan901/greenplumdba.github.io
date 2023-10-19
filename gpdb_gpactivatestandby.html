@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpactivatestandby</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,28 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpactivatestandby do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The `gpactivatestandby` command in Greenplum is used to activate a standby master host in a Greenplum Database array. It transitions the standby master to become the new active master, which is crucial for high availability and disaster recovery.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>High availability and uninterrupted database operation are critical for many organizations. The `gpactivatestandby` command is important for quickly and seamlessly switching to a standby master in case the active master encounters issues, ensuring minimal downtime.</p>
+                </div>
+                <h5 class="card-title">How to use gpactivatestandby:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use `gpactivatestandby` to promote a standby master. Typically, it's run on a host that you want to make the new active master. For example:</p>
+                    <code>Example: gpactivatestandby</code>
+                    <hr>
+                    <code>
+                        gpactivatestandby [OPTIONS] <br>
+                        <br>
+                        -h, --help <br>
+                        -V, --version <br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

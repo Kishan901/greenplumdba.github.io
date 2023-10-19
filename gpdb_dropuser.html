@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">dropuser</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,36 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does dropuser do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The dropuser command in Greenplum is used to delete (drop) a database user (role). It allows you to specify the name of the user you want to remove.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Deleting a database user is essential for managing access and security within your database. The dropuser command helps you remove users who no longer need access or should no longer have access to the database.</p>
+                </div>
+                <h5 class="card-title">How to use dropuser:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use dropuser to delete a specific database user. For example, to remove a user named "olduser," you can run:</p>
+                    <code>Example: dropuser olduser</code>
+                    <hr>
+                    <code>
+                        dropuser [OPTIONS] username <br>
+                        <br>
+                        -h, --host=hostname <br>
+                        -p, --port=port <br>
+                        -U, --username=username <br>
+                        -W, --no-password <br>
+                        -e, --echo <br>
+                        -i, --interactive <br>
+                        -q, --quiet <br>
+                        <br>
+                        dropuser --help <br>
+                        dropuser --version
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
