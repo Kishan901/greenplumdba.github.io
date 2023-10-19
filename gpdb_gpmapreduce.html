@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpmapreduce</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,36 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpmapreduce do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpmapreduce is a powerful utility in Greenplum Database that allows you to perform distributed data processing
+                    using the MapReduce programming model. It's designed to process large datasets in parallel across a Greenplum
+                    cluster, making it well-suited for complex data transformations and analytics.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Large-scale data processing is a fundamental requirement for many data-driven organizations. gpmapreduce
+                    is important because it enables parallel processing, efficient data transformations, and advanced analytics on
+                    distributed data. It contributes to improved data insights and faster decision-making.</p>
+                </div>
+                <h5 class="card-title">How to use gpmapreduce:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gpmapreduce to process data in Greenplum Database involves writing MapReduce programs and configuring
+                    the utility. Here's how to get started:</p>
+                    <code>Example: gpmapreduce -f map_reduce_script.py -d input_data_table -o output_data_table</code>
+                    <hr>
+                    <code>
+                        gpmapreduce -f <i>map_reduce_script.py</i> -d <i>input_data_table</i> -o <i>output_data_table</i> <br>
+                        [ -t <i>output_data_table_template</i> ] <br>
+                        [ -T <i>number_of_tasks</i> ] <br>
+                        [ -l <i>logfile_path</i> ] <br>
+                        [ --options <i>options_string</i> ] <br>
+                        [ --version ] <br>
+                        [ --help ]
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
