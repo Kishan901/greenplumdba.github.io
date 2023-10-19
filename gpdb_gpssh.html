@@ -76,7 +76,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">gpssh-exkeys</li>
+          <li class="breadcrumb-item active">gpssh</li>
         </ol>
       </nav>
       <hr>
@@ -87,19 +87,29 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h5 class="card-title">What does gpssh-exkeys do?</h5>
+                <h5 class="card-title">What does gpssh do?</h5>
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>gpssh-exkeys is a utility that helps establish secure, passwordless SSH key-based authentication between hosts in a Greenplum Database cluster.</p>
+                    <p>gpssh is a utility that facilitates secure and efficient remote execution of commands on multiple hosts within a Greenplum Database cluster.</p>
                 </div>
                 <h5 class="card-title">Why is it important?</h5>
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>Secure SSH key-based authentication is crucial for seamless communication between Greenplum Database segments. It enhances security and simplifies administrative tasks by eliminating the need for password input during SSH connections.</p>
+                    <p>Efficiently executing commands across multiple hosts is crucial for managing and maintaining a Greenplum Database cluster. gpssh simplifies tasks such as configuration, monitoring, and maintenance.</p>
                 </div>
-                <h5 class="card-title">How to use gpssh-exkeys:</h5>
+                <h5 class="card-title">How to use gpssh:</h5>
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>You can use gpssh-exkeys to generate and distribute SSH keys among the hosts in your Greenplum Database cluster. This ensures secure and efficient inter-host communication.</p>
-                    <p>Example:</p>
-                    <code>gpssh-exkeys -f hostfile</code>
+                    <p>You can use gpssh to execute commands remotely on hosts within a Greenplum Database cluster. For example, to check the status of the database on multiple hosts:</p>
+                    <code>gpssh -f hostfile 'gpstate -s'</code>
+                    <hr>
+                    <code>        
+                      gpssh <br>
+                      { -f hostfile | -h host1 [ -h host2 ... ] } <br>
+                      'command' <br>
+                      [ -l username ] [ -t timeout ] [ -e ] [ -v ] [ -q ] <br>
+                      [ --winsspi | --clear ] <br>
+                      [ --cn | --mdw | --smdw | --sdw | --all ] <br>
+                      [ -? | -h | --help ] <br>
+                      [ -V | --version ]
+                    </code>
                 </div>
             </div>
             
@@ -116,7 +126,8 @@
       &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>
+      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i>&nbsp;  
+      Content generated with the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon"> OpenAI.
     </div>
   </footer><!-- End Footer -->
 

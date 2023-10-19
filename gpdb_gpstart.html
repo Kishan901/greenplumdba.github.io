@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpstart</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,37 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpstart do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpstart is a crucial command for starting a Greenplum Database cluster. It initiates the startup process of all the essential components that make up the cluster.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Starting a Greenplum Database cluster accurately and efficiently is vital to ensure that your database is operational and ready to serve queries and data analysis tasks. gpstart streamlines this process.</p>
+                </div>
+                <h5 class="card-title">How to use gpstart:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpstart to launch a Greenplum Database cluster. It can be as simple as:</p>
+                    <code>gpstart -a</code>
+                    <hr>
+                    <code>        
+                      gpstart [ -a | --activate ] <br>
+                      [ -m | --mode ] [ restart | upgrade ] <br>
+                      [ --ignore-master | --ignore-data | --ignore-warn ] <br>
+                      [ --timeout seconds | -t seconds ] <br>
+                      [ --ignore-port-conflict | --port-conflict ] <br>
+                      [ --opt | -o ] <br>
+                      [ --dbinstance dir ] <br>
+                      [ --ignore-pre | --no-pre | --pre-only ] <br>
+                      [ --ignore-post | --no-post | --post-only ] <br>
+                      [ --silent | -s | --verbose | -v | --quiet | -q ] <br>
+                      [ --ms | --ds | --master | --data | --all ] <br>
+                      [ --help | -? | -h ] <br>
+                      [ --version | -V ]
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
@@ -103,7 +131,8 @@
       &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>
+      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i>&nbsp;  
+      Content generated with the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon"> OpenAI.
     </div>
   </footer><!-- End Footer -->
 
