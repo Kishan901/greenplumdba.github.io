@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gppkg</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,46 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gppkg?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gppkg is a utility used in Greenplum Database to manage and install packages that enhance the functionality of
+                        your database system. It allows users to easily add, update, or remove packages to extend the capabilities of
+                        Greenplum.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Extending the functionality of Greenplum is often required to support various data processing and analytical
+                        needs. gppkg simplifies the process of managing packages, making it essential for a flexible and efficient
+                        database environment.</p>
+                </div>
+                <h5 class="card-title">How to use gppkg:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gppkg involves executing specific commands and options. Below is an example of how to utilize gppkg:</p>
+                    <code>gppkg &lt;command&gt; [options]</code>
+                    <hr>
+                    <code>
+                        gppkg -d &lt;dbname&gt; <br>
+                        { -s &lt;schema&gt; | <br>
+                        { -t &lt;schema&gt;.&lt;table&gt; <br>
+                        [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | <br>
+                        -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } | <br>
+                        { -f | --file} &lt;config-file&gt; } <br>
+                        [ -l | --list ] <br>
+                        [ --gen_profile_only ] <br>
+                        [ -p &lt;parallel-level&gt; ] <br>
+                        [ --full ] <br>
+                        [ --skip_root_stats ] <br>
+                        [ -v | --verbose ] <br>
+                        [ --debug ] <br>
+                        [ -a ] <br>
+                        <br>
+                        gppkg { --clean_last | --clean_all } <br>
+                        gppkg --version <br>
+                        gppkg { -? | -h | --help }
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

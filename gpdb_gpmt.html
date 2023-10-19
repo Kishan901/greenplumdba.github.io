@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpmt</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,47 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gpmt?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpmt is a Greenplum Database utility designed to help users manage and monitor their Greenplum Database systems
+                        more effectively. It provides a range of features for maintenance, troubleshooting, and optimization of
+                        Greenplum clusters.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Efficient management and monitoring are vital for ensuring the high performance and reliability of a Greenplum
+                        Database. gpmt assists in various aspects such as health checks, query performance analysis, and system
+                        configuration, making it a valuable tool for Greenplum administrators.</p>
+                </div>
+                <h5 class="card-title">How to use gpmt:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gpmt involves running specific commands and options depending on your requirements. Here's an example of
+                        how to utilize gpmt:</p>
+                    <code>gpmt &lt;command&gt; [options]</code>
+                    <hr>
+                    <code>
+                        gpmt -d &lt;dbname&gt; <br>
+                        { -s &lt;schema&gt; | <br>
+                        { -t &lt;schema&gt;.&lt;table&gt; <br>
+                        [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | <br>
+                        -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } | <br>
+                        { -f | --file} &lt;config-file&gt; } <br>
+                        [ -l | --list ] <br>
+                        [ --gen_profile_only ] <br>
+                        [ -p &lt;parallel-level&gt; ] <br>
+                        [ --full ] <br>
+                        [ --skip_root_stats ] <br>
+                        [ -v | --verbose ] <br>
+                        [ --debug ] <br>
+                        [ -a ] <br>
+                        <br>
+                        gpmt { --clean_last | --clean_all } <br>
+                        gpmt --version <br>
+                        gpmt { -? | -h | --help }
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

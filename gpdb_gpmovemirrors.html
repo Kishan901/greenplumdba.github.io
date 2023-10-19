@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpmovemirrors</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,47 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gpmovemirrors?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpmovemirrors is a utility in Greenplum Database used to perform the relocation of mirror segments within a
+                        Greenplum Database system. This utility is especially useful for tasks such as rebalancing data, recovering
+                        from mirror segment failures, or optimizing system performance.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Maintaining healthy and balanced mirror segments is critical to the reliability and performance of a Greenplum
+                        Database cluster. gpmovemirrors ensures the efficient distribution of data across segments, minimizes downtime,
+                        and safeguards against data loss.</p>
+                </div>
+                <h5 class="card-title">How to use gpmovemirrors:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gpmovemirrors involves specifying the source and destination mirrors for the data movement. Below is an
+                        example of how to use the utility:</p>
+                    <code>gpmovemirrors [options] --source &lt;source-mirror&gt; --destination &lt;destination-mirror&gt;</code>
+                    <hr>
+                    <code>
+                        gpmovemirrors -d &lt;dbname&gt; <br>
+                        { -s &lt;schema&gt; | <br>
+                        { -t &lt;schema&gt;.&lt;table&gt; <br>
+                        [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | <br>
+                        -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } | <br>
+                        { -f | --file} &lt;config-file&gt; } <br>
+                        [ -l | --list ] <br>
+                        [ --gen_profile_only ] <br>
+                        [ -p &lt;parallel-level&gt; ] <br>
+                        [ --full ] <br>
+                        [ --skip_root_stats ] <br>
+                        [ -v | --verbose ] <br>
+                        [ --debug ] <br>
+                        [ -a ] <br>
+                        <br>
+                        gpmovemirrors { --clean_last | --clean_all } <br>
+                        gpmovemirrors --version <br>
+                        gpmovemirrors { -? | -h | --help }
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
