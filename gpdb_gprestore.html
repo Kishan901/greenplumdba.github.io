@@ -19,7 +19,7 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
   <!-- Vendor CSS Files -->
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -48,7 +48,8 @@
       <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
+        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span
+          class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">
@@ -57,10 +58,10 @@
 
   <!-- ======= Sidebar ======= -->
   <script>
-    $(function(){
+    $(function () {
       $("#sidebar").load("aside.html");
     });
-    </script>
+  </script>
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -84,25 +85,30 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <br>
-                <h5 class="card-title">What is gprestore?</h5>
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>gprestore is a key utility in Greenplum Database designed for restoring and recovering data, allowing you to bring
-                        your database back to a specific point in time or recover from various types of failures or data loss events.</p>
-                </div>
-                <h5 class="card-title">Why is it important?</h5>
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>Database recovery and point-in-time restoration are essential for maintaining data integrity and business continuity.
-                        gprestore is a critical tool for ensuring that your Greenplum Database remains available and reliable.</p>
-                </div>
-                <h5 class="card-title">How to use gprestore:</h5>
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <p>Using gprestore involves a series of commands and options. Here's an example of how to use gprestore:</p>
-                    <code>gprestore &lt;options&gt; &lt;backup-directory&gt;</code>
-                    <hr>
-                    <code>
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <h5 class="card-title">What is gprestore?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>gprestore is a key utility in Greenplum Database designed for restoring and recovering data, allowing
+                  you to bring
+                  your database back to a specific point in time or recover from various types of failures or data loss
+                  events.</p>
+              </div>
+              <h5 class="card-title">Why is it important?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>Database recovery and point-in-time restoration are essential for maintaining data integrity and
+                  business continuity.
+                  gprestore is a critical tool for ensuring that your Greenplum Database remains available and reliable.
+                </p>
+              </div>
+              <h5 class="card-title">How to use gprestore:</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>Using gprestore involves a series of commands and options. Here's an example of how to use gprestore:
+                </p>
+                <code>gprestore &lt;options&gt; &lt;backup-directory&gt;</code>
+                <hr>
+                <code>
                         gprestore --timestamp &lt;timestamp&gt; <br>
                         [ -a &lt;auth-method&gt; ] <br>
                         [ -h &lt;host-name&gt; ] <br>
@@ -141,11 +147,11 @@
                         <br>
                         gprestore { --version | -? } <br>
                     </code>
-                </div>
+              </div>
             </div>
-            
-            </div> 
-        </div>      
+
+          </div>
+        </div>
       </div>
     </section>
 
@@ -156,12 +162,13 @@
     <div class="copyright">
       &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
     </div>
+
     <div class="credits">
-      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal + </a>
-      <span style="margin-left: 10px; vertical-align: middle;">
-          ChatGPT <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon" style="width: 20px; height: 20px;">
-      </span>
-  </div>  
+      <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon">
+      Content generated with the help of ChatGPT by OpenAI.
+      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>
+    </div>
+
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
