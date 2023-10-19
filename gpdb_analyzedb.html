@@ -91,27 +91,40 @@
               <br>
               <h5 class="card-title">What does analyzedb do?</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <hr>
                 <p>analyzedb makes sure that your database has up-to-date information about your data. It does this by
                   running the ANALYZE command on all tables in a specified part of your database.</p>
-                <hr>
               </div>
               <h5 class="card-title">Why is it important?</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <hr>
                 <p>Good statistics are crucial for the database to understand your data. They help the database figure
                   out the best way to execute your queries efficiently.</p>
-                <hr>
               </div>
               <h5 class="card-title">How to use analyzedb:</h5>
               <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                <hr>
                 <p>You can use analyzedb to analyze a specific part of your database. For example, let's say you have a
                   database named "sales_db" and you want to analyze all the tables in the "public" schema.</p>
+                <code>Example: analyzedb -d sales_db public</code>
                 <hr>
-                <code>Example: analyzedb -d sales_db public
-                </code>
-                <hr>
+                <code>
+                  analyzedb -d &lt;dbname&gt;
+                  { -s &lt;schema&gt;  | 
+                  { -t &lt;schema&gt;.&lt;table&gt; 
+                  [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | 
+                  - x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } |
+                  { -f | --file} &lt;config-file&gt; }
+                  [ -l | --list ]
+                  [ --gen_profile_only ]   
+                  [ -p &lt;parallel-level&gt; ]
+                  [ --full ]
+                  [ --skip_root_stats ]
+                  [ -v | --verbose ]
+                  [ --debug ]
+                  [ -a ]
+                  
+                  analyzedb { --clean_last | --clean_all }
+                  analyzedb --version
+                  analyzedb { -? | -h | --help }
+                  </code>
               </div>
             </div>
           </div>
