@@ -72,12 +72,12 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
+      <h1>gpfdist</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpfdist</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +88,37 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gpfdist?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpfdist is a Greenplum utility used to transfer data between Greenplum Database and external data sources
+                    efficiently. It acts as a parallel data transfer server, facilitating data loading and unloading operations.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpfdist is important because it enables high-speed data movement, which is essential for loading large
+                    datasets into Greenplum Database or unloading data to external systems. It improves data integration
+                    performance and data availability.</p>
+                </div>
+                <h5 class="card-title">How to use gpfdist:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpfdist to transfer data by starting a gpfdist server on a host. Here's how to use it:</p>
+                    <code>Example: gpfdist -p <i>port_number</i> -d <i>data_directory</i></code>
+                    <hr>
+                    <code>
+                        gpfdist -p <i>port_number</i> -d <i>data_directory</i> <br>
+                        [ -l <i>log_filename</i> ] <br>
+                        [ -P <i>pid_filename</i> ] <br>
+                        [ -H <i>host</i> ] <br>
+                        [ --reuse <i>true|false</i> ] <br>
+                        [ --buffer <i>buffer_size</i> ] <br>
+                        [ --listen <i>address</i> ] <br>
+                        [ --ssl ] <br>
+                        [ --help ] <br>
+                        [ --version ]
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

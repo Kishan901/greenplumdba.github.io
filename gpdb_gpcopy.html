@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpcopy</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,32 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
+                <h5 class="card-title">What does gpcopy do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>gpcopy is a Greenplum Database utility used to copy data from one Greenplum cluster to another. It is a crucial tool for data migration and replication, allowing you to transfer data efficiently and reliably.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Data replication and migration are essential in various scenarios, such as setting up disaster recovery, creating a backup, or distributing data across different clusters. gpcopy ensures data consistency and integrity during the copy process.</p>
+                </div>
+                <h5 class="card-title">How to use gpcopy:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Use the gpcopy utility to copy data between Greenplum clusters. For example, to copy data from the source cluster to the target cluster, you can run:</p>
+                  <code>Example: gpcopy -s <source_connection_string> -t <target_connection_string></code>
+                  <hr>
+                  <code>
+                    gpcopy -s <source_connection_string> -t <target_connection_string>
+                    [ -a | --all ]
+                    [ -o | --overwrite ]
+                    [ -c | --compress ]
+                    [ -z | --zerocompress ]
+                    [ -v | --verbose ]
+                    <br>
+                    gpcopy --help
+                  </code>
+                </div>
               </div>
+              
             </div> 
         </div>      
       </div>

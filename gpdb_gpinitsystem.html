@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpinitsystem</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,46 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpinitsystem do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpinitsystem is a Greenplum utility used to initialize a Greenplum Database system. It sets up the primary
+                    master segment and all necessary primary and mirror segment instances in the Greenplum system.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Initializing a Greenplum system is crucial for data warehousing and analytics. It ensures that the database
+                    is configured correctly and ready for data loading and query processing.</p>
+                </div>
+                <h5 class="card-title">How to use gpinitsystem:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpinitsystem to initialize a Greenplum system. Here's how to use it:</p>
+                    <code>Example: gpinitsystem -a</code>
+                    <hr>
+                    <code>
+                        gpinitsystem -a <br>
+                        [ -B <i>mirror_type</i> ] <br>
+                        [ -D <i>data_directory</i> ] <br>
+                        [ -C <i>config_filename</i> ] <br>
+                        [ -s <i>hostname_file</i> ] <br>
+                        [ -h <i>host_list</i> ] <br>
+                        [ -P <i>port_number</i> ] <br>
+                        [ -E <i>encoding</i> ] <br>
+                        [ -M <i>segment_directory</i> ] <br>
+                        [ -S <i>number_of_segments</i> ] <br>
+                        [ -I <i>input_file</i> ] <br>
+                        [ -R ] <br>
+                        [ -n <i>number_of_mirrors</i> ] <br>
+                        [ -c ] <br>
+                        [ -X ] <br>
+                        [ -y ] <br>
+                        [ -f <i>config_file</i> ] <br>
+                        [ --silent ] <br>
+                        [ --help ] <br>
+                        [ --version ]
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

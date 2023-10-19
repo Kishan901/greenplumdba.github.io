@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpdeletesystem</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,29 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
+                <h5 class="card-title">What does gpdeletesystem do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>gpdeletesystem is a utility in Greenplum Database used to delete an entire Greenplum system, including all databases, schemas, and tables. It is a powerful tool designed for system administrators to remove an entire system from a cluster.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Deleting a Greenplum system is a critical operation. It may be necessary when a system is no longer needed or requires a fresh start. Using gpdeletesystem ensures that all system components are properly removed, freeing up resources and maintaining cluster integrity.</p>
+                </div>
+                <h5 class="card-title">How to use gpdeletesystem:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Use gpdeletesystem with caution, as it permanently deletes the specified Greenplum system. To delete a system, provide the system name and additional options:</p>
+                  <code>Example: gpdeletesystem -s <system_name></code>
+                  <hr>
+                  <code>
+                    gpdeletesystem -s <system_name>
+                    [ -y | --yes ]
+                    [ -r | --remove_db ]
+                    [ -v | --verbose ]
+                    [ -h | --help ]
+                  </code>
+                </div>
               </div>
+              
             </div> 
         </div>      
       </div>

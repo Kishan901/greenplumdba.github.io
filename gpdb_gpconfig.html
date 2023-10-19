@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpconfig</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,31 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
+                <h5 class="card-title">What does gpconfig do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>gpconfig is a Greenplum Database utility used to view, set, and manage configuration parameters for your Greenplum cluster. It allows you to modify various settings to optimize the behavior of your database system.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Configuring Greenplum Database parameters is crucial for tailoring the database's behavior to your specific workload and requirements. Proper configuration ensures optimal performance and resource utilization.</p>
+                </div>
+                <h5 class="card-title">How to use gpconfig:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  <p>Use the gpconfig utility to set and view configuration parameters. For example, to view all configuration settings, you can run:</p>
+                  <code>Example: gpconfig -s</code>
+                  <hr>
+                  <code>
+                    gpconfig [ -c | --show | -s | --setting | -t | --template | -f | --file] <config-file>
+                    [ -h | --host <hostname> ]
+                    [ -p | --port <port> ]
+                    [ -v | --verbose ]
+                    [ -a | --all ]
+                    <br>
+                    gpconfig --help
+                  </code>
+                </div>
               </div>
+              
             </div> 
         </div>      
       </div>
