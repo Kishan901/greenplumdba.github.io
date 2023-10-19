@@ -73,6 +73,7 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
+
       <hr>
       <nav>
         <ol class="breadcrumb">
@@ -104,13 +105,12 @@
                   database named "sales_db" and you want to analyze all the tables in the "public" schema.</p>
                 <code>Example: analyzedb -d sales_db public</code>
                 <hr>
-                <pre><code>
-                  analyzedb -d &lt;dbname&gt;
+                <code>analyzedb -d &lt;dbname&gt;
                   { -s &lt;schema&gt;  | 
                   { -t &lt;schema&gt;.&lt;table&gt; 
-                  [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | 
-                  - x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } |
-                  { -f | --file} &lt;config-file&gt; }
+                    [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | 
+                      -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } |
+                    { -f | --file} &lt;config-file&gt; }
                   [ -l | --list ]
                   [ --gen_profile_only ]   
                   [ -p &lt;parallel-level&gt; ]
@@ -119,11 +119,11 @@
                   [ -v | --verbose ]
                   [ --debug ]
                   [ -a ]
-                  
-                  analyzedb { --clean_last | --clean_all }
-                  analyzedb --version
-                  analyzedb { -? | -h | --help }
-                      </code></pre>
+               
+               analyzedb { --clean_last | --clean_all }
+               analyzedb --version
+               analyzedb { -? | -h | --help }
+               </code>
               </div>
             </div>
           </div>
