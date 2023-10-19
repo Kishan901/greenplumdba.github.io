@@ -83,50 +83,52 @@
       </nav>
       <hr>
     </div><!-- End Page Title -->
-
     <section class="section">
-      <div class="card">
-        <div class="card-body">
-          <br>
-          <h5 class="card-title">What does analyzedb do?</h5>
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <p>analyzedb makes sure that your database has up-to-date information about your data. It does this by
-              running the ANALYZE command on all tables in a specified part of your database.</p>
-          </div>
-          <h5 class="card-title">Why is it important?</h5>
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <p>Good statistics are crucial for the database to understand your data. They help the database figure
-              out the best way to execute your queries efficiently.</p>
-          </div>
-          <h5 class="card-title">How to use analyzedb:</h5>
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <p>You can use analyzedb to analyze a specific part of your database. For example, let's say you have a
-              database named "sales_db" and you want to analyze all the tables in the "public" schema.</p>
-            <code>Example: analyzedb -d sales_db public</code>
-            <hr>
-            <code>
-              analyzedb -d &lt;dbname&gt; <br>
-              { -s &lt;schema&gt;  | <br>
-              { -t &lt;schema&gt;.&lt;table&gt; <br>
-              [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | <br>
-              -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } | <br>
-              { -f | --file} &lt;config-file&gt; } <br>
-              [ -l | --list ] <br>
-              [ --gen_profile_only ]   <br>
-              [ -p &lt;parallel-level&gt; ] <br>
-              [ --full ] <br>
-              [ --skip_root_stats ] <br>
-              [ -v | --verbose ] <br>
-              [ --debug ] <br>
-              [ -a ] <br>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
               <br>
-              analyzedb { --clean_last | --clean_all } <br>
-              analyzedb --version <br>
-              analyzedb { -? | -h | --help }
-            </code>
-          </div>
-        </div>
-      <div>
+              <h5 class="card-title">What does analyzedb do?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>analyzedb makes sure that your database has up-to-date information about your data. It does this by
+                  running the ANALYZE command on all tables in a specified part of your database.</p>
+              </div>
+              <h5 class="card-title">Why is it important?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>Good statistics are crucial for the database to understand your data. They help the database figure
+                  out the best way to execute your queries efficiently.</p>
+              </div>
+              <h5 class="card-title">How to use analyzedb:</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <p>You can use analyzedb to analyze a specific part of your database. For example, let's say you have a
+                  database named "sales_db" and you want to analyze all the tables in the "public" schema.</p>
+                <code>Example: analyzedb -d sales_db public</code>
+                <hr>
+                <code>
+                    analyzedb -d &lt;dbname&gt; <br>
+                    { -s &lt;schema&gt;  | <br>
+                    { -t &lt;schema&gt;.&lt;table&gt; <br>
+                    [ -i &lt;col1&gt;[, &lt;col2&gt;, ...] | <br>
+                    -x &lt;col1&gt;[, &lt;col2&gt;, ...] ] } | <br>
+                    { -f | --file} &lt;config-file&gt; } <br>
+                    [ -l | --list ] <br>
+                    [ --gen_profile_only ]   <br>
+                    [ -p &lt;parallel-level&gt; ] <br>
+                    [ --full ] <br>
+                    [ --skip_root_stats ] <br>
+                    [ -v | --verbose ] <br>
+                    [ --debug ] <br>
+                    [ -a ] <br>
+                    <br>
+                    analyzedb { --clean_last | --clean_all } <br>
+                    analyzedb --version <br>
+                    analyzedb { -? | -h | --help }
+                </code>
+                <div>
+                </div>
+              </div>
+            </div>
     </section>
 
   </main><!-- End #main -->
