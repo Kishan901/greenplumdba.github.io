@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpreload</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,58 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gpreload?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpreload is a Greenplum Database utility designed for efficiently loading and ingesting data into your Greenplum
+                        cluster. It streamlines the process of populating your database with large volumes of data.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Efficiently loading data into your Greenplum Database is crucial for maintaining data accuracy and system
+                        performance. gpreload simplifies and optimizes the data loading process, making it a fundamental tool for
+                        database administrators.</p>
+                </div>
+                <h5 class="card-title">How to use gpreload:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gpreload to load data into Greenplum involves a set of commands and options. Here's an example of how to use
+                        gpreload:</p>
+                    <code>gpreload &lt;options&gt; &lt;data-file&gt;</code>
+                    <hr>
+                    <code>
+                        gpreload -d &lt;database-name&gt; <br>
+                        [ -h &lt;host-name&gt; ] <br>
+                        [ -p &lt;port&gt; ] <br>
+                        [ -U &lt;user-name&gt; ] <br>
+                        [ -a &lt;auth-method&gt; ] <br>
+                        [ -n &lt;schema-name&gt; ] <br>
+                        [ -t &lt;table-name&gt; ] <br>
+                        [ -e &lt;delimiter&gt; ] <br>
+                        [ -q &lt;quote&gt; ] <br>
+                        [ -c ] <br>
+                        [ -S ] <br>
+                        [ -D ] <br>
+                        [ -r ] <br>
+                        [ -i ] <br>
+                        [ -R &lt;reject-limit&gt; ] <br>
+                        [ -j &lt;jobs&gt; ] <br>
+                        [ -B ] <br>
+                        [ -E ] <br>
+                        [ -C ] <br>
+                        [ -L &lt;load-method&gt; ] <br>
+                        [ --userawdelimiter ] <br>
+                        [ -N ] <br>
+                        [ --log-errors &lt;error-log-file&gt; ] <br>
+                        [ -v ] <br>
+                        [ -V ] <br>
+                        [ --dry-run ] <br>
+                        [ -h ] <br>
+                        [ --help ] <br>
+                        <br>
+                        gpreload { --version | -? } <br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gprestore</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,63 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gprestore?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gprestore is a key utility in Greenplum Database designed for restoring and recovering data, allowing you to bring
+                        your database back to a specific point in time or recover from various types of failures or data loss events.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Database recovery and point-in-time restoration are essential for maintaining data integrity and business continuity.
+                        gprestore is a critical tool for ensuring that your Greenplum Database remains available and reliable.</p>
+                </div>
+                <h5 class="card-title">How to use gprestore:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using gprestore involves a series of commands and options. Here's an example of how to use gprestore:</p>
+                    <code>gprestore &lt;options&gt; &lt;backup-directory&gt;</code>
+                    <hr>
+                    <code>
+                        gprestore --timestamp &lt;timestamp&gt; <br>
+                        [ -a &lt;auth-method&gt; ] <br>
+                        [ -h &lt;host-name&gt; ] <br>
+                        [ -p &lt;port&gt; ] <br>
+                        [ -U &lt;user-name&gt; ] <br>
+                        [ -d &lt;database-name&gt; ] <br>
+                        [ -n &lt;schema-name&gt; ] <br>
+                        [ -t &lt;table-name&gt; ] <br>
+                        [ -j &lt;jobs&gt; ] <br>
+                        [ --redirect ] <br>
+                        [ -S ] <br>
+                        [ -D ] <br>
+                        [ -v ] <br>
+                        [ -V ] <br>
+                        [ -R ] <br>
+                        [ --noanalyze ] <br>
+                        [ --incremental ] <br>
+                        [ --compression-level &lt;level&gt; ] <br>
+                        [ --with-stats ] <br>
+                        [ --exclude-table &lt;table-name&gt; ] <br>
+                        [ --include-table &lt;table-name&gt; ] <br>
+                        [ -x &lt;extra-options&gt; ] <br>
+                        [ -g &lt;gp-options&gt; ] <br>
+                        [ -I &lt;interconnect-type&gt; ] <br>
+                        [ --encrypt ] <br>
+                        [ --no-encrypt ] <br>
+                        [ -k ] <br>
+                        [ --plugin &lt;plugin&gt; ] <br>
+                        [ -T ] <br>
+                        [ -c &lt;configuration-file&gt; ] <br>
+                        [ --database-config &lt;db-config&gt; ] <br>
+                        [ --table-filter &lt;table-filter&gt; ] <br>
+                        [ --dry-run ] <br>
+                        [ -h ] <br>
+                        [ --help ] <br>
+                        <br>
+                        gprestore { --version | -? } <br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
@@ -104,7 +158,10 @@
     </div>
     <div class="credits">
       Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>
-    </div>
+      <span style="margin-left: 10px; vertical-align: middle;">
+          ChatGPT <img src="chatgpt-icon.png" alt="ChatGPT Icon" style="width: 20px; height: 20px;">
+      </span>
+  </div>  
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

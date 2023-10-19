@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gprecoverseg</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,44 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gprecoverseg?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gprecoverseg is a utility in Greenplum Database used for recovering and repairing failed segments within a
+                        Greenplum cluster. It is essential for maintaining the integrity and availability of your database system
+                        when segment failures occur.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Data segment failures can lead to data unavailability and require prompt recovery to ensure minimal downtime
+                        and data loss. gprecoverseg plays a crucial role in the maintenance and reliability of your Greenplum
+                        database.</p>
+                </div>
+                <h5 class="card-title">How to use gprecoverseg:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Recovering segments in Greenplum involves executing specific commands and options. Below is an example of how
+                        to use gprecoverseg:</p>
+                    <code>gprecoverseg &lt;options&gt; [--status]</code>
+                    <hr>
+                    <code>
+                        gprecoverseg -d &lt;dbname&gt; <br>
+                        { -a | --all } <br>
+                        { -s &lt;content-address&gt; | <br>
+                        { -l &lt;content-location&gt; | <br>
+                        [ -i &lt;content-id&gt; ] } } <br>
+                        [ --ignore-warnings ] <br>
+                        [ --yes ] <br>
+                        [ --status ] <br>
+                        [ -v | --verbose ] <br>
+                        [ -t | --timeout &lt;timeout&gt; ] <br>
+                        [ -n | --ignore-segment-configuration-errors ] <br>
+                        [ -h | --help ] <br>
+                        <br>
+                        gprecoverseg { --version | --usage } <br>
+                        gprecoverseg { -? | -h | --help }
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
