@@ -77,6 +77,7 @@
     function generateHTMLFromExcel(currentFileName) {
       // Specify the Excel file path
       const excelFilePath = 'assets/data/questions_answer.xlsx';
+
       // Specify the sheet name
       const sheetName = 'Sheet3'; // Replace with your sheet name
 
@@ -102,36 +103,29 @@
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
 
-            // Create the card body
-            const cardBodyDiv = document.createElement('div');
-            cardBodyDiv.classList.add('card-body');
-
-            // Iterate through the columns and create an h5 tag and paragraph for each
-            for (let j = 0; j < matchedRow.length; j++) {
+            // Iterate through the columns and create the HTML structure
+            for (let j = 2; j <= 6; j++) {
               // Create an h5 tag for the column name
               const h5Title = document.createElement('h5');
               h5Title.classList.add('card-title');
-              h5Title.textContent = columnNames[j];
+              h5Title.textContent = columnNames[j - 2];
 
               // Create an alert div for styling
               const alertDiv = document.createElement('div');
               alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
               alertDiv.role = 'alert';
 
-              // Create a paragraph for the column data
-              const pData = document.createElement('p');
-              pData.textContent = matchedRow[j];
+              // Create a paragraph or code block based on the column
+              const content = document.createElement(j === 2 || j === 3 ? 'p' : 'code');
+              content.textContent = matchedRow[j];
 
-              // Append the h5 tag and paragraph to the alert div
+              // Append the h5 tag and content to the alert div
               alertDiv.appendChild(h5Title);
-              alertDiv.appendChild(pData);
+              alertDiv.appendChild(content);
 
-              // Append the alert div to the card body
-              cardBodyDiv.appendChild(alertDiv);
+              // Append the alert div to the card
+              cardDiv.appendChild(alertDiv);
             }
-
-            // Append the card body to the card
-            cardDiv.appendChild(cardBodyDiv);
 
             // Append the card to the card body container
             cardBody.appendChild(cardDiv);
