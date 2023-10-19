@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpss</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,24 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpss do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpss starts an instance of the Greenplum Database Streaming Server (GPSS). It serves as a critical component for streaming data processing in Greenplum Database.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>GPSS is essential for processing streaming data efficiently in Greenplum Database. It ensures that real-time data streams are ingested, processed, and made available for query processing.</p>
+                </div>
+                <h5 class="card-title">How to use gpss:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can start a GPSS instance with various options and configurations. It's important for streaming data workflows, and it can be customized based on your specific requirements.</p>
+                    <p>Example:</p>
+                    <code>gpss --debug-port 8915 --log-dir /home/gpadmin/logs.gpss --config gpsscfg.json &</code>
+                    <p>View the debug information available from the GPSS debug server:</p>
+                    <code>curl http://127.0.0.1:8915/debug/pprof/</code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

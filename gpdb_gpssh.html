@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpssh-exkeys</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,22 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpssh-exkeys do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpssh-exkeys is a utility that helps establish secure, passwordless SSH key-based authentication between hosts in a Greenplum Database cluster.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Secure SSH key-based authentication is crucial for seamless communication between Greenplum Database segments. It enhances security and simplifies administrative tasks by eliminating the need for password input during SSH connections.</p>
+                </div>
+                <h5 class="card-title">How to use gpssh-exkeys:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpssh-exkeys to generate and distribute SSH keys among the hosts in your Greenplum Database cluster. This ensures secure and efficient inter-host communication.</p>
+                    <p>Example:</p>
+                    <code>gpssh-exkeys -f hostfile</code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

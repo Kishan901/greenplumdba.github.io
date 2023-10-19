@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpscp</li>
         </ol>
       </nav>
       <hr>
@@ -87,9 +86,24 @@
         <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is gpscp?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpscp is a utility that allows you to securely copy files and directories to or from a Greenplum Database master or segment host.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Securely transferring files to or from Greenplum hosts is essential for managing data, configuration files, and more.</p>
+                </div>
+                <h5 class="card-title">How to use gpscp:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpscp to copy files and directories between your local machine and Greenplum hosts. Below is the basic syntax:</p>
+                    <code>gpscp [options] source [source...] destination</code>
+                    <br>
+                    <p>For example, to copy a local file "localfile.txt" to the remote host:</p>
+                    <code>gpscp localfile.txt gpadmin@hostname:/path/to/destination</code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
