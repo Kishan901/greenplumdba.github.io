@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">plcontainer Configuration File</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,26 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is the plcontainer Configuration File?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The plcontainer configuration file is used to define the settings and parameters for running user-defined functions within Docker containers. This file is essential for specifying the behavior, security settings, and resource management of plcontainer instances.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The plcontainer configuration file is crucial for customizing the behavior and security of user-defined functions running within Docker containers. It allows you to control aspects like Docker image paths, resource allocation, and network settings, ensuring the efficient and secure execution of functions.</p>
+                </div>
+                <h5 class="card-title">How to use the plcontainer Configuration File:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using the plcontainer configuration file involves specifying parameters and settings. Below is an example of the configuration file content:</p>
+                    <code>plcontainer.configuration.1.directory: '/opt/plcontainer'</code>
+                    <p>In this example, the directory where plcontainer data will be stored in the container is set to '/opt/plcontainer'.</p>
+                    <code>plcontainer.configuration.2.image: 'my_docker_image'</code>
+                    <p>Here, the Docker image to be used for running functions is defined as 'my_docker_image'.</p>
+                    <code>plcontainer.configuration.3.shared_directory_mapping: '/data:/mnt/data:rw'</code>
+                    <p>You can also configure shared directory mappings between the host and the container, as shown in this example.</p>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

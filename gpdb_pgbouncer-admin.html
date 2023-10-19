@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">pgbouncer-admin</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,32 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does pgbouncer-admin do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Pgbouncer-admin is a utility used for managing and monitoring a PgBouncer connection pooler. It provides various commands and options to control PgBouncer instances and query their status and statistics.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Pgbouncer-admin is important for efficiently managing and monitoring PgBouncer, which plays a crucial role in optimizing database connections and reducing the workload on the PostgreSQL database server. It helps maintain a stable and responsive database environment.</p>
+                </div>
+                <h5 class="card-title">How to use pgbouncer-admin:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use pgbouncer-admin to perform various administrative tasks on PgBouncer. Here's an example of how to use it to check the status of a PgBouncer instance:</p>
+                    <code>pgbouncer-admin <connection-string> show version</code>
+                    <hr>
+                    <code>
+                        Common Commands:
+                        - <connection-string>: Specify the connection string for accessing the PgBouncer instance.
+                        - show version: Display the PgBouncer version information.
+                        - show pools: List all connection pools and their statistics.
+                        - show stats: Retrieve various statistics and performance metrics.
+                        - reload: Reload configuration without restarting.
+                        - suspend: Suspend a PgBouncer instance.
+                        - resume: Resume a suspended PgBouncer instance.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

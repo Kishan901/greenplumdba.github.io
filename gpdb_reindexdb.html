@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">reindexdb</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,32 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does reindexdb do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>reindexdb is a command used to rebuild indexes in a PostgreSQL or Greenplum database. It helps maintain and optimize the index structures to improve database performance.</p>
+                </div>
+            
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Rebuilding indexes is essential for ensuring the efficiency and reliability of a database system. It helps resolve index fragmentation and improves query performance.</p>
+                </div>
+            
+                <h5 class="card-title">How to use reindexdb:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use the reindexdb command to rebuild indexes in your database. Here are some usage examples:</p>
+                    <code>Example: reindexdb -d mydb</code>
+                    <hr>
+                    <code>
+                        reindexdb -d &lt;dbname&gt; [ -s &lt;schema&gt; ] [ -t &lt;table&gt; ] [ -i &lt;index&gt; ] [ --all ]<br>
+                        -d &lt;dbname&gt;     - The name of the target database to rebuild indexes.<br>
+                        -s &lt;schema&gt;     - The name of the schema within the database (optional).<br>
+                        -t &lt;table&gt;      - The name of the table within the schema (optional).<br>
+                        -i &lt;index&gt;      - The name of a specific index to rebuild (optional).<br>
+                        --all               - Rebuild all indexes in the specified database.<br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

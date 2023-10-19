@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">vacuumdb</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,32 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does vacuumdb do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>The `vacuumdb` command is used to manage and optimize PostgreSQL or Greenplum database storage by performing a vacuum operation. Vacuuming helps reclaim storage space, prevent data bloat, and improve query performance.</p>
+                </div>
+            
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Regularly running the `vacuumdb` command is essential for maintaining database health and ensuring efficient database operations. It helps in reclaiming space from outdated or deleted data and updating statistics for query optimization.</p>
+                </div>
+            
+                <h5 class="card-title">How to use vacuumdb:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use the `vacuumdb` command to manage database storage. Here are some common usage examples:</p>
+                    <code>Example: vacuumdb -d mydb</code>
+                    <hr>
+                    <code>
+                        vacuumdb -d &lt;dbname&gt; [ -j &lt;jobs&gt; ] [ -t &lt;table&gt; ] [ -v ] [ --full ]<br>
+                        -d &lt;dbname&gt;   - The name of the target database to vacuum.<br>
+                        -j &lt;jobs&gt;     - The number of parallel jobs to run (optional).<br>
+                        -t &lt;table&gt;    - The name of the specific table to vacuum (optional).<br>
+                        -v               - Verbose mode, print detailed information (optional).<br>
+                        --full           - Perform a full vacuum, including index rebuild (optional).<br>
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">pgbouncer.ini</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,44 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is pgbouncer.ini?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pgbouncer.ini is the configuration file used to set up and define the behavior of PgBouncer, a lightweight connection pooler for PostgreSQL databases. It contains various settings and parameters that control how PgBouncer manages database connections and queries.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pgbouncer.ini is of great importance as it allows you to customize and optimize the behavior of PgBouncer to suit the needs of your application and database environment. By configuring this file, you can control connection pooling, query routing, and other critical aspects of database performance.</p>
+                </div>
+                <h5 class="card-title">How to configure pgbouncer.ini:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Configuring pgbouncer.ini involves modifying settings and parameters according to your requirements. Below is a basic example of a pgbouncer.ini configuration:</p>
+                    <code>
+                        [databases]
+                        mydb = host=yourdbhost port=5432 dbname=mydb
+            
+                        [pgbouncer]
+                        listen_addr = *
+                        listen_port = 6432
+                        auth_type = md5
+                        auth_file = /etc/pgbouncer/userlist.txt
+                        admin_users = postgres
+                        stats_users = postgres
+                    </code>
+                    <hr>
+                    <code>
+                        Key Configuration Sections:
+                        - [databases]: Define database connection parameters.
+                        - [pgbouncer]: Configure PgBouncer behavior.
+                        - listen_addr: Listen address for PgBouncer.
+                        - listen_port: Listen port for PgBouncer.
+                        - auth_type: Authentication method (e.g., md5 or trust).
+                        - auth_file: Path to the userlist file for authentication.
+                        - admin_users: List of users with admin privileges.
+                        - stats_users: List of users with access to statistics.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

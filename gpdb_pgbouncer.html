@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">pgbouncer</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,30 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does pgbouncer do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>PgBouncer is a lightweight connection pooler for PostgreSQL databases. It sits between the client applications and the PostgreSQL database server, efficiently managing database connections and reducing the workload on the database.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>PgBouncer is important for optimizing database performance and resource utilization. It helps to handle a large number of client connections, balances the load on the database server, and reduces connection overhead.</p>
+                </div>
+                <h5 class="card-title">How to use pgbouncer:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can configure and use PgBouncer to manage database connections effectively. Here's a basic example of how to start PgBouncer:</p>
+                    <code>pgbouncer [-d <configfile>] [-R]</code>
+                    <hr>
+                    <code>
+                        Common Options:
+                        -d <configfile>: Specify the configuration file for PgBouncer.
+                        -R: Run PgBouncer in the foreground (useful for debugging).
+                        -H <host>: Set the host for the PgBouncer server.
+                        -p <port>: Set the port for the PgBouncer server.
+                        -u <user>: Set the user under which PgBouncer should run.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

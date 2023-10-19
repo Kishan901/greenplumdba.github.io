@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">psql</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,25 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What is psql?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>psql is an interactive terminal-based front-end to PostgreSQL, a powerful open-source relational database management system. It provides a command-line interface for users to interact with PostgreSQL databases, execute SQL queries, and perform various database tasks.</p>
+                </div>
+                <h5 class="card-title">Why is psql important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>psql is important as it offers a flexible and efficient way to work with PostgreSQL databases. It allows users to connect to databases, query data, create and manage database objects, and perform administrative tasks directly from the command line. It is a critical tool for database administrators, developers, and analysts.</p>
+                </div>
+                <h5 class="card-title">How to use psql:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Using psql involves connecting to a PostgreSQL database and executing SQL commands. Here is an example of how to connect to a database:</p>
+                    <code>psql -U username -d database_name -h hostname -p port</code>
+                    <p>In this command, replace "username" with your PostgreSQL username, "database_name" with the name of the database you want to connect to, "hostname" with the server's hostname or IP address, and "port" with the database server's port number.</p>
+                    <hr>
+                    <code>SELECT * FROM your_table;</code>
+                    <p>You can run SQL queries like the one above to retrieve data from a table in the connected database.</p>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
