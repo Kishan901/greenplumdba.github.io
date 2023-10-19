@@ -19,7 +19,7 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
   <!-- Vendor CSS Files -->
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -48,7 +48,8 @@
       <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
+        <span class="desktop-text" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span><span
+          class="mobile-text" style="color: #012970; font-family: 'Ubuntu';">GPDBA</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">
@@ -57,10 +58,10 @@
 
   <!-- ======= Sidebar ======= -->
   <script>
-    $(function(){
+    $(function () {
       $("#sidebar").load("aside.html");
     });
-    </script>
+  </script>
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -85,25 +86,36 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <br>
-                What does analyzedb do?
-analyzedb makes sure that your database has up-to-date information about your data. It does this by running the ANALYZE command on all tables in a specified part of your database.
-
-Why is it important?
-Good statistics are crucial for the database to understand your data. They help the database figure out the best way to execute your queries efficiently.
-
-How to use analyzedb:
-You can use analyzedb to analyze a specific part of your database. For example, let's say you have a database named "sales_db" and you want to analyze all the tables in the "public" schema.
-Example:
-
-analyzedb -d sales_db public
-
-In this example, analyzedb is instructed to analyze the "public" schema in the "sales_db" database. This ensures that the database has accurate information to make queries run faster.
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <h5 class="card-title">What does analyzedb do?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>analyzedb makes sure that your database has up-to-date information about your data. It does this by
+                  running the ANALYZE command on all tables in a specified part of your database.</p>
+                <hr>
               </div>
-            </div> 
-        </div>      
+              <h5 class="card-title">Why is it important?</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>Good statistics are crucial for the database to understand your data. They help the database figure
+                  out the best way to execute your queries efficiently.</p>
+                <hr>
+              </div>
+              <h5 class="card-title">How to use analyzedb:</h5>
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <hr>
+                <p>You can use analyzedb to analyze a specific part of your database. For example, let's say you have a
+                  database named "sales_db" and you want to analyze all the tables in the "public" schema.</p>
+                <hr>
+                <code>Example: analyzedb -d sales_db public
+                </code>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
