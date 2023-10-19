@@ -77,7 +77,6 @@
     function generateHTMLFromExcel(currentFileName) {
       // Specify the Excel file path
       const excelFilePath = 'assets/data/questions_answer.xlsx';
-
       // Specify the sheet name
       const sheetName = 'Sheet3'; // Replace with your sheet name
 
@@ -92,11 +91,14 @@
           const worksheet = workbook.Sheets[sheetName];
           const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-          // Find the row where the first column matches the current file name
-          const row = jsonData.find(row => row[0] === currentFileName);
+          // Find the row that matches the current file name (searching in column 2)
+          const matchedRow = jsonData.find(row => row[1] === currentFileName);
 
-          if (row) {
-            // Create a card element
+          if (matchedRow) {
+            // Define the static column names
+            const columnNames = ['What does analyzedb do?', 'Why is it important?', 'How to use analyzedb:'];
+
+            // Create a card element for the matched row
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
 
@@ -104,31 +106,35 @@
             const cardBodyDiv = document.createElement('div');
             cardBodyDiv.classList.add('card-body');
 
-            // Iterate through the columns and create tags
-            for (const tagData of row) {
+            // Iterate through the columns and create an h5 tag and paragraph for each
+            for (let j = 0; j < matchedRow.length; j++) {
+              // Create an h5 tag for the column name
               const h5Title = document.createElement('h5');
               h5Title.classList.add('card-title');
-              h5Title.textContent = 'Tag Title'; // Replace with appropriate tag titles
+              h5Title.textContent = columnNames[j];
 
+              // Create an alert div for styling
               const alertDiv = document.createElement('div');
               alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
               alertDiv.role = 'alert';
 
-              // Create a paragraph element with tag content (tagData)
-              const pTag = document.createElement('p');
-              pTag.textContent = tagData;
+              // Create a paragraph for the column data
+              const pData = document.createElement('p');
+              pData.textContent = matchedRow[j];
 
-              // Append elements to the card body
-              alertDiv.appendChild(pTag);
-              cardBodyDiv.appendChild(h5Title);
+              // Append the h5 tag and paragraph to the alert div
+              alertDiv.appendChild(h5Title);
+              alertDiv.appendChild(pData);
+
+              // Append the alert div to the card body
               cardBodyDiv.appendChild(alertDiv);
             }
 
-            // Append the card to the card body container
+            // Append the card body to the card
             cardDiv.appendChild(cardBodyDiv);
+
+            // Append the card to the card body container
             cardBody.appendChild(cardDiv);
-          } else {
-            console.log('Row not found for the current file name.');
           }
         })
         .catch(error => console.log(error));
@@ -146,15 +152,12 @@
       </nav>
       <hr>
     </div><!-- End Page Title -->
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
 
-          </div>
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <br>
         </div>
-      </div>
-      </div>
       </div>
     </section>
 
