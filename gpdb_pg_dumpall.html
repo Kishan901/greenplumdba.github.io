@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">pgdumpall</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,30 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does pgdumpall do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pg_dumpall is a PostgreSQL command-line utility used for performing logical backups of all databases within a PostgreSQL cluster. It allows you to create a consistent point-in-time snapshot of the entire cluster, including all databases, roles, and schemas.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Logical backups created with pg_dumpall are essential for data recovery, migrating PostgreSQL clusters, and replicating data across database instances. It provides a comprehensive backup of the entire cluster's configuration and data.</p>
+                </div>
+                <h5 class="card-title">How to use pgdumpall:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pg_dumpall is typically used with options to specify output files and authentication parameters. Here's a basic usage example:</p>
+                    <code>pg_dumpall [option...] > outputfile</code>
+                    <hr>
+                    <code>
+                        Common Options:
+                        -U, --username: The name of the user to connect as.
+                        -h, --host: Database server host or socket directory.
+                        -f, --file: Output file for the dump.
+                        -c, --clean: Output commands to clean (drop) database objects before recreating them.
+                        -v, --verbose: Print detailed progress messages.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

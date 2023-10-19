@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">pgdump</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,31 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does pgdump do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pg_dump is a PostgreSQL command-line utility used for performing logical backups of a PostgreSQL database. It allows you to extract data and schema definitions in a format that can be used to restore the database to a specific state.</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Logical backups are essential for creating a consistent point-in-time snapshot of your database. They are crucial for data recovery, migrating databases, or replicating data across database instances.</p>
+                </div>
+                <h5 class="card-title">How to use pgdump:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>pg_dump is a versatile tool with various options. Here's a basic usage example:</p>
+                    <code>pg_dump [option...] [dbname]</code>
+                    <hr>
+                    <code>
+                        Common Options:
+                        -U, --username: The name of the user to connect as.
+                        -h, --host: Database server host or socket directory.
+                        -f, --file: Output file for the dump.
+                        -t, --table: Dump only the named table or tables.
+                        -c, --clean: Output commands to clean (drop) database objects before recreating them.
+                        -v, --verbose: Print detailed progress messages.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>

@@ -72,12 +72,11 @@
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>In-Progress</h1>
       <hr>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">In-Progress</li>
+          <li class="breadcrumb-item active">gpstop</li>
         </ol>
       </nav>
       <hr>
@@ -88,8 +87,33 @@
             <div class="card">
               <div class="card-body">
                 <br>
-                <h3>Page In Progress</h3>  
-              </div>
+                <h5 class="card-title">What does gpstop do?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>gpstop is a command used to stop a Greenplum Database cluster. It gracefully shuts down the cluster's components, including primary and mirror segments, the master instance, and standby master (if configured).</p>
+                </div>
+                <h5 class="card-title">Why is it important?</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>Properly stopping a Greenplum Database cluster is crucial to ensure data integrity and avoid corruption. gpstop helps in maintaining a consistent state during maintenance tasks, upgrades, or system shutdowns.</p>
+                </div>
+                <h5 class="card-title">How to use gpstop:</h5>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p>You can use gpstop to gracefully stop a Greenplum Database cluster. The basic usage is as follows:</p>
+                    <code>gpstop [-a | --all] [-M | --mode <mode>] [-m | --master] [-q | --quick] [-r | --resync] [-s | --standby] [-w | --wait] [-h | --help] [-v | --version]</code>
+                    <hr>
+                    <code>        
+                        -a, --all: Stop all segments and master instance.
+                        -M, --mode <mode>: Specify stop mode (e.g., smart, fast, or immediate).
+                        -m, --master: Stop the master instance.
+                        -q, --quick: Quickly stop, avoiding graceful shutdown.
+                        -r, --resync: Resynchronize the standby master.
+                        -s, --standby: Stop the standby master.
+                        -w, --wait: Wait for all processes to stop.
+                        -h, --help: Show command help.
+                        -v, --version: Show command version.
+                    </code>
+                </div>
+            </div>
+            
             </div> 
         </div>      
       </div>
