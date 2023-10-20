@@ -60,7 +60,7 @@
     <!-- ======= Sidebar ======= -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            fillCardFromExcel();
+            fillCardFromGoogleSheet();
             fetchDataAndAppendmu();
         });
     </script>
@@ -73,70 +73,43 @@
     <aside id="sidebar" class="sidebar">
     </aside><!-- End Sidebar-->
     <script>
-        function fillCardFromExcel() {
+        function fillCardFromGoogleSheet() {
+            const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/4';
             const cardBody = document.querySelector('.card-body');
 
-            fetch('assets/data/questions_answer.xlsx')
-                .then(response => response.arrayBuffer())
-                .then(buffer => {
-                    const data = new Uint8Array(buffer);
-                    const workbook = XLSX.read(data, { type: 'array' });
+            fetch(opensheetURL) // Fetch data from the Google Sheets URL
+                .then(response => response.json()) // Parse the response as JSON
+                .then(data => {
+                    data.forEach((row, index) => {
+                        const date = row.date;
+                        const desc = row.desc;
+                        const email = row.emailaddress; // If your column name contains a space
 
-                    // Change the index to 3 for "Sheet4" (0-based index)
-                    const worksheet = workbook.Sheets[workbook.SheetNames[3]];
-
-                    const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-                    rows.forEach((row, index) => {
-                        if (index > 0) {
-                            const date = new Date(row[0]);
-                            const description = row[1];
-                            const email = row[2];
-
-                            // Create the main alert container
-                            const alertDiv = document.createElement('div');
-                            alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-
-                            // Create the date element
-                            const pDate = document.createElement('p');
-                            pDate.textContent = date.toDateString();
-
-                            // Create a horizontal line
-                            const hr1 = document.createElement('hr');
-
-                            // Create the description element
-                            const preDescription = document.createElement('pre');
-                            preDescription.textContent = description;
-
-                            // Create a close button
-                            const btnClose = document.createElement('button');
-                            btnClose.setAttribute('type', 'button');
-                            btnClose.setAttribute('class', 'btn-close');
-                            btnClose.setAttribute('data-bs-dismiss', 'alert');
-                            btnClose.setAttribute('aria-label', 'Close');
-
-                            // Create another horizontal line
-                            const hr2 = document.createElement('hr');
-
-                            // Create the email element
-                            const preEmail = document.createElement('pre');
-                            preEmail.textContent = `Email: ${email}`;
-
-                            // Append all elements to the main alert container
-                            alertDiv.appendChild(pDate);
-                            alertDiv.appendChild(hr1);
-                            alertDiv.appendChild(preDescription);
-                            alertDiv.appendChild(btnClose);
-                            alertDiv.appendChild(hr2);
-                            alertDiv.appendChild(preEmail);
-
-                            // Append the main alert container to the card body
-                            cardBody.appendChild(alertDiv);
-                        }
+                        const alertDiv = document.createElement('div');
+                        alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
+                        const pTagDate = document.createElement('p');
+                        const preTagDesc = document.createElement('pre');
+                        const pTagEmail = document.createElement('p');
+                        const btnClose = document.createElement('button');
+                        btnClose.setAttribute('type', 'button');
+                        btnClose.setAttribute('class', 'btn-close');
+                        btnClose.setAttribute('data-bs-dismiss', 'alert');
+                        btnClose.setAttribute('aria-label', 'Close');
+                        pTagDate.textContent = date;
+                        preTagDesc.textContent = desc;
+                        pTagEmail.textContent = `Email: ${email}`;
+                        alertDiv.appendChild(pTagDate);
+                        alertDiv.appendChild(document.createElement('hr'));
+                        alertDiv.appendChild(preTagDesc);
+                        alertDiv.appendChild(document.createElement('hr'));
+                        alertDiv.appendChild(pTagEmail);
+                        alertDiv.appendChild(btnClose);
+                        cardBody.appendChild(alertDiv);
                     });
                 })
-                .catch(error => console.log(error));
+                .catch(error => console.error(error));
         }
+
 
 
     </script>
