@@ -76,13 +76,13 @@
     function fillCardFromGoogleSheet() {
       const cardBody = document.querySelector('.card-body');
       // Replace 'YOUR_GOOGLE_SHEET_URL' with the actual Google Sheet published URL
-      const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/interview_questions';
+      const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Interview_Questions_Form';
       fetch(opensheetURL) // Fetch data from the Google Sheets URL
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
           data.forEach((row, index) => {
-            const question = row.question;
-            const answer = row.answer;
+            const question = row.Question;
+            const answer = row.Answer;
 
             const alertDiv = document.createElement('div');
             alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
