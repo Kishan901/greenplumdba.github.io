@@ -75,51 +75,34 @@
   <script>
     function fillCardFromGoogleSheet() {
       const cardBody = document.querySelector('.card-body');
-
       // Replace 'YOUR_GOOGLE_SHEET_URL' with the actual Google Sheet published URL
       const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/interview_questions';
-
-      fetch(opensheetURL)
-        .then(response => response.text())
+      fetch(opensheetURL) // Fetch data from the Google Sheets URL
+        .then(response => response.json()) // Parse the response as JSON
         .then(data => {
-          // Parse the HTML content of the published Google Sheet
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(data, 'text/html');
+          data.forEach((row, index) => {
+            const question = row.question;
+            const answer = row.answer;
 
-          // Find all rows in the Google Sheet (assuming they're structured in a table)
-          const rows = htmlDoc.querySelectorAll('tr');
-
-          rows.forEach((row, index) => {
-            // Extract data from columns A, B, and C
-            const cells = row.querySelectorAll('td');
-            if (cells.length >= 3) {
-              const question = cells[0].textContent;
-              const email = cells[1].textContent;
-              const answer = cells[2].textContent;
-
-              const alertDiv = document.createElement('div');
-              alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-              const pTagQuestion = document.createElement('p');
-              const pTagEmail = document.createElement('p');
-              const preTag = document.createElement('pre');
-              const btnClose = document.createElement('button');
-              btnClose.setAttribute('type', 'button');
-              btnClose.setAttribute('class', 'btn-close');
-              btnClose.setAttribute('data-bs-dismiss', 'alert');
-              btnClose.setAttribute('aria-label', 'Close');
-              pTagQuestion.textContent = question;
-              pTagEmail.textContent = `Email: ${email}`;
-              preTag.textContent = answer;
-              alertDiv.appendChild(pTagQuestion);
-              alertDiv.appendChild(pTagEmail);
-              alertDiv.appendChild(document.createElement('hr'));
-              alertDiv.appendChild(preTag);
-              alertDiv.appendChild(btnClose);
-              cardBody.appendChild(alertDiv);
-            }
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
+            const pTag = document.createElement('p');
+            const preTag = document.createElement('pre');
+            const btnClose = document.createElement('button');
+            btnClose.setAttribute('type', 'button');
+            btnClose.setAttribute('class', 'btn-close');
+            btnClose.setAttribute('data-bs-dismiss', 'alert');
+            btnClose.setAttribute('aria-label', 'Close');
+            pTag.textContent = question;
+            preTag.textContent = answer;
+            alertDiv.appendChild(pTag);
+            alertDiv.appendChild(document.createElement('hr'));
+            alertDiv.appendChild(preTag);
+            alertDiv.appendChild(btnClose);
+            cardBody.appendChild(alertDiv);
           });
         })
-        .catch(error => console.log(error));
+        .catch(error => console.error(error));
     }
 
   </script>
