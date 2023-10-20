@@ -74,16 +74,16 @@
     </aside><!-- End Sidebar-->
     <script>
         function fillCardFromGoogleSheet() {
-            const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/4';
+            const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Jobs_Post';
             const cardBody = document.querySelector('.card-body');
 
             fetch(opensheetURL) // Fetch data from the Google Sheets URL
                 .then(response => response.json()) // Parse the response as JSON
                 .then(data => {
                     data.forEach((row, index) => {
-                        const date = row.date;
-                        const desc = row.desc;
-                        const email = row.emailaddress; // If your column name contains a space
+                        const date = row.Timestamp;
+                        const desc = row['Job Description']
+                        const email = row.Contact; // If your column name contains a space
 
                         const alertDiv = document.createElement('div');
                         alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
