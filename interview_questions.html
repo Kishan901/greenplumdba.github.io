@@ -60,7 +60,7 @@
   <!-- ======= Sidebar ======= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fillCardFromExcel();
+      fillCardFromGoogleSheet();
       fetchDataAndAppendmu();
     });
   </script>
@@ -73,43 +73,41 @@
   <aside id="sidebar" class="sidebar">
   </aside><!-- End Sidebar-->
   <script>
-    function fillCardFromExcel() {
+    function fillCardFromGoogleSheet() {
       const cardBody = document.querySelector('.card-body');
 
-      fetch('assets/data/questions_answer.xlsx')
-        .then(response => response.arrayBuffer())
-        .then(buffer => {
-          const data = new Uint8Array(buffer);
-          const workbook = XLSX.read(data, { type: 'array' });
-          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      // Replace 'YOUR_OPEN_SHEET_URL' with the actual OpenSheet URL
+      const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Sheet1';
 
-          rows.forEach((row, index) => {
-            if (index > 0) {
-              const question = row[0];
-              const answer = row[1];
+      fetch(opensheetURL)
+        .then(response => response.json())
+        .then(data => {
+          // Assuming data is an array of objects with 'question' and 'answer' properties
+          data.forEach(item => {
+            const question = item.question;
+            const answer = item.answer;
 
-              const alertDiv = document.createElement('div');
-              alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-              const pTag = document.createElement('p');
-              const preTag = document.createElement('pre');
-              const btnClose = document.createElement('button');
-              btnClose.setAttribute('type', 'button');
-              btnClose.setAttribute('class', 'btn-close');
-              btnClose.setAttribute('data-bs-dismiss', 'alert');
-              btnClose.setAttribute('aria-label', 'Close');
-              pTag.textContent = question;
-              preTag.textContent = answer;
-              alertDiv.appendChild(pTag);
-              alertDiv.appendChild(document.createElement('hr'));
-              alertDiv.appendChild(preTag);
-              alertDiv.appendChild(btnClose);
-              cardBody.appendChild(alertDiv);
-            }
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
+            const pTag = document.createElement('p');
+            const preTag = document.createElement('pre');
+            const btnClose = document.createElement('button');
+            btnClose.setAttribute('type', 'button');
+            btnClose.setAttribute('class', 'btn-close');
+            btnClose.setAttribute('data-bs-dismiss', 'alert');
+            btnClose.setAttribute('aria-label', 'Close');
+            pTag.textContent = question;
+            preTag.textContent = answer;
+            alertDiv.appendChild(pTag);
+            alertDiv.appendChild(document.createElement('hr'));
+            alertDiv.appendChild(preTag);
+            alertDiv.appendChild(btnClose);
+            cardBody.appendChild(alertDiv);
           });
         })
         .catch(error => console.log(error));
     }
+
   </script>
   <main id="main" class="main">
     <div class="pagetitle">
@@ -139,8 +137,10 @@
       &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i>&nbsp;  
-      Content generated with the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon"> OpenAI.
+      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>&nbsp;&nbsp;<i
+        class="bi bi-plus-square-fill"></i>&nbsp;
+      Content generated with the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon">
+      OpenAI.
     </div>
   </footer><!-- End Footer -->
 
