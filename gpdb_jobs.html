@@ -89,34 +89,55 @@
 
                     rows.forEach((row, index) => {
                         if (index > 0) {
-                            const question = row[0];
-                            const email = row[1]; // Assuming email is in column 2
-                            const answer = row[2]; // Assuming answer is in column 3
+                            const date = new Date(row[0]);
+                            const description = row[1];
+                            const email = row[2];
 
+                            // Create the main alert container
                             const alertDiv = document.createElement('div');
                             alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-                            const pTagQuestion = document.createElement('p');
-                            const pTagEmail = document.createElement('p'); // Add for email
-                            const preTag = document.createElement('pre');
+
+                            // Create the date element
+                            const pDate = document.createElement('p');
+                            pDate.textContent = date.toDateString();
+
+                            // Create a horizontal line
+                            const hr1 = document.createElement('hr');
+
+                            // Create the description element
+                            const preDescription = document.createElement('pre');
+                            preDescription.textContent = description;
+
+                            // Create a close button
                             const btnClose = document.createElement('button');
                             btnClose.setAttribute('type', 'button');
                             btnClose.setAttribute('class', 'btn-close');
                             btnClose.setAttribute('data-bs-dismiss', 'alert');
                             btnClose.setAttribute('aria-label', 'Close');
-                            pTagQuestion.textContent = question;
-                            pTagEmail.textContent = `Email: ${email}`; // Display email
-                            preTag.textContent = answer;
-                            alertDiv.appendChild(pTagQuestion);
-                            alertDiv.appendChild(pTagEmail);
-                            alertDiv.appendChild(document.createElement('hr'));
-                            alertDiv.appendChild(preTag);
+
+                            // Create another horizontal line
+                            const hr2 = document.createElement('hr');
+
+                            // Create the email element
+                            const preEmail = document.createElement('pre');
+                            preEmail.textContent = `Email: ${email}`;
+
+                            // Append all elements to the main alert container
+                            alertDiv.appendChild(pDate);
+                            alertDiv.appendChild(hr1);
+                            alertDiv.appendChild(preDescription);
                             alertDiv.appendChild(btnClose);
+                            alertDiv.appendChild(hr2);
+                            alertDiv.appendChild(preEmail);
+
+                            // Append the main alert container to the card body
                             cardBody.appendChild(alertDiv);
                         }
                     });
                 })
                 .catch(error => console.log(error));
         }
+
 
     </script>
     <main id="main" class="main">
@@ -132,11 +153,9 @@
         </div><!-- End Page Title -->
         <section class="section">
             <div class="card">
-                <a class="nav-link " href="gpdb_post_jobs.html">
-                    <i class="bi bi-box-arrow-in-up"></i>
-                    <span>Post Jobs Here</span>
-                </a>
                 <div class="card-body">
+                    <button type="button" class="btn btn-outline-info"><a class="nav-link " href="gpdb_post_jobs.html"
+                            style="color: #012970; font-weight: bold;">Post Jobs Here</a></button>
                     <br>
                 </div>
             </div>
