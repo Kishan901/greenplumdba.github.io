@@ -80,33 +80,41 @@
       const opensheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/interview_questions';
 
       fetch(opensheetURL)
-        .then(response => response.json())
-        .then(data => {
-          // Assuming data is an array of objects with 'question' and 'answer' properties
-          data.forEach(item => {
-            const question = item.question;
-            const answer = item.answer;
-
-            const alertDiv = document.createElement('div');
-            alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
-            const pTag = document.createElement('p');
-            const preTag = document.createElement('pre');
-            const btnClose = document.createElement('button');
-            btnClose.setAttribute('type', 'button');
-            btnClose.setAttribute('class', 'btn-close');
-            btnClose.setAttribute('data-bs-dismiss', 'alert');
-            btnClose.setAttribute('aria-label', 'Close');
-            pTag.textContent = question;
-            preTag.textContent = answer;
-            alertDiv.appendChild(pTag);
-            alertDiv.appendChild(document.createElement('hr'));
-            alertDiv.appendChild(preTag);
-            alertDiv.appendChild(btnClose);
-            cardBody.appendChild(alertDiv);
-          });
+        .then(function (response) {
+          return response.json();
         })
-        .catch(error => console.log(error));
+        .then(function (data) {
+          appendData(data);
+        })
+        .catch(function (err) {
+          console.log('error: ' + err);
+        });
+
+      function appendData(data) {
+        data.forEach(item => {
+          const question = item.question;
+          const answer = item.answer;
+
+          const alertDiv = document.createElement('div');
+          alertDiv.classList.add('alert', 'alert-primary', 'alert-dismissible', 'fade', 'show');
+          const pTag = document.createElement('p');
+          const preTag = document.createElement('pre');
+          const btnClose = document.createElement('button');
+          btnClose.setAttribute('type', 'button');
+          btnClose.setAttribute('class', 'btn-close');
+          btnClose.setAttribute('data-bs-dismiss', 'alert');
+          btnClose.setAttribute('aria-label', 'Close');
+          pTag.textContent = question;
+          preTag.textContent = answer;
+          alertDiv.appendChild(pTag);
+          alertDiv.appendChild(document.createElement('hr'));
+          alertDiv.appendChild(preTag);
+          alertDiv.appendChild(btnClose);
+          cardBody.appendChild(alertDiv);
+        });
+      }
     }
+
 
   </script>
   <main id="main" class="main">
