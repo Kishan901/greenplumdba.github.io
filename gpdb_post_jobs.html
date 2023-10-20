@@ -69,6 +69,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetchDataAndAppendmu();
+            const submitButton = document.getElementById('submitForm');
+
+            submitButton.addEventListener('click', function () {
+                saveDataToExcel();
+            });
         });
     </script>
     <script>
@@ -115,15 +120,6 @@
                     });
                 });
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const submitButton = document.getElementById('submitForm');
-
-            submitButton.addEventListener('click', function () {
-                saveDataToExcel();
-            });
-        });
-
     </script>
 
     <main id="main" class="main">
@@ -142,6 +138,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+                            <br>
                             <!-- General Form Elements -->
                             <form id="data-entry-form">
                                 <div class="row mb-3">
