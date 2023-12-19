@@ -89,200 +89,200 @@
           <div class="card" style="width: auto;">
             <div class="card-body" style="width: auto; text-align: left;">
                 <br>
-<pre>
-  -------------------------------------------------------------------------------------------------------------------
-  | Greenplum Database Daily Commands Template (Including DBA Tasks)                                                |
-  -------------------------------------------------------------------------------------------------------------------
-  
-  1. **Connecting to the Database:**
-     - Connect to a database:
-       ```
-       psql -h <hostname> -p <port> -d <database> -U <username>
-       ```
-  
-  2. **Basic Queries:**
-     - Execute a SQL query:
-       ```sql
-       SELECT * FROM <table>;
-       ```
-  
-  3. **Database Information:**
-     - Show database version:
-       ```sql
-       SELECT version();
-       ```
-  
-     - Display database information:
-       ```sql
-       \l
-       ```
-  
-     - Display table structure:
-       ```sql
-       \d+ <table>;
-       ```
-  
-  4. **Data Manipulation:**
-     - Insert data into a table:
-       ```sql
-       INSERT INTO <table> (column1, column2, ...) VALUES (value1, value2, ...);
-       ```
-  
-     - Update data in a table:
-       ```sql
-       UPDATE <table> SET column1 = value1 WHERE condition;
-       ```
-  
-     - Delete data from a table:
-       ```sql
-       DELETE FROM <table> WHERE condition;
-       ```
-  
-  5. **Backup and Restore:**
-     - Backup a database:
-       ```
-       pg_dump -h <hostname> -p <port> -U <username> -F c -b -v -f <backup_file> <database>
-       ```
-  
-     - Restore a database:
-       ```
-       pg_restore -h <hostname> -p <port> -U <username> -d <database> -v <backup_file>
-       ```
-  
-  6. **Monitoring and Maintenance:**
-     - View current queries:
-       ```sql
-       SELECT * FROM pg_stat_activity;
-       ```
-  
-     - Vacuum a table:
-       ```sql
-       VACUUM <table>;
-       ```
-  
-     - Check disk space usage:
-       ```
-       df -h
-       ```
-  
-     - Check Greenplum disk space usage:
-       ```sql
-       SELECT * FROM gp_toolkit.gp_disk_free;
-       ```
-  
-  7. **Indexing:**
-     - Create an index:
-       ```sql
-       CREATE INDEX <index_name> ON <table> (column1, column2, ...);
-       ```
-  
-     - Drop an index:
-       ```sql
-       DROP INDEX <index_name>;
-       ```
-  
-  8. **User Management:**
-     - Create a user:
-       ```sql
-       CREATE USER <username> WITH PASSWORD '<password>';
-       ```
-  
-     - Grant privileges:
-       ```sql
-       GRANT ALL PRIVILEGES ON DATABASE <database> TO <username>;
-       ```
-  
-     - Revoke privileges:
-       ```sql
-       REVOKE ALL PRIVILEGES ON <table> FROM <username>;
-       ```
-  
-  9. **Database Administration:**
-     - Check Greenplum configuration:
-       ```sql
-       SHOW ALL;
-       ```
-  
-     - Check cluster status:
-       ```sql
-       SELECT * FROM gp_toolkit.gp_configuration_check();
-       ```
-  
-     - Start/Stop Greenplum:
-       ```
-       gpstart
-       gpstop
-       ```
-  
-     - Restart Greenplum segments:
-       ```
-       gpstop -r
-       ```
-  
-     - Check Greenplum logs:
-       ```
-       cd $MASTER_DATA_DIRECTORY/pg_log
-       tail -f postgresql.log
-       ```
-  
-     - Check and repair the Greenplum catalog:
-       ```
-       gpcrondump -a
-       gprestore -a
-       ```
-  
-  10. **Security:**
-      - Change user password:
-        ```sql
-        ALTER USER <username> WITH PASSWORD '<new_password>';
-        ```
-  
-      - View user privileges:
-        ```sql
-        \du
-        \dp <table>
-        ```
-  
-  11. **Database Management:**
-      - Start Greenplum Database:
-        ```
-        gpstart
-        ```
-  
-      - Stop Greenplum Database:
-        ```
-        gpstop
-        ```
-  
-      - Recover a failed segment:
-        ```
-        gpactivatestandby -d /data/primary -D /data/mirror
-        ```
-  
-      - Rebalance a Greenplum Database:
-        ```
-        gprebalance -D /data -a
-        ```
-  
-  12. **Blocking and Termination:**
-      - Identify blocking queries:
-        ```sql
-        SELECT * FROM pg_stat_activity WHERE state = 'active' AND waiting = 't';
-        ```
-  
-      - Terminate a blocking query:
-        ```sql
-        SELECT pg_terminate_backend(<pid>);
-        ```
-  
-  13. **Table Bloat:**
-      - Check table bloat:
-        ```sql
-        SELECT schemaname, tablename, pg_size_pretty(pg_total_relation_size('"' || schemaname || '"."' || tablename || '"')) AS total_size, pg_size_pretty(pg_total_relation_size('"' || schemaname || '"."' || tablename || '"') - pg_relation_size('"' || schemaname || '"."' || tablename || '"')) AS bloat_size FROM pg_tables WHERE pg_total_relation_size('"' || schemaname || '"."' || tablename || '"') - pg_relation_size('"' || schemaname || '"."' || tablename || '"') > 0;
-        ```
-  
-  -------------------------------------------------------------------------------------------------------------------
-  </pre>
+                <pre>
+                  -------------------------------------------------------------------------------------------------------------------
+                  | Greenplum Database Daily Commands Template (Including DBA Tasks)                                                |
+                  -------------------------------------------------------------------------------------------------------------------
+                  
+                  1. **Connecting to the Database:**
+                     - Connect to a database:
+                       ```
+                       psql -h &lt;hostname&gt; -p &lt;port&gt; -d &lt;database&gt; -U &lt;username&gt;
+                       ```
+                  
+                  2. **Basic Queries:**
+                     - Execute a SQL query:
+                       ```sql
+                       SELECT * FROM &lt;table&gt;;
+                       ```
+                  
+                  3. **Database Information:**
+                     - Show database version:
+                       ```sql
+                       SELECT version();
+                       ```
+                  
+                     - Display database information:
+                       ```sql
+                       \l
+                       ```
+                  
+                     - Display table structure:
+                       ```sql
+                       \d+ &lt;table&gt;;
+                       ```
+                  
+                  4. **Data Manipulation:**
+                     - Insert data into a table:
+                       ```sql
+                       INSERT INTO &lt;table&gt; (column1, column2, ...) VALUES (value1, value2, ...);
+                       ```
+                  
+                     - Update data in a table:
+                       ```sql
+                       UPDATE &lt;table&gt; SET column1 = value1 WHERE condition;
+                       ```
+                  
+                     - Delete data from a table:
+                       ```sql
+                       DELETE FROM &lt;table&gt; WHERE condition;
+                       ```
+                  
+                  5. **Backup and Restore:**
+                     - Backup a database:
+                       ```
+                       pg_dump -h &lt;hostname&gt; -p &lt;port&gt; -U &lt;username&gt; -F c -b -v -f &lt;backup_file&gt; &lt;database&gt;
+                       ```
+                  
+                     - Restore a database:
+                       ```
+                       pg_restore -h &lt;hostname&gt; -p &lt;port&gt; -U &lt;username&gt; -d &lt;database&gt; -v &lt;backup_file&gt;
+                       ```
+                  
+                  6. **Monitoring and Maintenance:**
+                     - View current queries:
+                       ```sql
+                       SELECT * FROM pg_stat_activity;
+                       ```
+                  
+                     - Vacuum a table:
+                       ```sql
+                       VACUUM &lt;table&gt;;
+                       ```
+                  
+                     - Check disk space usage:
+                       ```
+                       df -h
+                       ```
+                  
+                     - Check Greenplum disk space usage:
+                       ```sql
+                       SELECT * FROM gp_toolkit.gp_disk_free;
+                       ```
+                  
+                  7. **Indexing:**
+                     - Create an index:
+                       ```sql
+                       CREATE INDEX &lt;index_name&gt; ON &lt;table&gt; (column1, column2, ...);
+                       ```
+                  
+                     - Drop an index:
+                       ```sql
+                       DROP INDEX &lt;index_name&gt;;
+                       ```
+                  
+                  8. **User Management:**
+                     - Create a user:
+                       ```sql
+                       CREATE USER &lt;username&gt; WITH PASSWORD '&lt;password&gt;';
+                       ```
+                  
+                     - Grant privileges:
+                       ```sql
+                       GRANT ALL PRIVILEGES ON DATABASE &lt;database&gt; TO &lt;username&gt;;
+                       ```
+                  
+                     - Revoke privileges:
+                       ```sql
+                       REVOKE ALL PRIVILEGES ON &lt;table&gt; FROM &lt;username&gt;;
+                       ```
+                  
+                  9. **Database Administration:**
+                     - Check Greenplum configuration:
+                       ```sql
+                       SHOW ALL;
+                       ```
+                  
+                     - Check cluster status:
+                       ```sql
+                       SELECT * FROM gp_toolkit.gp_configuration_check();
+                       ```
+                  
+                     - Start/Stop Greenplum:
+                       ```
+                       gpstart
+                       gpstop
+                       ```
+                  
+                     - Restart Greenplum segments:
+                       ```
+                       gpstop -r
+                       ```
+                  
+                     - Check Greenplum logs:
+                       ```
+                       cd $MASTER_DATA_DIRECTORY/pg_log
+                       tail -f postgresql.log
+                       ```
+                  
+                     - Check and repair the Greenplum catalog:
+                       ```
+                       gpcrondump -a
+                       gprestore -a
+                       ```
+                  
+                  10. **Security:**
+                      - Change user password:
+                        ```sql
+                        ALTER USER &lt;username&gt; WITH PASSWORD '&lt;new_password&gt;';
+                        ```
+                  
+                      - View user privileges:
+                        ```sql
+                        \du
+                        \dp &lt;table&gt;
+                        ```
+                  
+                  11. **Database Management:**
+                      - Start Greenplum Database:
+                        ```
+                        gpstart
+                        ```
+                  
+                      - Stop Greenplum Database:
+                        ```
+                        gpstop
+                        ```
+                  
+                      - Recover a failed segment:
+                        ```
+                        gpactivatestandby -d /data/primary -D /data/mirror
+                        ```
+                  
+                      - Rebalance a Greenplum Database:
+                        ```
+                        gprebalance -D /data -a
+                        ```
+                  
+                  12. **Blocking and Termination:**
+                      - Identify blocking queries:
+                        ```sql
+                        SELECT * FROM pg_stat_activity WHERE state = 'active' AND waiting = 't';
+                        ```
+                  
+                      - Terminate a blocking query:
+                        ```sql
+                        SELECT pg_terminate_backend(&lt;pid&gt;);
+                        ```
+                  
+                  13. **Table Bloat:**
+                      - Check table bloat:
+                        ```sql
+                        SELECT schemaname, tablename, pg_size_pretty(pg_total_relation_size('"' || schemaname || '"."' || tablename || '"')) AS total_size, pg_size_pretty(pg_total_relation_size('"' || schemaname || '"."' || tablename || '"') - pg_relation_size('"' || schemaname || '"."' || tablename || '"')) AS bloat_size FROM pg_tables WHERE pg_total_relation_size('"' || schemaname || '"."' || tablename || '"') - pg_relation_size('"' || schemaname || '"."' || tablename || '"') > 0;
+                        ```
+                  
+                  -------------------------------------------------------------------------------------------------------------------
+                  </pre>
               <!-- End Table with stripped rows -->
               <h3 class="card-title" style="padding: 5px 0 5px 0;font-size: 16px;"> Official VMware Link <a href="https://docs.vmware.com/en/VMware-Tanzu-Greenplum/index.html"> VMware Greenplum Database<a></h3>
               <h3 class="card-title" style="padding: 5px 0 5px 0;font-size: 16px;"> Official Github Link <a href="https://github.com/greenplum-db/gpdb"> Greenplum Database Open Source<a></h3>
