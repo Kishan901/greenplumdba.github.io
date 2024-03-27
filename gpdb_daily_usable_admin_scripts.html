@@ -73,6 +73,10 @@
         });
     </script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            readGoogleSheetAndAppendToAccordion();
+        });
+
         function readGoogleSheetAndAppendToAccordion() {
             const accordion = document.getElementById('accordionExample');
             const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Admin_Scripts'; // Replace with your Google Sheet URL
@@ -112,7 +116,17 @@
                         const pre = document.createElement('pre');
                         pre.textContent = script;
 
+                        const copyButton = document.createElement('button');
+                        copyButton.textContent = 'Copy Script';
+                        copyButton.className = 'btn btn-primary';
+                        copyButton.addEventListener('click', () => {
+                            navigator.clipboard.writeText(script)
+                                .then(() => alert('Script copied to clipboard'))
+                                .catch(err => console.error('Could not copy script: ', err));
+                        });
+
                         accordionBody.appendChild(pre);
+                        accordionBody.appendChild(copyButton);
                         accordionCollapse.appendChild(accordionBody);
                         accordionHeader.appendChild(accordionButton);
                         accordionItem.appendChild(accordionHeader);
@@ -147,7 +161,7 @@
                         <button type="button" class="btn btn-outline-info"><a class="nav-link "
                                 href="https://docs.google.com/forms/d/e/1FAIpQLScZ4b3Q9S6fVd3V1-PCWEjVA1uFBm-AeaEIDbnKlA090U-Jzg/viewform?usp=sf_link"
                                 style="color: #012970; font-weight: bold;">Add Your Script Here</a></button>
-
+                        <br>
                         <div class="accordion" id="accordionExample">
                         </div><!-- End Default Accordion Example -->
                     </div>
