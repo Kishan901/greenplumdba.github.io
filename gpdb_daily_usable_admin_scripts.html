@@ -110,13 +110,13 @@
                         accordionCollapse.setAttribute('data-bs-parent', '#accordionExample');
 
                         const accordionBody = document.createElement('div');
-                        accordionBody.className = 'accordion-body';
+                        accordionBody.className = 'accordion-body position-relative';
 
                         const pre = document.createElement('pre');
                         pre.textContent = script;
 
                         const copyButton = document.createElement('button');
-                        copyButton.className = 'btn btn-outline-primary btn-sm';
+                        copyButton.className = 'btn btn-outline-primary btn-sm position-absolute top-0 end-0 mt-2 me-2';
                         copyButton.type = 'button';
                         copyButton.textContent = 'Copy Script';
                         copyButton.onclick = () => copyToClipboard(script);
