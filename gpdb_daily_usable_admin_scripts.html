@@ -79,7 +79,7 @@
 
         function readGoogleSheetAndAppendToAccordion() {
             const accordion = document.getElementById('accordionExample');
-            const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Admin_Scripts'; // Replace with your Google Sheet URL
+            const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Admin_Scripts';
 
             fetch(googleSheetURL)
                 .then(response => response.json())
@@ -88,7 +88,6 @@
                         const scriptName = row.Admin_Scripts_Name;
                         const script = row.Scripts;
 
-                        // Create accordion item elements
                         const accordionItem = document.createElement('div');
                         accordionItem.className = 'accordion-item';
 
@@ -104,6 +103,12 @@
                         accordionButton.setAttribute('aria-controls', `collapse${index}`);
                         accordionButton.textContent = scriptName;
 
+                        const copyButton = document.createElement('button');
+                        copyButton.className = 'btn btn-outline-primary btn-sm float-end';
+                        copyButton.type = 'button';
+                        copyButton.textContent = 'Copy Script';
+                        copyButton.onclick = () => copyToClipboard(script);
+
                         const accordionCollapse = document.createElement('div');
                         accordionCollapse.id = `collapse${index}`;
                         accordionCollapse.className = 'accordion-collapse collapse';
@@ -116,19 +121,10 @@
                         const pre = document.createElement('pre');
                         pre.textContent = script;
 
-                        const copyButton = document.createElement('button');
-                        copyButton.textContent = 'Copy Script';
-                        copyButton.className = 'btn btn-primary';
-                        copyButton.addEventListener('click', () => {
-                            navigator.clipboard.writeText(script)
-                                .then(() => alert('Script copied to clipboard'))
-                                .catch(err => console.error('Could not copy script: ', err));
-                        });
-
                         accordionBody.appendChild(pre);
-                        accordionBody.appendChild(copyButton);
                         accordionCollapse.appendChild(accordionBody);
                         accordionHeader.appendChild(accordionButton);
+                        accordionHeader.appendChild(copyButton); // Append copy button to header
                         accordionItem.appendChild(accordionHeader);
                         accordionItem.appendChild(accordionCollapse);
                         accordion.appendChild(accordionItem);
@@ -137,6 +133,16 @@
                 .catch(error => {
                     console.error(error);
                 });
+        }
+
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Script copied to clipboard!');
         }
     </script>
 
@@ -157,15 +163,16 @@
                 <div class="card">
                     <div class="card-body">
                         <br>
-                        <!-- Default Accordion -->
                         <button type="button" class="btn btn-outline-info"><a class="nav-link "
                                 href="https://docs.google.com/forms/d/e/1FAIpQLScZ4b3Q9S6fVd3V1-PCWEjVA1uFBm-AeaEIDbnKlA090U-Jzg/viewform?usp=sf_link"
                                 style="color: #012970; font-weight: bold;">Add Your Script Here</a></button>
-                        <br>
+                        <br><br>
                         <div class="accordion" id="accordionExample">
+                            <!-- Accordion items will be dynamically generated here -->
                         </div><!-- End Default Accordion Example -->
                     </div>
                 </div>
+            </div>
         </section>
     </main><!-- End #main -->
 
