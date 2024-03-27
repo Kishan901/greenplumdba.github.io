@@ -103,12 +103,6 @@
                         accordionButton.setAttribute('aria-controls', `collapse${index}`);
                         accordionButton.textContent = scriptName;
 
-                        const copyButton = document.createElement('button');
-                        copyButton.className = 'btn btn-outline-primary btn-sm float-end';
-                        copyButton.type = 'button';
-                        copyButton.textContent = 'Copy Script';
-                        copyButton.onclick = () => copyToClipboard(script);
-
                         const accordionCollapse = document.createElement('div');
                         accordionCollapse.id = `collapse${index}`;
                         accordionCollapse.className = 'accordion-collapse collapse';
@@ -121,10 +115,16 @@
                         const pre = document.createElement('pre');
                         pre.textContent = script;
 
+                        const copyButton = document.createElement('button');
+                        copyButton.className = 'btn btn-outline-primary btn-sm';
+                        copyButton.type = 'button';
+                        copyButton.textContent = 'Copy Script';
+                        copyButton.onclick = () => copyToClipboard(script);
+
                         accordionBody.appendChild(pre);
+                        accordionBody.appendChild(copyButton); // Append copy button to accordion body
                         accordionCollapse.appendChild(accordionBody);
                         accordionHeader.appendChild(accordionButton);
-                        accordionHeader.appendChild(copyButton); // Append copy button to header
                         accordionItem.appendChild(accordionHeader);
                         accordionItem.appendChild(accordionCollapse);
                         accordion.appendChild(accordionItem);
