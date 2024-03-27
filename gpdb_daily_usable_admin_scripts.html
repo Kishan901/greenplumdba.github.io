@@ -20,8 +20,8 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-      <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- Nice Admin -->
+    <!-- Nice Admin -->
 </head>
 
 <body>
@@ -45,7 +45,8 @@
             <i class="bi bi-list toggle-sidebar-btn align-items-center"></i>&nbsp;&nbsp;
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum DBA</span>
+                <span class="d-none d-lg-block" style="color: #012970; font-family: 'Ubuntu';">&nbsp;Greenplum
+                    DBA</span>
             </a>
         </div><!-- End Logo -->
 
@@ -67,26 +68,21 @@
     </aside><!-- End Sidebar-->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            readExcelAndAppendToAccordion();
+            readGoogleSheetAndAppendToAccordion();
             fetchDataAndAppendmu();
         });
     </script>
     <script>
-        function readExcelAndAppendToAccordion() {
+        function readGoogleSheetAndAppendToAccordion() {
             const accordion = document.getElementById('accordionExample');
+            const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Admin_Scripts'; // Replace with your Google Sheet URL
 
-            fetch('assets/data/questions_answer.xlsx')
-                .then((response) => response.arrayBuffer())
-                .then((arrayBuffer) => {
-                    const data = new Uint8Array(arrayBuffer);
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const sheetName = workbook.SheetNames[1]; // Assuming the data is in the second sheet
-                    const worksheet = workbook.Sheets[sheetName];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-                    jsonData.forEach((row, index) => {
-                        const column0 = row[0];
-                        const column1 = row[1];
+            fetch(googleSheetURL)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach((row, index) => {
+                        const scriptName = row.Admin_Scripts_Name;
+                        const script = row.Scripts;
 
                         // Create accordion item elements
                         const accordionItem = document.createElement('div');
@@ -102,7 +98,7 @@
                         accordionButton.setAttribute('data-bs-target', `#collapse${index}`);
                         accordionButton.setAttribute('aria-expanded', 'false');
                         accordionButton.setAttribute('aria-controls', `collapse${index}`);
-                        accordionButton.textContent = column0;
+                        accordionButton.textContent = scriptName;
 
                         const accordionCollapse = document.createElement('div');
                         accordionCollapse.id = `collapse${index}`;
@@ -114,7 +110,7 @@
                         accordionBody.className = 'accordion-body';
 
                         const pre = document.createElement('pre');
-                        pre.textContent = column1;
+                        pre.textContent = script;
 
                         accordionBody.appendChild(pre);
                         accordionCollapse.appendChild(accordionBody);
@@ -124,11 +120,12 @@
                         accordion.appendChild(accordionItem);
                     });
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.error(error);
                 });
         }
     </script>
+
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Daily Usable</h1>
@@ -147,24 +144,28 @@
                     <div class="card-body">
                         <br>
                         <!-- Default Accordion -->
+                        <button type="button" class="btn btn-outline-info"><a class="nav-link "
+                                href="https://docs.google.com/forms/d/e/1FAIpQLScZ4b3Q9S6fVd3V1-PCWEjVA1uFBm-AeaEIDbnKlA090U-Jzg/viewform?usp=sf_link"
+                                style="color: #012970; font-weight: bold;">Add Your Script Here</a></button>
+
                         <div class="accordion" id="accordionExample">
-      
                         </div><!-- End Default Accordion Example -->
                     </div>
                 </div>
         </section>
-
     </main><!-- End #main -->
+
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>Greenplum DBA 2023</span></strong>. All Rights Reserved
         </div>
-    <div class="credits">
-      Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan Panchal</a>&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i>&nbsp;  
-      With the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon"> OpenAI.
-    </div>
+        <div class="credits">
+            Designed by <a href="https://www.linkedin.com/in/kishan-panchal-6004ab1b4/">@Kishan
+                Panchal</a>&nbsp;&nbsp;<i class="bi bi-plus-square-fill"></i>&nbsp;
+            With the help of ChatGPT by <img src="assets/img/icons8-chatgpt-24.png" alt="ChatGPT Icon"> OpenAI.
+        </div>
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
