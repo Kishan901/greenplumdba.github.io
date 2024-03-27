@@ -72,40 +72,89 @@
       /* Adjust this value as needed */
     }
   </style>
-
   <main id="main" class="main">
+    <style>
+        /* Profile Card Styles */
+        .profile-card {
+            margin-bottom: 20px; /* Adjust as needed for spacing between cards */
+        }
+
+        /* Profile Card Image Styles */
+        .profile-card img {
+            width: 100px; /* Adjust image size as needed */
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        /* Profile Card Body Styles */
+        .profile-card .card-body {
+            background-color: #f0f0f0; /* Change this to your desired background color */
+            padding: 20px; /* Adjust padding as needed */
+            position: relative; /* Position relative for absolute positioning of crown */
+        }
+
+        /* Crown Styles */
+        .crown {
+            position: absolute;
+            top: -10px; /* Adjust as needed to position the crown */
+            left: -10px; /* Adjust as needed to position the crown */
+            background-color: gold; /* Crown color */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Tag Styles */
+        .tag {
+            background-color: silver; /* Tag color */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -10px; /* Adjust as needed to position the tag */
+            right: -10px; /* Adjust as needed to position the tag */
+        }
+
+        /* Additional tag styles */
+        .tag.gold {
+            background-color: goldenrod; /* Gold tag color */
+        }
+
+        .tag.platinum {
+            background-color: #6c757d; /* Platinum tag color */
+        }
+    </style>
+
     <div class="pagetitle">
-      <hr>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Contributors</li>
-        </ol>
-      </nav>
-      <hr>
+        <hr>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Contributers</li>
+            </ol>
+        </nav>
+        <hr>
     </div><!-- End Page Title -->
-
     <section class="section profile">
-      <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6">
+            <div class="col-xl-4">
 
-            <!-- Profile Card: Gurupreet Bhatia -->
-            <div class="card mb-4 profile-card">
-              <div class="card-body d-flex flex-column align-items-center">
-                <img src="assets/img/photo_gurupreet_bhatia.jpg" alt="Profile" class="rounded-circle">
-                <h2>Gurupreet Bhatia</h2>
-                <h3>Lead Greenplum DBA</h3>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/gurupreet-singh-bhatia-734a2993/" class="linkedin"><i
-                      class="bi bi-linkedin"></i></a>
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <span class="crown">Platinum</span>
+                        <img src="assets/img/photo_gurupreet_bhatia.jpg" alt="Profile" class="rounded-circle">
+                        <h2>Gurupreet Bhatia</h2>
+                        <h3>Lead Greenplum DBA</h3>
+                        <div class="social-links mt-2">
+                            <a href="https://www.linkedin.com/in/gurupreet-singh-bhatia-734a2993/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Profile Card: Kishan Panchal -->
+                            <!-- Profile Card: Kishan Panchal -->
             <div class="card mb-4 profile-card">
               <div class="card-body d-flex flex-column align-items-center">
+                <span class="crown">Platinum</span>
                 <img src="assets/img/photo_kishan_panchal.jpg" alt="Profile" class="rounded-circle">
                 <h2>Kishan Panchal</h2>
                 <h3>Senior Greenplum DBA</h3>
@@ -119,6 +168,7 @@
             <!-- Profile Card: Huzefa Patel -->
             <div class="card mb-4 profile-card">
               <div class="card-body d-flex flex-column align-items-center">
+                <span class="crown">Platinum</span>
                 <img src="assets/img/photo_huzefa_patel.jpg" alt="Profile" class="rounded-circle">
                 <h2>Huzefa Patel</h2>
                 <h3>Lead Greenplum DBA</h3>
@@ -136,6 +186,7 @@
             <!-- Profile Card: Bharat D -->
             <div class="card mb-4 profile-card">
               <div class="card-body d-flex flex-column align-items-center">
+                <span class="crown">Platinum</span>
                 <img src="assets/img/photo_bharat_devrajan.jpg" alt="Profile" class="rounded-circle">
                 <h2>Bharat D</h2>
                 <h3>Senior Greenplum DBA</h3>
@@ -149,6 +200,7 @@
             <!-- Profile Card: Jitendra Lodwal -->
             <div class="card mb-4 profile-card">
               <div class="card-body d-flex flex-column align-items-center">
+                <span class="crown">Platinum</span>
                 <img src="assets/img/photo_jitendra_lodwa.jpg" alt="Profile" class="rounded-circle">
                 <h2>Jitendra Lodwal</h2>
                 <h3>Lead Greenplum Architect</h3>
@@ -162,6 +214,7 @@
             <!-- Profile Card: Vishal Kadam -->
             <div class="card mb-4 profile-card">
               <div class="card-body d-flex flex-column align-items-center">
+                <span class="crown">Platinum</span>
                 <img src="assets/img/photo_vishal_kadam.jpg" alt="Profile" class="rounded-circle">
                 <h2>Vishal Kadam</h2>
                 <h3>Lead Greenplum DBA</h3>
@@ -172,12 +225,10 @@
               </div>
             </div>
 
-          </div>
+            </div>
         </div>
-      </div>
     </section>
-
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
 
 
