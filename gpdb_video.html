@@ -89,8 +89,115 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       fetchDataAndAppendmu();
+      fetchVideoDataAndAppendmu();
     });
   </script>
+
+  <script>
+
+    function fetchVideoDataAndAppendmu() {
+      const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Videos';
+      const adminAccordionExample = document.getElementById('adminAccordionExample');
+      const developerAccordionExample = document.getElementById('developerAccordionExample');
+
+      fetch(googleSheetURL)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach((row, index) => {
+            const videoFor = row.Video_For; // Assuming this is the column name for the admin/developer divide
+            const videoTitle = row.Video_Title;
+            const videoURL = row.Video_URL;
+            const tutorialDocumentURL = row.Tutorial_Document_URL;
+
+            // Check if video title and URL are available
+            if (!videoTitle || !videoURL) {
+              return; // Skip if video title or URL is not available
+            }
+
+            // Create accordion item
+            const accordionItem = document.createElement('div');
+            accordionItem.className = 'accordion-item';
+
+            // Create accordion header
+            const accordionHeader = document.createElement('h2');
+            accordionHeader.className = 'accordion-header';
+
+            // Create accordion button
+            const accordionButton = document.createElement('button');
+            accordionButton.className = 'accordion-button collapsed';
+            accordionButton.type = 'button';
+            accordionButton.setAttribute('data-bs-toggle', 'collapse');
+            accordionButton.setAttribute('data-bs-target', `#collapse${index}`);
+            accordionButton.setAttribute('aria-expanded', 'false');
+            accordionButton.setAttribute('aria-controls', `collapse${index}`);
+            accordionButton.textContent = videoTitle;
+
+            // Create accordion collapse
+            const accordionCollapse = document.createElement('div');
+            accordionCollapse.id = `collapse${index}`;
+            accordionCollapse.className = 'accordion-collapse collapse';
+            accordionCollapse.setAttribute('aria-labelledby', `heading${index}`);
+            accordionCollapse.setAttribute('data-bs-parent', '#accordionExample');
+
+            // Create accordion body
+            const accordionBody = document.createElement('div');
+            accordionBody.className = 'accordion-body position-relative';
+
+            // Create video container
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+
+            // Create iframe for video
+            const iframe = document.createElement('iframe');
+            iframe.src = videoURL;
+            iframe.frameborder = '0';
+            iframe.allowfullscreen = true;
+
+            // Append iframe to video container
+            videoContainer.appendChild(iframe);
+
+            // Append video container to accordion body
+            accordionBody.appendChild(videoContainer);
+
+            // Check if tutorial document URL is available before creating the button
+            if (tutorialDocumentURL && tutorialDocumentURL.trim() !== '') {
+              // Create download tutorial document button
+              const downloadButton = document.createElement('a');
+              downloadButton.className = 'btn btn-primary';
+              downloadButton.href = tutorialDocumentURL;
+              downloadButton.textContent = 'Download Tutorial Document';
+              downloadButton.target = '_blank'; // Open in a new tab
+
+              // Append download button to accordion body
+              accordionBody.appendChild(downloadButton);
+            }
+
+            // Append accordion body to accordion collapse
+            accordionCollapse.appendChild(accordionBody);
+
+            // Append accordion collapse to accordion item
+            accordionItem.appendChild(accordionCollapse);
+
+            // Append accordion button to accordion header
+            accordionHeader.appendChild(accordionButton);
+
+            // Append accordion header to accordion item
+            accordionItem.appendChild(accordionHeader);
+
+            // Append accordion item to the appropriate accordion example based on the admin/developer divide
+            if (videoFor.toLowerCase() === 'admin') {
+              adminAccordionExample.appendChild(accordionItem);
+            } else if (videoFor.toLowerCase() === 'developer') {
+              developerAccordionExample.appendChild(accordionItem);
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data from Google Sheets:', error);
+        });
+    }
+  </script>
+
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>GPDB Youtube Video</h1>
@@ -107,219 +214,22 @@
       <div class="row">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">For Developer</h5>
+            <!-- Admin Accordion -->
+            <div class="accordion" id="adminAccordionExample">
+              <h5 class="card-title">For Admin</h5>
+              <!-- Admin Accordion items will be dynamically added here -->
+            </div><!-- End Admin Accordion Example -->
 
-            <!-- Default Accordion -->
-            <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Greenplum Database and Avro Data as External Tables: Demo & Tutorial
-                  </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/YKQmnkPNnUA" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Default Accordion Example -->
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">For Admin</h5>
-
-            <!-- Default Accordion -->
-            <div class="accordion" id="accordionExample-admin">
-
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="heading-admin-One">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapse-admin-One" aria-expanded="false" aria-controls="collapse-admin-One">
-                    Install Greenplum on VMware Workstation
-                  </button>
-                </h2>
-                <div id="collapse-admin-One" class="accordion-collapse collapse" aria-labelledby="heading-admin-One"
-                  data-bs-parent="#accordionExample-admin">
-                  <div class="accordion-body">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/pBjBvz3Y71k" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <br>
-                    <button type="button" class="btn btn-outline-info"><a
-                        href="assets/data/gp_install_rhel_8_session_1.txt" download="gp_install_rhel_8_session_1.txt"
-                        style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Add more accordion items here as needed -->
-
-              <!-- Admin Accordion -->
-              <div class="accordion" id="accordionAdmin">
-                <!-- Accordion Item 1 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Two">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Two" aria-expanded="false" aria-controls="collapse-admin-Two">
-                      Get started with Greenplum Command Center GPCC
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Two" class="accordion-collapse collapse" aria-labelledby="heading-admin-Two"
-                    data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/bT0NC7_Uc6Q" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP_Install_GPCC_Rhel_8_Session_2.txt"
-                          download="gp_install_gpcc_rhel_8_session_2.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Accordion Item 2 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Three">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Three" aria-expanded="false" aria-controls="collapse-admin-Three">
-                      Install and Get started with Greenplum Backup and Restore
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Three" class="accordion-collapse collapse"
-                    aria-labelledby="heading-admin-Three" data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/sa7YuObIwgI" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP_Install_Backup_Restore_Rhel_8_Session_2_1.txt"
-                          download="gp_install_backup_restore_rhel_8_session_2_1.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Accordion Item 3 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Four">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Four" aria-expanded="false" aria-controls="collapse-admin-Four">
-                      Greenplum High Availability Process and Demo
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Four" class="accordion-collapse collapse" aria-labelledby="heading-admin-Four"
-                    data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/2BBU26I3bJM" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP_High_Availability_Rhel_8_Session_3.txt"
-                          download="gp_high_availability_rhel_8_session_3.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Accordion Item 4 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Five">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Five" aria-expanded="false" aria-controls="collapse-admin-Five">
-                      Greenplum Database High Availability Master Mirroring
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Five" class="accordion-collapse collapse" aria-labelledby="heading-admin-Five"
-                    data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/V6DIazYu3kw" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP_Master_Mirroring_Rhel_8_Session_3_1.txt"
-                          download="gp_master_mirroring_Rhel_8_session_3_1.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Accordion Item 5 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Six">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Six" aria-expanded="false" aria-controls="collapse-admin-Six">
-                      Greenplum Database Minor Upgrade Procedure Demo
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Six" class="accordion-collapse collapse" aria-labelledby="heading-admin-Six"
-                    data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/R87EOzrysxY" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP6_Upgrade_Rhel_8_Session_5.txt"
-                          download="gp6_upgrade_rhel_8_session_5.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-                <!-- Accordion Item 6 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-admin-Seven">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse-admin-Seven" aria-expanded="false" aria-controls="collapse-admin-Seven">
-                      Expanding Greenplum Database with gpexpand
-                    </button>
-                  </h2>
-                  <div id="collapse-admin-Seven" class="accordion-collapse collapse"
-                    aria-labelledby="heading-admin-Seven" data-bs-parent="#accordionAdmin">
-                    <div class="accordion-body">
-                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qQoh1OOfKT0" frameborder="0"
-                          allowfullscreen></iframe>
-                      </div>
-                      <br>
-                      <button type="button" class="btn btn-outline-info"><a
-                          href="assets/data/GP_gpexpand_Rhel_8_Session_4.txt"
-                          download="gp_gpexpand_rhel_8_session_4.txt"
-                          style="color: #012970; font-weight: bold;">Download Tutorial Documents</a></button>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Accordion Item 6 -->
-
-              </div><!-- End Admin Accordion -->
-
-            </div><!-- End Default Accordion Example -->
+            <!-- Developer Accordion -->
+            <div class="accordion" id="developerAccordionExample">
+              <h5 class="card-title">For Developer</h5>
+              <!-- Developer Accordion items will be dynamically added here -->
+            </div><!-- End Developer Accordion Example -->
           </div>
         </div>
       </div>
     </section>
-
-
-  </main><!-- End #main -->
+  </main>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
