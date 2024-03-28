@@ -196,19 +196,14 @@
             } else if (videoFor.toLowerCase() === 'developer') {
               developerAccordionExample.appendChild(accordionItem);
             }
-
-            // Add accordion item to the document body
-            document.body.appendChild(accordionItem);
           });
         })
         .catch(error => {
           console.error('Error fetching data from Google Sheets:', error);
         });
     }
-
-
   </script>
-
+  
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>GPDB Youtube Video</h1>
