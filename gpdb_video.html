@@ -196,12 +196,20 @@
             } else if (videoFor.toLowerCase() === 'developer') {
               developerAccordionExample.appendChild(accordionItem);
             }
+
+            // Add event listener to scroll to clicked accordion header
+            accordionButton.addEventListener('click', () => {
+              setTimeout(() => {
+                accordionHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 300); // Adjust the delay if needed
+            });
           });
         })
         .catch(error => {
           console.error('Error fetching data from Google Sheets:', error);
         });
     }
+
   </script>
 
   <main id="main" class="main">
