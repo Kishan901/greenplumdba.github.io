@@ -94,7 +94,6 @@
   </script>
 
   <script>
-
     function fetchVideoDataAndAppendmu() {
       const googleSheetURL = 'https://opensheet.elk.sh/11BO5j-M4Id8shovnAYKOhdSU4-oQDUeoih95CqAaITo/Videos';
       const adminAccordionExample = document.getElementById('adminAccordionExample');
@@ -142,6 +141,7 @@
             // Create accordion body
             const accordionBody = document.createElement('div');
             accordionBody.className = 'accordion-body position-relative';
+            accordionBody.style.overflow = 'auto'; // Add this line to enable scrolling
 
             // Create video container
             const videoContainer = document.createElement('div');
@@ -150,8 +150,8 @@
             // Create iframe for video
             const iframe = document.createElement('iframe');
             iframe.src = videoURL;
-            iframe.frameborder = '0';
-            iframe.allowfullscreen = true;
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
 
             // Append iframe to video container
             videoContainer.appendChild(iframe);
@@ -168,7 +168,13 @@
               downloadButton.textContent = 'Download Tutorial Document';
               downloadButton.target = '_blank'; // Open in a new tab
 
-              // Append download button to accordion body
+              // Create line breaks before and after the button
+              const br1 = document.createElement('br');
+              const br2 = document.createElement('br');
+
+              // Append line breaks and download button to accordion body
+              accordionBody.appendChild(br1);
+              accordionBody.appendChild(br2);
               accordionBody.appendChild(downloadButton);
             }
 
